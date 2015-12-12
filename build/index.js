@@ -3257,10 +3257,10 @@ module.exports={
 	 		"properties": {
 	 			"image":{
 	 				"name": "player",
-	 				"sourceX" : 1100,
+	 				"sourceX" : 275,
 					"sourceY": 0,
-					"sourceWidth": 291,
-					"sourceHeight": 500
+					"sourceWidth": 97,
+					"sourceHeight": 115
 	 			}
 	 		}
 	 	},
@@ -3269,10 +3269,10 @@ module.exports={
 	 		"properties": {
 	 			"image":{
 	 				"name": "player",
-	 				"sourceX" :1100,
-					"sourceY": 500,
-					"sourceWidth": 291,
-					"sourceHeight": 500
+	 				"sourceX" :275,
+					"sourceY": 115,
+					"sourceWidth": 97,
+					"sourceHeight": 115
 	 			}
 	 		}
 	 	}
@@ -3323,7 +3323,7 @@ module.exports={
       "y": 100
      },
      "size": {
-      "width": 97.22,
+      "width": 97,
       "height": 125
      },
      "velocity": {
@@ -3340,8 +3340,8 @@ module.exports={
    "image": {
     "sourceX": 0,
     "sourceY": 0,
-    "sourceWidth": 97,
-    "sourceHeight": 125,
+    "sourceWidth": 0,
+    "sourceHeight": 0,
     "destinationX": 0,
     "destinationY": 0,
     "destinationWidth": 97,

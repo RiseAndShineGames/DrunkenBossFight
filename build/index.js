@@ -2,16 +2,11 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
 "use strict";
 
 module.exports = function(data) { // eslint-disable-line no-unused-vars
-	alert("entered main");
 };
 
 },{}],"./scripts/main-exit":[function(require,module,exports){
-"use strict";
-
-module.exports = function(data) { // eslint-disable-line no-unused-vars
-};
-
-},{}],"./scripts/title-enter":[function(require,module,exports){
+module.exports=require("./scripts/main-enter")
+},{"./scripts/main-enter":"./scripts/main-enter"}],"./scripts/title-enter":[function(require,module,exports){
 "use strict";
 var utilities = require('./utilities');
 var structures = {
@@ -32,12 +27,11 @@ function buildTitle(data,titleWords,tagLine){
 	return titleEntity;
 }
 module.exports = function(data) { // eslint-disable-line no-unused-vars
-	console.log("here");
 };
 
 },{"./utilities":64}],"./scripts/title-exit":[function(require,module,exports){
-module.exports=require("./scripts/main-exit")
-},{"./scripts/main-exit":"./scripts/main-exit"}],1:[function(require,module,exports){
+module.exports=require("./scripts/main-enter")
+},{"./scripts/main-enter":"./scripts/main-enter"}],1:[function(require,module,exports){
 "use strict";
 
 var canvas = document.getElementById("canvas");
@@ -110,6 +104,8 @@ module.exports = function(ecs, data) {
 		}
 		if (data.input.button("right")) {
 			entity.velocity.x = 0.5;
+
+			entity.animation.name ="player-forward-right-trans";
 		}
 		if (data.input.button("up")) {
 			entity.velocity.y = -0.5;
@@ -3253,7 +3249,7 @@ module.exports={
 	 ],
 	 "player-idle":[
 	 	{
-	 		"time" : 100,
+	 		"time" : 50,
 	 		"properties": {
 	 			"image":{
 	 				"name": "player",
@@ -3265,7 +3261,7 @@ module.exports={
 	 		}
 	 	},
 	 	{
-	 		"time" : 100,
+	 		"time" : 50,
 	 		"properties": {
 	 			"image":{
 	 				"name": "player",
@@ -3273,6 +3269,130 @@ module.exports={
 					"sourceY": 115,
 					"sourceWidth": 97,
 					"sourceHeight": 115
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 50,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" : 275,
+					"sourceY": 0,
+					"sourceWidth": 97,
+					"sourceHeight": 115
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 50,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" :275,
+					"sourceY": 115,
+					"sourceWidth": 97,
+					"sourceHeight": 115
+	 			}
+	 		}
+	 	}
+	 ],
+	 "player-forward-right-trans":[
+	 {
+	 		"time" : 50,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" : 372,
+					"sourceY": 0,
+					"sourceWidth": 97,
+					"sourceHeight": 115
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 50,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" :372,
+					"sourceY": 115,
+					"sourceWidth": 97,
+					"sourceHeight": 115
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 50,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" : 469,
+					"sourceY": 0,
+					"sourceWidth": 97,
+					"sourceHeight": 115
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 50,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" :469,
+					"sourceY": 115,
+					"sourceWidth": 97,
+					"sourceHeight": 115
+	 			}
+	 		}
+	 	}
+	 ],
+	 "player-forward-right":[
+	 {
+	 		"time" : 50,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" : 590,
+					"sourceY": 10,
+					"sourceWidth": 100,
+					"sourceHeight": 96
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 50,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" :590,
+					"sourceY": 115,
+					"sourceWidth": 100,
+					"sourceHeight": 96
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 50,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" : 590,
+					"sourceY": 10,
+					"sourceWidth": 100,
+					"sourceHeight": 96
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 50,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" :590,
+					"sourceY": 115,
+					"sourceWidth": 100,
+					"sourceHeight": 96
 	 			}
 	 		}
 	 	}
@@ -3330,23 +3450,37 @@ module.exports={
       "x": 0,
       "y": 0
      },
-   "animation": {
-    "time": 0,
-    "frame": 0,
-    "loop": true,
-    "speed": 1,
-    "name": "player-idle"
-   },
-   "image": {
-    "sourceX": 0,
-    "sourceY": 0,
-    "sourceWidth": 0,
-    "sourceHeight": 0,
-    "destinationX": 0,
-    "destinationY": 0,
-    "destinationWidth": 97,
-    "destinationHeight": 125
-   }
+     "animation": {
+      "time": 0,
+      "frame": 0,
+      "loop": true,
+      "speed": 1,
+      "name": "player-idle"
+     },
+     "image": {
+      "sourceX": 0,
+      "sourceY": 0,
+      "sourceWidth": 0,
+      "sourceHeight": 0,
+      "destinationX": 0,
+      "destinationY": 0,
+      "destinationWidth": 97,
+      "destinationHeight": 125
+     },
+     "timers":{
+      "easing-animation": {
+        "running":false,
+        "time": 0,
+        "max": 200,
+        "script": "scripts/player-state-machine"
+      },
+      "ease-idle":{
+        "running":false,
+        "time": 0,
+        "max": 100,
+        "script": "scripts/player-state-machine"
+      }
+    }
     },
     {
       "id": 0,

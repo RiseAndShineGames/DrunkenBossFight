@@ -15,7 +15,7 @@
 	 ],
 	 "player-idle":[
 	 	{
-	 		"time" : 100,
+	 		"time" : 50,
 	 		"properties": {
 	 			"image":{
 	 				"name": "player",
@@ -27,7 +27,7 @@
 	 		}
 	 	},
 	 	{
-	 		"time" : 100,
+	 		"time" : 50,
 	 		"properties": {
 	 			"image":{
 	 				"name": "player",
@@ -35,6 +35,130 @@
 					"sourceY": 115,
 					"sourceWidth": 97,
 					"sourceHeight": 115
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 50,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" : 275,
+					"sourceY": 0,
+					"sourceWidth": 97,
+					"sourceHeight": 115
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 50,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" :275,
+					"sourceY": 115,
+					"sourceWidth": 97,
+					"sourceHeight": 115
+	 			}
+	 		}
+	 	}
+	 ],
+	 "player-forward-right-trans":[
+	 {
+	 		"time" : 50,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" : 372,
+					"sourceY": 0,
+					"sourceWidth": 97,
+					"sourceHeight": 115
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 50,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" :372,
+					"sourceY": 115,
+					"sourceWidth": 97,
+					"sourceHeight": 115
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 50,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" : 469,
+					"sourceY": 0,
+					"sourceWidth": 97,
+					"sourceHeight": 115
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 50,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" :469,
+					"sourceY": 115,
+					"sourceWidth": 97,
+					"sourceHeight": 115
+	 			}
+	 		}
+	 	}
+	 ],
+	 "player-forward-right":[
+	 {
+	 		"time" : 50,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" : 590,
+					"sourceY": 10,
+					"sourceWidth": 100,
+					"sourceHeight": 96
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 50,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" :590,
+					"sourceY": 115,
+					"sourceWidth": 100,
+					"sourceHeight": 96
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 50,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" : 590,
+					"sourceY": 10,
+					"sourceWidth": 100,
+					"sourceHeight": 96
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 50,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" :590,
+					"sourceY": 115,
+					"sourceWidth": 100,
+					"sourceHeight": 96
 	 			}
 	 		}
 	 	}

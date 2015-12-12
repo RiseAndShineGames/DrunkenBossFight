@@ -18,5 +18,4 @@ function buildTitle(data,titleWords,tagLine){
 	return titleEntity;
 }
 module.exports = function(data) { // eslint-disable-line no-unused-vars
-	console.log("here");
 };

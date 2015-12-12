@@ -32,6 +32,7 @@
   ],
  "main": [
     {
+      "color": "yellow",
      "id": 0,
      "name": "player",
      "player": true,

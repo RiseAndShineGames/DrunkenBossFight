@@ -85,7 +85,7 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 
 module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 	ecs.addEach(function(entity, context) { // eslint-disable-line no-unused-vars
-		context.fillStyle = "yellow";
+		context.fillStyle = entity.color;
 		context.fillRect(entity.position.x, entity.position.y, entity.size.width, entity.size.height);
 	}, ["position", "size"]);
 };
@@ -117,6 +117,15 @@ module.exports = function(ecs, data) {
 		}
 		if (data.input.button("down")) {
 			entity.velocity.y = 0.5;
+		}
+		if(data.input.mouse.x > entity.position.x +entity.size.width){
+			entity.color = "purple";
+		}
+		if(data.input.mouse.x< entity.position.x ){
+			entity.color = "yellow";
+		}
+		if(data.input.mouse.x <= entity.position.x + entity.size.width && data.input.mouse.x >= entity.position.x){
+			entity.color = "blue";
 		}
 	}, ["player"]);
 };
@@ -3266,6 +3275,7 @@ module.exports={
   ],
  "main": [
     {
+      "color": "yellow",
      "id": 0,
      "name": "player",
      "player": true,

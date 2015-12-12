@@ -3414,6 +3414,12 @@ module.exports={
    ]
   },
   {
+    "name": "./systems/renderer/render-background",
+    "scenes":[
+      "main"
+    ]
+  },
+  {
    "name": "splatjs:viewport.moveToCamera",
    "scenes": [
     "main"
@@ -3441,12 +3447,6 @@ module.exports={
     "name": "./systems/renderer/render-title",
     "scenes":[
       "title"
-    ]
-  },
-  {
-    "name": "./systems/renderer/render-background",
-    "scenes":[
-      "main"
     ]
   }
  ]

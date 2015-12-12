@@ -51,6 +51,12 @@
    ]
   },
   {
+    "name": "./systems/renderer/render-background",
+    "scenes":[
+      "main"
+    ]
+  },
+  {
    "name": "splatjs:viewport.moveToCamera",
    "scenes": [
     "main"
@@ -78,12 +84,6 @@
     "name": "./systems/renderer/render-title",
     "scenes":[
       "title"
-    ]
-  },
-  {
-    "name": "./systems/renderer/render-background",
-    "scenes":[
-      "main"
     ]
   }
  ]

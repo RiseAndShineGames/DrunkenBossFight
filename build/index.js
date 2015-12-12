@@ -2,11 +2,42 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
 "use strict";
 
 module.exports = function(data) { // eslint-disable-line no-unused-vars
+	alert("entered main");
 };
 
 },{}],"./scripts/main-exit":[function(require,module,exports){
-module.exports=require("./scripts/main-enter")
-},{"./scripts/main-enter":"./scripts/main-enter"}],1:[function(require,module,exports){
+"use strict";
+
+module.exports = function(data) { // eslint-disable-line no-unused-vars
+};
+
+},{}],"./scripts/title-enter":[function(require,module,exports){
+"use strict";
+var utilities = require('./utilities');
+var structures = {
+	"Title": function Title(canvas,titleWords,tagLine, instructions){
+		var entity= {};
+		entity.title = true;
+		entity.titleY = canvas.height/3;
+		entity.titleWords = titleWords;
+		entity.tagLineY=2*canvas.height/3;
+		entity.tagLine = tagLine;
+		entity.instructionsY = 2*canvas.height/3 + 50;
+		entity.instructions = instructions;
+	}
+}
+
+function buildTitle(data,titleWords,tagLine){
+	var titleEntity = utilities.generateEntity(structures.Title(data.canvas,titleWords,tagLine),data.entities);
+	return titleEntity;
+}
+module.exports = function(data) { // eslint-disable-line no-unused-vars
+	console.log("here");
+};
+
+},{"./utilities":64}],"./scripts/title-exit":[function(require,module,exports){
+module.exports=require("./scripts/main-exit")
+},{"./scripts/main-exit":"./scripts/main-exit"}],1:[function(require,module,exports){
 "use strict";
 
 var canvas = document.getElementById("canvas");
@@ -40,7 +71,16 @@ function percentLoaded() {
 var loading = Splat.loadingScene(canvas, percentLoaded, game.scene);
 loading.start(context);
 
-},{"./data/animations":57,"./data/entities":58,"./data/images":59,"./data/inputs":60,"./data/scenes":61,"./data/sounds":62,"./data/systems":63,"splat-ecs":26}],"./systems/renderer/render-player":[function(require,module,exports){
+},{"./data/animations":57,"./data/entities":58,"./data/images":59,"./data/inputs":60,"./data/scenes":61,"./data/sounds":62,"./data/systems":63,"splat-ecs":26}],"./systems/renderer/render-background":[function(require,module,exports){
+"use strict";
+
+module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
+	ecs.add(function(entities, context) { // eslint-disable-line no-unused-vars
+		context.fillStyle = "#fff";
+		context.fillRect(0,0, data.canvas.width, data.canvas.height);
+	}, []);
+};
+},{}],"./systems/renderer/render-player":[function(require,module,exports){
 "use strict";
 
 module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
@@ -50,6 +90,15 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 	}, ["position", "size"]);
 };
 
+},{}],"./systems/renderer/render-title":[function(require,module,exports){
+"use strict";
+
+module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
+	ecs.add(function(entities, context) { // eslint-disable-line no-unused-vars
+		context.fillStyle = "#302f2c";
+		context.fillRect(0,0, data.canvas.width, data.canvas.height);
+	}, []);
+};
 },{}],"./systems/simulation/control-player":[function(require,module,exports){
 "use strict";
 
@@ -70,6 +119,18 @@ module.exports = function(ecs, data) {
 			entity.velocity.y = 0.5;
 		}
 	}, ["player"]);
+};
+
+},{}],"./systems/simulation/start-game":[function(require,module,exports){
+"use strict";
+
+module.exports = function(ecs, data) {
+	
+	ecs.addEach(function(entity, elapsed) { // jshint ignore:line
+		if(data.input.mouse.consumePressed(0)){
+			data.switchScene("main");
+		}
+	}, []);
 };
 
 },{}],2:[function(require,module,exports){
@@ -3172,25 +3233,57 @@ module.exports={
 
 },{}],58:[function(require,module,exports){
 module.exports={
+  "title": [
+    {
+     "id": 0,
+     "name": "titlescreen",
+     "size": {
+      "width": 1137,
+      "height": 640
+     },
+     "position": {
+      "x": 0,
+      "y": 0
+     // },
+     // "animation": {
+     //  "time": 0,
+     //  "frame": 0,
+     //  "loop": true,
+     //  "speed": 1,
+     //  "name": "title-screen"
+     // },
+     // "image": {
+     //  "sourceX": 0,
+     //  "sourceY": 0,
+     //  "sourceWidth": 0,
+     //  "sourceHeight": 0,
+     //  "destinationX": 0,
+     //  "destinationY": 0,
+     //  "destinationWidth": 1137,
+     //  "destinationHeight": 640
+     }
+    }
+  ],
  "main": [
-  {
-   "id": 0,
-   "name": "player",
-   "player": true,
-   "position": {
-    "x": 100,
-    "y": 100
-   },
-   "size": {
-    "width": 100,
-    "height": 100
-   },
-   "velocity": {
-    "x": 0,
-    "y": 0
-   }
-  }
- ]
+    {
+     "id": 0,
+     "name": "player",
+     "player": true,
+     "position": {
+      "x": 100,
+      "y": 100
+     },
+     "size": {
+      "width": 100,
+      "height": 100
+     },
+     "velocity": {
+      "x": 0,
+      "y": 0
+     }
+    }
+  ]
+
 }
 
 },{}],59:[function(require,module,exports){
@@ -3253,11 +3346,16 @@ module.exports={
 
 },{}],61:[function(require,module,exports){
 module.exports={
- "main": {
-  "first": true,
-  "onEnter": "./scripts/main-enter",
-  "onExit": "./scripts/main-exit"
- }
+	"title":{
+		"first":true,
+		"onEnter": "./scripts/title-enter",
+		"onExit": "./scripts/title-exit"
+	},
+ 	"main": {
+  	"first": false,
+  	"onEnter": "./scripts/main-enter",
+  	"onExit": "./scripts/main-exit"
+ 	}
 }
 
 },{}],62:[function(require,module,exports){
@@ -3281,6 +3379,12 @@ module.exports={
    "name": "./systems/simulation/control-player",
    "scenes": [
     "main"
+   ]
+  },
+  {
+   "name": "./systems/simulation/start-game",
+   "scenes": [
+    "title"
    ]
   },
   {
@@ -3332,8 +3436,53 @@ module.exports={
    "scenes": [
     "main"
    ]
+  },
+  {
+    "name": "./systems/renderer/render-title",
+    "scenes":[
+      "title"
+    ]
+  },
+  {
+    "name": "./systems/renderer/render-background",
+    "scenes":[
+      "main"
+    ]
   }
  ]
 }
+
+},{}],64:[function(require,module,exports){
+function generateEntity(obj, entities){
+	var entity = entities.add();
+	for (var prop in obj){
+		if(obj.hasOwnProperty(prop)){
+			entity[prop] = obj[prop];
+		}
+	}
+	return entity;
+}
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex ;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+module.exports = {
+	"generateEntity": generateEntity,
+	"shuffle": shuffle
+};
 
 },{}]},{},[1]);

@@ -19,6 +19,12 @@
    ]
   },
   {
+   "name": "./systems/simulation/start-game",
+   "scenes": [
+    "title"
+   ]
+  },
+  {
    "name": "splatjs:applyVelocity",
    "scenes": [
     "main"
@@ -67,6 +73,18 @@
    "scenes": [
     "main"
    ]
+  },
+  {
+    "name": "./systems/renderer/render-title",
+    "scenes":[
+      "title"
+    ]
+  },
+  {
+    "name": "./systems/renderer/render-background",
+    "scenes":[
+      "main"
+    ]
   }
  ]
 }

@@ -3238,6 +3238,20 @@ module.exports = function(rate) {
 
 },{}],57:[function(require,module,exports){
 module.exports={
+	"bg": [
+  {
+   "time": 100,
+   "properties": {
+    "image": {
+     "name": "bg",
+     "sourceX": 0,
+     "sourceY": 0,
+     "sourceWidth": 1136,
+     "sourceHeight": 640
+    }
+   }
+  }
+ ]
 }
 
 },{}],58:[function(require,module,exports){
@@ -3291,13 +3305,44 @@ module.exports={
       "x": 0,
       "y": 0
      }
+    },
+    {
+      "id": 1,
+      "name": "background",
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "animation": {
+        "time": 0,
+        "frame": 0,
+        "loop": true,
+        "speed": 1,
+        "name": "bg"
+      },
+      "image": {
+        "sourceX": 0,
+        "sourceY": 0,
+        "sourceWidth": 0,
+        "sourceHeight": 0,
+        "destinationX": 0,
+        "destinationY": 0,
+        "destinationWidth": 1136,
+        "destinationHeight": 640
+      },
+      "zindex": -1
     }
   ]
 
 }
 
 },{}],59:[function(require,module,exports){
-module.exports={}
+module.exports={
+	"aim": "images/range_33pxapart.png",
+	"bg": "images/background.png",
+	"buildings": "images/buildings.png",
+	"beermug":"images/beermug.png"
+}
 },{}],60:[function(require,module,exports){
 module.exports={
  "up": {
@@ -3369,8 +3414,8 @@ module.exports={
 }
 
 },{}],62:[function(require,module,exports){
-module.exports=require(59)
-},{"/home/aquisenberry/Development/games/DrunkenBossFight/src/data/images.json":59}],63:[function(require,module,exports){
+module.exports={}
+},{}],63:[function(require,module,exports){
 module.exports={
  "simulation": [
   {

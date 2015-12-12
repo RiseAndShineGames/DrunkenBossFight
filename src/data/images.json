@@ -1,3 +1,6 @@
 {
-	
+	"aim": "images/range_33pxapart.png",
+	"bg": "images/background.png",
+	"buildings": "images/buildings.png",
+	"beermug":"images/beermug.png"
 }

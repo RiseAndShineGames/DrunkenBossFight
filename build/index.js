@@ -86,7 +86,6 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 	ecs.addEach(function(entity, context) { // eslint-disable-line no-unused-vars
 		context.fillStyle = entity.color;
-		context.fillRect(entity.position.x, entity.position.y, entity.size.width, entity.size.height);
 	}, ["position", "size"]);
 };
 
@@ -3239,19 +3238,45 @@ module.exports = function(rate) {
 },{}],57:[function(require,module,exports){
 module.exports={
 	"bg": [
-  {
-   "time": 100,
-   "properties": {
-    "image": {
-     "name": "bg",
-     "sourceX": 0,
-     "sourceY": 0,
-     "sourceWidth": 1136,
-     "sourceHeight": 640
-    }
-   }
-  }
- ]
+	  {
+	   "time": 100,
+	   "properties": {
+	    "image": {
+	     "name": "bg",
+	     "sourceX": 0,
+	     "sourceY": 0,
+	     "sourceWidth": 1136,
+	     "sourceHeight": 640
+	    }
+	   }
+	  }
+	 ],
+	 "player-idle":[
+	 	{
+	 		"time" : 100,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" : 1100,
+					"sourceY": 0,
+					"sourceWidth": 291,
+					"sourceHeight": 500
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 100,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" :1100,
+					"sourceY": 500,
+					"sourceWidth": 291,
+					"sourceHeight": 500
+	 			}
+	 		}
+	 	}
+	 ]
 }
 
 },{}],58:[function(require,module,exports){
@@ -3282,7 +3307,7 @@ module.exports={
      //  "sourceHeight": 0,
      //  "destinationX": 0,
      //  "destinationY": 0,
-     //  "destinationWidth": 1137,
+     //  "destinationWidth": 1136,
      //  "destinationHeight": 640
      }
     }
@@ -3290,7 +3315,7 @@ module.exports={
  "main": [
     {
       "color": "yellow",
-     "id": 0,
+     "id": 1,
      "name": "player",
      "player": true,
      "position": {
@@ -3298,16 +3323,33 @@ module.exports={
       "y": 100
      },
      "size": {
-      "width": 100,
-      "height": 100
+      "width": 97.22,
+      "height": 125
      },
      "velocity": {
       "x": 0,
       "y": 0
-     }
+     },
+   "animation": {
+    "time": 0,
+    "frame": 0,
+    "loop": true,
+    "speed": 1,
+    "name": "player-idle"
+   },
+   "image": {
+    "sourceX": 0,
+    "sourceY": 0,
+    "sourceWidth": 97,
+    "sourceHeight": 125,
+    "destinationX": 0,
+    "destinationY": 0,
+    "destinationWidth": 97,
+    "destinationHeight": 125
+   }
     },
     {
-      "id": 1,
+      "id": 0,
       "name": "background",
       "position": {
         "x": 0,
@@ -3341,7 +3383,8 @@ module.exports={
 	"aim": "images/range_33pxapart.png",
 	"bg": "images/background.png",
 	"buildings": "images/buildings.png",
-	"beermug":"images/beermug.png"
+	"beermug":"images/beermug.png",
+	"player": "images/hero_sprites.png"
 }
 },{}],60:[function(require,module,exports){
 module.exports={

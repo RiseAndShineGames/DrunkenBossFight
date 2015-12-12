@@ -1,16 +1,42 @@
 {
 	"bg": [
-  {
-   "time": 100,
-   "properties": {
-    "image": {
-     "name": "bg",
-     "sourceX": 0,
-     "sourceY": 0,
-     "sourceWidth": 1136,
-     "sourceHeight": 640
-    }
-   }
-  }
- ]
+	  {
+	   "time": 100,
+	   "properties": {
+	    "image": {
+	     "name": "bg",
+	     "sourceX": 0,
+	     "sourceY": 0,
+	     "sourceWidth": 1136,
+	     "sourceHeight": 640
+	    }
+	   }
+	  }
+	 ],
+	 "player-idle":[
+	 	{
+	 		"time" : 100,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" : 1100,
+					"sourceY": 0,
+					"sourceWidth": 291,
+					"sourceHeight": 500
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 100,
+	 		"properties": {
+	 			"image":{
+	 				"name": "player",
+	 				"sourceX" :1100,
+					"sourceY": 500,
+					"sourceWidth": 291,
+					"sourceHeight": 500
+	 			}
+	 		}
+	 	}
+	 ]
 }

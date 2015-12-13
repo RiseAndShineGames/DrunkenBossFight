@@ -71,8 +71,7 @@
   {
    "name": "splatjs:drawImage",
    "scenes": [
-    "main",
-    "title"
+    "main"
    ]
   },
   {

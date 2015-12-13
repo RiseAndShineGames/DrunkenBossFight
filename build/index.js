@@ -63,7 +63,7 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 	ecs.add(function(entities, context) { // eslint-disable-line no-unused-vars
 		context.fillStyle = "#302f2c";
-		context.drawImage(data.images.get("buildings"),0,0)
+		context.drawImage(data.images.get("buildings"),0,5*data.canvas.height/9)
 	}, []);
 };
 },{}],"./systems/renderer/render-player":[function(require,module,exports){
@@ -2685,8 +2685,8 @@ function drawEntity(data, entity, context) {
 		console.error("Error drawing image", entity.image.name, e);
 	}
 }
-
 module.exports = function(ecs, data) {
+	
 	ecs.add(function(entities, context) {
 		var keys = Object.keys(entities);
 		keys.sort(function(a, b) {
@@ -2704,8 +2704,8 @@ module.exports = function(ecs, data) {
 			}
 			drawEntity(data, entity, context);
 		}
-
 	});
+	
 };
 
 },{}],49:[function(require,module,exports){
@@ -3238,21 +3238,6 @@ module.exports={
 	   }
 	  }
 	 ],
-	 "title": [
-	  {
-	   "time": 100,
-	   "properties": {
-	    "image": {
-	     "name": "title",
-	     "sourceX": 0,
-	     "sourceY": 0,
-	     "sourceWidth": 1136,
-	     "sourceHeight": 640
-	    }
-	   }
-	  }
-	 ]
-	 ,
 	 "player-idle":[
 	 	{
 	 		"time" : 50,
@@ -3405,143 +3390,173 @@ module.exports={
 	 ],
 	 "player-damage-i":[
 	 		{
-	 			"time" : 500,
+	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
+
 	 				"name": "player",
 	 				"sourceX": 0,
 	 				"sourceY":0,
 	 				"sourceWidth":100,
-	 				"sourceHeight":100
+	 				"sourceHeight":96
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
-	 				"name": "player",
+	 				"image":{
+	 					"name": "player",
 	 				"sourceX": 0,
 	 				"sourceY":125,
 	 				"sourceWidth":100,
 	 				"sourceHeight":96
+	 				}
+	 				
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 125,
 	 				"sourceY":0,
 	 				"sourceWidth":97,
 	 				"sourceHeight":115
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 125,
 	 				"sourceY":125,
 	 				"sourceWidth":97,
 	 				"sourceHeight":115
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 250,
 	 				"sourceY":0,
 	 				"sourceWidth":97,
 	 				"sourceHeight":115
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 250,
 	 				"sourceY":125,
 	 				"sourceWidth":97,
 	 				"sourceHeight":115
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 375,
 	 				"sourceY":0,
 	 				"sourceWidth":97,
 	 				"sourceHeight":115
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 375,
 	 				"sourceY":125,
 	 				"sourceWidth":97,
 	 				"sourceHeight":115
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 500,
 	 				"sourceY":0,
 	 				"sourceWidth":97,
 	 				"sourceHeight":115
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 500,
 	 				"sourceY":125,
 	 				"sourceWidth":97,
 	 				"sourceHeight":115
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 625,
 	 				"sourceY":0,
 	 				"sourceWidth":97,
 	 				"sourceHeight":115
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 625,
 	 				"sourceY":125,
 	 				"sourceWidth":97,
 	 				"sourceHeight":115
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 750,
 	 				"sourceY":0,
 	 				"sourceWidth":100,
 	 				"sourceHeight":96
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 750,
 	 				"sourceY":125,
 	 				"sourceWidth":100,
 	 				"sourceHeight":96
+	 				}
 	 			}
 	 		}
 	 ],
@@ -3549,141 +3564,169 @@ module.exports={
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 0,
 	 				"sourceY":250,
 	 				"sourceWidth":100,
 	 				"sourceHeight":96
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 0,
 	 				"sourceY":375,
 	 				"sourceWidth":100,
 	 				"sourceHeight":96
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 125,
 	 				"sourceY":250,
 	 				"sourceWidth":97,
 	 				"sourceHeight":115
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 125,
 	 				"sourceY":375,
 	 				"sourceWidth":97,
 	 				"sourceHeight":115
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 250,
 	 				"sourceY":250,
 	 				"sourceWidth":97,
 	 				"sourceHeight":115
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 250,
 	 				"sourceY":375,
 	 				"sourceWidth":97,
 	 				"sourceHeight":115
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 375,
 	 				"sourceY":250,
 	 				"sourceWidth":97,
 	 				"sourceHeight":115
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 375,
 	 				"sourceY":375,
 	 				"sourceWidth":97,
 	 				"sourceHeight":115
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 500,
 	 				"sourceY":250,
 	 				"sourceWidth":97,
 	 				"sourceHeight":115
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 500,
 	 				"sourceY":375,
 	 				"sourceWidth":97,
 	 				"sourceHeight":115
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 625,
 	 				"sourceY":250,
 	 				"sourceWidth":97,
 	 				"sourceHeight":115
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 625,
 	 				"sourceY":375,
 	 				"sourceWidth":97,
 	 				"sourceHeight":115
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 750,
 	 				"sourceY":250,
 	 				"sourceWidth":100,
 	 				"sourceHeight":96
+	 				}
 	 			}
 	 		},
 	 		{
 	 			"time" : 50,
 	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
 	 				"sourceX": 750,
 	 				"sourceY":375,
 	 				"sourceWidth":100,
 	 				"sourceHeight":96
+	 				}
 	 			}
 	 		}
 	 ]
@@ -3694,35 +3737,12 @@ module.exports={
   "title": [
     {
       "id": 0,
-      "name": "background",
-      "position": {
-        "x": 0,
-        "y": 0
-      },
-      "animation": {
-        "time": 0,
-        "frame": 0,
-        "loop": true,
-        "speed": 1,
-        "name": "bg"
-      },
-      "image": {
-        "name":"bg",
-        "sourceX": 0,
-        "sourceY": 0,
-        "sourceWidth": 0,
-        "sourceHeight": 0,
-        "destinationX": 0,
-        "destinationY": 0,
-        "destinationWidth": 1136,
-        "destinationHeight": 640
-      },
-      "zindex": -1
+      "name": "background"
+      
     }
   ],
  "main": [
     {
-      "color": "yellow",
      "id": 1,
      "name": "player",
      "player": true,
@@ -3739,11 +3759,11 @@ module.exports={
       "y": 0
      },
      "animation": {
-      "time": 50,
+      "time": 100,
       "frame": 0,
       "loop": true,
       "speed": 1,
-      "name": "player-i"
+      "name": "player-damage-i"
      },
      "image": {
       "name": "player",
@@ -3753,8 +3773,8 @@ module.exports={
       "sourceHeight": 0,
       "destinationX": 0,
       "destinationY": 0,
-      "destinationWidth": 100,
-      "destinationHeight": 100
+      "destinationWidth": 97,
+      "destinationHeight": 125
      },
      "timers":{
       "easing-animation": {
@@ -3957,8 +3977,7 @@ module.exports={
   {
    "name": "splatjs:drawImage",
    "scenes": [
-    "main",
-    "title"
+    "main"
    ]
   },
   {

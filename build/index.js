@@ -85,11 +85,7 @@ function percentLoaded() {
 var loading = Splat.loadingScene(canvas, percentLoaded, game.scene);
 loading.start(context);
 
-<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
-},{"./data/animations":58,"./data/entities":59,"./data/images":60,"./data/inputs":61,"./data/scenes":62,"./data/sounds":63,"./data/systems":64,"splat-ecs":26}],"./systems/renderer/render-background":[function(require,module,exports){
-=======
 },{"./data/animations":58,"./data/entities":59,"./data/images":60,"./data/inputs":61,"./data/scenes":62,"./data/sounds":63,"./data/systems":64,"splat-ecs":30}],"./systems/renderer/render-background":[function(require,module,exports){
->>>>>>> Added health sobriety
 "use strict";
 
 module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
@@ -308,43 +304,6 @@ EntityComponentSystem.prototype.run = function() {
 	return times;
 };
 
-<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
-	module.exports = {
-		/**
-		 * Show an advertisement.
-		 * @alias Splat.ads.show
-		 * @param {boolean} isAtBottom true if the ad should be shown at the bottom of the screen. false if it should be shown at the top.
-		 */
-		"show": function(isAtBottom) {
-			adBanner.isAtBottom = isAtBottom;
-			adBanner.show();
-		},
-		/**
-		 * Hide the current advertisement.
-		 * @alias Splat.ads.hide
-		 */
-		"hide": function() {
-			adBanner.hide();
-		},
-		/**
-		 * The width of the ad that will show.
-		 * @alias Splat.ads#width
-		 */
-		"width": size.width,
-		/**
-		 * The height of the ad that will show.
-		 * @alias Splat.ads#height
-		 */
-		"height": size.height
-	};
-} else {
-	module.exports = {
-		"show": function() {},
-		"hide": function() {},
-		"width": 0,
-		"height": 0
-	};
-=======
 function entityHasComponents(components, entity) {
 	for (var i = 0; i < components.length; i++) {
 		if (!entity.hasOwnProperty(components[i])) {
@@ -352,7 +311,6 @@ function entityHasComponents(components, entity) {
 		}
 	}
 	return true;
->>>>>>> Added health sobriety
 }
 
 module.exports = EntityComponentSystem;
@@ -1441,11 +1399,7 @@ module.exports = function(entities, simulation, simulationStepTime, renderer, co
 	};
 };
 
-<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
-},{"./absolute-to-relative":2,"time-accumulator":57}],20:[function(require,module,exports){
-=======
 },{"./absolute-to-relative":6,"time-accumulator":57}],24:[function(require,module,exports){
->>>>>>> Added health sobriety
 "use strict";
 
 var Input = require("./input");
@@ -1782,11 +1736,7 @@ Input.prototype.button = function(name) {
 
 module.exports = Input;
 
-<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
-},{"./mouse":28,"game-keyboard":54,"game-keyboard/key_map":55}],24:[function(require,module,exports){
-=======
 },{"./mouse":32,"game-keyboard":3,"game-keyboard/key_map":4}],28:[function(require,module,exports){
->>>>>>> Added health sobriety
 "use strict";
 /**
  * @namespace Splat.leaderboards
@@ -1982,11 +1932,7 @@ var val = rand.random();
 	Random: require("mersenne-twister")
 };
 
-<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
-},{"mersenne-twister":56}],28:[function(require,module,exports){
-=======
 },{"mersenne-twister":5}],32:[function(require,module,exports){
->>>>>>> Added health sobriety
 "use strict";
 
 var platform = require("./platform");
@@ -2644,11 +2590,7 @@ Scene.prototype.stop = function() {
 
 module.exports = Scene;
 
-<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
-},{"./entity-pool":18,"./game-loop":19,"entity-component-system":53}],35:[function(require,module,exports){
-=======
 },{"./entity-pool":22,"./game-loop":23,"entity-component-system":2}],39:[function(require,module,exports){
->>>>>>> Added health sobriety
 "use strict";
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -2989,11 +2931,7 @@ module.exports = {
 	viewport: require("./systems/viewport")
 };
 
-<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
-},{"./systems/advance-animations":37,"./systems/advance-timers":38,"./systems/apply-friction":39,"./systems/apply-movement-2d":40,"./systems/apply-velocity":41,"./systems/box-collider":42,"./systems/center-position":43,"./systems/clear-screen":44,"./systems/constrain-to-playable-area":45,"./systems/control-player":46,"./systems/draw-frame-rate":47,"./systems/draw-image":48,"./systems/draw-rectangles":49,"./systems/follow-parent":50,"./systems/match-parent":51,"./systems/viewport":52}],37:[function(require,module,exports){
-=======
 },{"./systems/advance-animations":41,"./systems/advance-timers":42,"./systems/apply-friction":43,"./systems/apply-movement-2d":44,"./systems/apply-velocity":45,"./systems/box-collider":46,"./systems/center-position":47,"./systems/clear-screen":48,"./systems/constrain-to-playable-area":49,"./systems/control-player":50,"./systems/draw-frame-rate":51,"./systems/draw-image":52,"./systems/draw-rectangles":53,"./systems/follow-parent":54,"./systems/match-parent":55,"./systems/viewport":56}],41:[function(require,module,exports){
->>>>>>> Added health sobriety
 "use strict";
 
 function setOwnPropertiesDeep(src, dest) {
@@ -3168,7 +3106,6 @@ function collides(b, a) {
 function removeEntity(entity, oldKeys, entities, spatialHash){
 	function notCurrentEntityId(id) {
 		return id !== entity.id;
-<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
 	}
 	for (var i = 0; i < oldKeys.length; i++) {
 		remove(spatialHash, entity, oldKeys[i]);
@@ -3183,297 +3120,6 @@ function removeEntity(entity, oldKeys, entities, spatialHash){
 }
 
 var spatialHash = {};
-
-module.exports = function(ecs, data) {
-	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
-
-		if (entity.collisionKeys === undefined || entity.velocity !== undefined) {
-			var oldKeys = entity.collisionKeys || [];
-			entity.collisionKeys = keys(entity);
-
-			if (entity.velocity !== undefined || !areArraysSame(oldKeys, entity.collisionKeys)) {
-				removeEntity(entity, oldKeys, data.entities.entities, spatialHash);
-				entity.collisions = [];
-				for (var i = 0; i < entity.collisionKeys.length; i++) {
-					add(spatialHash, entity, entity.collisionKeys[i]);
-				}
-			}
-		}
-	}, ["position", "size", "collisions"]);
-};
-
-module.exports.onEntityDelete = function(entity, data) {
-	removeEntity(entity, entity.collisionKeys || [], data.entities.entities, spatialHash);
-};
-
-function areArraysSame(a, b) {
-	if (a.length !== b.length) {
-		return false;
-=======
->>>>>>> Added health sobriety
-	}
-	for (var i = 0; i < oldKeys.length; i++) {
-		remove(spatialHash, entity, oldKeys[i]);
-	}
-<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
-	return true;
-}
-
-},{}],43:[function(require,module,exports){
-"use strict";
-
-module.exports = function(ecs, data) {
-	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
-		// FIXME: doesn't work with cameras yet.
-		if (entity.center.x) {
-			entity.position.x = Math.floor(data.canvas.width / 2);
-			if (entity.size) {
-				entity.position.x -= Math.floor(entity.size.width / 2);
-			}
-		}
-		if (entity.center.y) {
-			entity.position.y = Math.floor(data.canvas.height / 2);
-			if (entity.size) {
-				entity.position.y -= Math.floor(entity.size.height / 2);
-			}
-		}
-	}, ["position", "center"]);
-};
-
-},{}],44:[function(require,module,exports){
-"use strict";
-
-module.exports = function(ecs, data) {
-	ecs.add(function(entities, context) {
-		context.clearRect(0, 0, data.canvas.width, data.canvas.height);
-	});
-};
-
-},{}],45:[function(require,module,exports){
-"use strict";
-
-module.exports = function(ecs) {
-	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
-		if (entity.position.x < entity.playableArea.x) {
-			entity.position.x = entity.playableArea.x;
-		}
-		if (entity.position.x + entity.size.width > entity.playableArea.x + entity.playableArea.width) {
-			entity.position.x = entity.playableArea.x + entity.playableArea.width - entity.size.width;
-		}
-		if (entity.position.y < entity.playableArea.y) {
-			entity.position.y = entity.playableArea.y;
-		}
-		if (entity.position.y + entity.size.height > entity.playableArea.y + entity.playableArea.height) {
-			entity.position.y = entity.playableArea.y + entity.playableArea.height - entity.size.height;
-		}
-	}, ["position", "size", "playableArea"]);
-};
-
-},{}],46:[function(require,module,exports){
-"use strict";
-
-module.exports = function(ecs, data) {
-	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
-		entity.movement2d.up = data.input.button(entity.playerController2d.up);
-		entity.movement2d.down = data.input.button(entity.playerController2d.down);
-		entity.movement2d.left = data.input.button(entity.playerController2d.left);
-		entity.movement2d.right = data.input.button(entity.playerController2d.right);
-	}, ["movement2d", "playerController2d"]);
-};
-
-},{}],47:[function(require,module,exports){
-"use strict";
-
-module.exports = function(ecs, data) {
-	ecs.add(function(entities, context, elapsed) {
-		var fps = Math.floor(1000 / elapsed);
-
-		context.font = "24px mono";
-		if (fps < 30) {
-			context.fillStyle = "red";
-		} else if (fps < 50) {
-			context.fillStyle = "yellow";
-		} else {
-			context.fillStyle = "green";
-		}
-
-		var msg = fps + " FPS";
-		var w = context.measureText(msg).width;
-		context.fillText(msg, data.canvas.width - w - 50, 50);
-	});
-};
-
-},{}],48:[function(require,module,exports){
-"use strict";
-
-function drawEntity(data, entity, context) {
-	var image = data.images.get(entity.image.name);
-	if (!image) {
-		console.error("No such image", entity.image.name, "for entity", entity.id, entity.name);
-		return;
-	}
-	try {
-		var dx = entity.image.destinationX + entity.position.x;
-		var dy = entity.image.destinationY + entity.position.y;
-		if (entity.rotation !== undefined) {
-			context.save();
-
-			var x = entity.position.x + entity.rotation.x;
-			var y = entity.position.y + entity.rotation.y;
-			context.translate(x, y);
-			context.rotate(entity.rotation.angle);
-
-			dx = entity.image.destinationX - entity.rotation.x;
-			dy = entity.image.destinationY - entity.rotation.y;
-		}
-
-		context.drawImage(
-			image,
-			entity.image.sourceX,
-			entity.image.sourceY,
-			entity.image.sourceWidth,
-			entity.image.sourceHeight,
-			dx,
-			dy,
-			entity.image.destinationWidth,
-			entity.image.destinationHeight
-		);
-
-		if (entity.rotation !== undefined) {
-			context.restore();
-		}
-	} catch (e) {
-		console.error("Error drawing image", entity.image.name, e);
-	}
-}
-
-module.exports = function(ecs, data) {
-	ecs.add(function(entities, context) {
-		var keys = Object.keys(entities);
-		keys.sort(function(a, b) {
-			var za = (entities[a].zindex || { zindex: 0 }).zindex;
-			var zb = (entities[b].zindex || { zindex: 0 }).zindex;
-			var ya = (entities[a].position || { y: 0 }).y;
-			var yb = (entities[b].position || { y: 0 }).y;
-			return za - zb || ya - yb;
-		});
-
-		for (var i = 0; i < keys.length; i++) {
-			var entity = entities[keys[i]];
-			if (entity.image === undefined || entity.position === undefined) {
-				continue;
-			}
-			drawEntity(data, entity, context);
-		}
-
-	});
-};
-
-},{}],49:[function(require,module,exports){
-"use strict";
-
-module.exports = function(ecs) {
-	ecs.addEach(function(entity, context) {
-		if (entity.strokeStyle) {
-			context.strokeStyle = entity.strokeStyle;
-		}
-		context.strokeRect(Math.floor(entity.position.x), Math.floor(entity.position.y), entity.size.width, entity.size.height);
-	}, ["position", "size"]);
-};
-
-},{}],50:[function(require,module,exports){
-"use strict";
-
-function distanceSquared(x1, y1, x2, y2) {
-	return ((x1 - x2) * (x1 - x2)) + ((y1 - y2) * (y1 - y2));
-}
-
-module.exports = function(ecs, data) {
-	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
-		var x1 = entity.position.x + (entity.size.width / 2);
-		var y1 = entity.position.y + (entity.size.height / 2);
-
-		var parent = data.entities.entities[entity.follow.id];
-		if (parent === undefined) {
-			return;
-		}
-		var x2 = parent.position.x + (parent.size.width / 2);
-		var y2 = parent.position.y + (parent.size.height / 2);
-
-		var angle = Math.atan2(y2 - y1, x2 - x1);
-		if (entity.rotation !== undefined) {
-			entity.rotation.angle = angle - (Math.PI / 2);
-		}
-
-		var distSquared = distanceSquared(x1, y1, x2, y2);
-		if (distSquared < entity.follow.distance * entity.follow.distance) {
-			return;
-		}
-
-		var toMove = Math.sqrt(distSquared) - entity.follow.distance;
-
-		entity.position.x += toMove * Math.cos(angle);
-		entity.position.y += toMove * Math.sin(angle);
-	}, ["position", "follow"]);
-};
-
-},{}],51:[function(require,module,exports){
-"use strict";
-
-module.exports = function(ecs, data) {
-	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
-		var parent = data.entities.entities[entity.match.id];
-		if (parent === undefined) {
-			return;
-		}
-		entity.position.x = parent.position.x + entity.match.offsetX;
-		entity.position.y = parent.position.y + entity.match.offsetY;
-	}, ["position", "match"]);
-};
-
-},{}],52:[function(require,module,exports){
-"use strict";
-
-var x = 0;
-var y = 0;
-
-module.exports = {
-	moveToCamera: function(ecs) {
-		ecs.add(function(entities, context) { // eslint-disable-line no-unused-vars
-			x = 0;
-			y = 0;
-		});
-		ecs.addEach(function(entity, context) {
-			var dx = Math.floor(entity.position.x + entity.camera.x) - x;
-			var dy = Math.floor(entity.position.y + entity.camera.y) - y;
-			x += dx;
-			y += dy;
-			context.translate(-dx, -dy);
-		}, ["camera", "position"]);
-	},
-	reset: function(ecs) {
-		ecs.addEach(function(entity, context) { // eslint-disable-line no-unused-vars
-			context.translate(x, y);
-			x = 0;
-			y = 0;
-		}, ["camera", "position"]);
-	}
-};
-
-},{}],53:[function(require,module,exports){
-"use strict";
-=======
-	for (i = 0; i < entity.collisions.length; i++) {
-		var peer = entities[entity.collisions[i]];
-		if (peer === undefined) {
-			continue;
-		}
-		peer.collisions = peer.collisions.filter(notCurrentEntityId);
-	}
-}
-
-var spatialHash = {};
->>>>>>> Added health sobriety
 
 module.exports = function(ecs, data) {
 	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
@@ -3509,13 +3155,7 @@ function areArraysSame(a, b) {
 	return true;
 }
 
-<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
-module.exports = EntityComponentSystem;
-
-},{}],54:[function(require,module,exports){
-=======
 },{}],47:[function(require,module,exports){
->>>>>>> Added health sobriety
 "use strict";
 
 module.exports = function(ecs, data) {
@@ -3568,188 +3208,6 @@ module.exports = function(ecs) {
 },{}],50:[function(require,module,exports){
 "use strict";
 
-<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
-},{}],55:[function(require,module,exports){
-/**
- * Keyboard code mappings that map keycodes to key names. A specific named map should be given to {@link Keyboard}.
- * @module KeyMap
- */
-module.exports = {
-	"US": {
-		8: "backspace",
-		9: "tab",
-		13: "enter",
-		16: "shift",
-		17: "ctrl",
-		18: "alt",
-		19: "pause/break",
-		20: "capslock",
-		27: "escape",
-		32: "space",
-		33: "pageup",
-		34: "pagedown",
-		35: "end",
-		36: "home",
-		37: "left",
-		38: "up",
-		39: "right",
-		40: "down",
-		45: "insert",
-		46: "delete",
-		48: "0",
-		49: "1",
-		50: "2",
-		51: "3",
-		52: "4",
-		53: "5",
-		54: "6",
-		55: "7",
-		56: "8",
-		57: "9",
-		65: "a",
-		66: "b",
-		67: "c",
-		68: "d",
-		69: "e",
-		70: "f",
-		71: "g",
-		72: "h",
-		73: "i",
-		74: "j",
-		75: "k",
-		76: "l",
-		77: "m",
-		78: "n",
-		79: "o",
-		80: "p",
-		81: "q",
-		82: "r",
-		83: "s",
-		84: "t",
-		85: "u",
-		86: "v",
-		87: "w",
-		88: "x",
-		89: "y",
-		90: "z",
-		91: "leftwindow",
-		92: "rightwindow",
-		93: "select",
-		96: "numpad-0",
-		97: "numpad-1",
-		98: "numpad-2",
-		99: "numpad-3",
-		100: "numpad-4",
-		101: "numpad-5",
-		102: "numpad-6",
-		103: "numpad-7",
-		104: "numpad-8",
-		105: "numpad-9",
-		106: "multiply",
-		107: "add",
-		109: "subtract",
-		110: "decimalpoint",
-		111: "divide",
-		112: "f1",
-		113: "f2",
-		114: "f3",
-		115: "f4",
-		116: "f5",
-		117: "f6",
-		118: "f7",
-		119: "f8",
-		120: "f9",
-		121: "f10",
-		122: "f11",
-		123: "f12",
-		144: "numlock",
-		145: "scrolllock",
-		186: "semicolon",
-		187: "equals",
-		188: "comma",
-		189: "dash",
-		190: "period",
-		191: "forwardslash",
-		192: "graveaccent",
-		219: "openbracket",
-		220: "backslash",
-		221: "closebraket",
-		222: "singlequote"
-	}
-};
-
-},{}],56:[function(require,module,exports){
-/*
-  https://github.com/banksean wrapped Makoto Matsumoto and Takuji Nishimura's code in a namespace
-  so it's better encapsulated. Now you can have multiple random number generators
-  and they won't stomp all over eachother's state.
-  
-  If you want to use this as a substitute for Math.random(), use the random()
-  method like so:
-  
-  var m = new MersenneTwister();
-  var randomNumber = m.random();
-  
-  You can also call the other genrand_{foo}() methods on the instance.
- 
-  If you want to use a specific seed in order to get a repeatable random
-  sequence, pass an integer into the constructor:
- 
-  var m = new MersenneTwister(123);
- 
-  and that will always produce the same random sequence.
- 
-  Sean McCullough (banksean@gmail.com)
-*/
- 
-/* 
-   A C-program for MT19937, with initialization improved 2002/1/26.
-   Coded by Takuji Nishimura and Makoto Matsumoto.
- 
-   Before using, initialize the state by using init_seed(seed)  
-   or init_by_array(init_key, key_length).
- 
-   Copyright (C) 1997 - 2002, Makoto Matsumoto and Takuji Nishimura,
-   All rights reserved.                          
- 
-   Redistribution and use in source and binary forms, with or without
-   modification, are permitted provided that the following conditions
-   are met:
- 
-     1. Redistributions of source code must retain the above copyright
-        notice, this list of conditions and the following disclaimer.
- 
-     2. Redistributions in binary form must reproduce the above copyright
-        notice, this list of conditions and the following disclaimer in the
-        documentation and/or other materials provided with the distribution.
- 
-     3. The names of its contributors may not be used to endorse or promote 
-        products derived from this software without specific prior written 
-        permission.
- 
-   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-   A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
-   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-   EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-   PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-   PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-   LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- 
- 
-   Any feedback is very welcome.
-   http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html
-   email: m-mat @ math.sci.hiroshima-u.ac.jp (remove space)
-*/
- 
-var MersenneTwister = function(seed) {
-	if (seed == undefined) {
-		seed = new Date().getTime();
-	} 
-=======
 module.exports = function(ecs, data) {
 	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
 		entity.movement2d.up = data.input.button(entity.playerController2d.up);
@@ -3761,7 +3219,6 @@ module.exports = function(ecs, data) {
 
 },{}],51:[function(require,module,exports){
 "use strict";
->>>>>>> Added health sobriety
 
 module.exports = function(ecs, data) {
 	ecs.add(function(entities, context, elapsed) {
@@ -5349,7 +4806,6 @@ module.exports={
 	 			}
 	 		}
 	 ],
-<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
 	 "arm":[
 	 	{
 	 			"time" : 50,
@@ -5392,8 +4848,6 @@ module.exports={
 	 			}
 	 		}
 	 		],	
-=======
->>>>>>> Added health sobriety
 	 "bear": [
 	 	{
 	 		"time" : 200,
@@ -5806,7 +5260,6 @@ module.exports={
       "zindex": -1
     },
     {
-<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
      "id": 2,
      "name": "arm",
      "arm": true,
@@ -5843,8 +5296,6 @@ module.exports={
      }
    },
     {
-=======
->>>>>>> Added health sobriety
      "id": 3,
      "name": "bear",
      "bear": true,
@@ -5855,11 +5306,7 @@ module.exports={
      "size": {
       "width": 300,
       "height": 500
-<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
        },
-=======
-     },
->>>>>>> Added health sobriety
      "velocity": {
       "x": 0,
       "y": 0
@@ -5884,8 +5331,6 @@ module.exports={
       "destinationHeight": 500
      },
      "timers":{}
-<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
-=======
     },
     {
      "id": 4,
@@ -5958,7 +5403,6 @@ module.exports={
       "destinationHeight": 70
      },
      "timers":{}
->>>>>>> Added health sobriety
     }
 
   ]

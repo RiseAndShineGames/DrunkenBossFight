@@ -103,6 +103,11 @@
    "scenes": [
     "main"
    ]
+  },
+  {
+    "name": "./systems/renderer/render-player-health",
+    "scenes": [
+    "main" ]
   }
  ]
 }

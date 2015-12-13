@@ -6,7 +6,15 @@ module.exports = function(data) { // eslint-disable-line no-unused-vars
 
 },{}],"./scripts/main-exit":[function(require,module,exports){
 module.exports=require("./scripts/main-enter")
-},{"./scripts/main-enter":"./scripts/main-enter"}],"./scripts/player-transition-center":[function(require,module,exports){
+},{"./scripts/main-enter":"./scripts/main-enter"}],"./scripts/player-sobriety-timer":[function(require,module,exports){
+"use strict";
+
+module.exports = function(player,data) { // eslint-disable-line no-unused-vars
+	player.health -= 1;
+	player.timers.sobriety.time = 0;
+	player.timers.sobriety.running = true;
+};
+},{}],"./scripts/player-transition-center":[function(require,module,exports){
 "use strict";
 
 module.exports = function(player,data) { // eslint-disable-line no-unused-vars
@@ -77,7 +85,11 @@ function percentLoaded() {
 var loading = Splat.loadingScene(canvas, percentLoaded, game.scene);
 loading.start(context);
 
+<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
 },{"./data/animations":58,"./data/entities":59,"./data/images":60,"./data/inputs":61,"./data/scenes":62,"./data/sounds":63,"./data/systems":64,"splat-ecs":26}],"./systems/renderer/render-background":[function(require,module,exports){
+=======
+},{"./data/animations":58,"./data/entities":59,"./data/images":60,"./data/inputs":61,"./data/scenes":62,"./data/sounds":63,"./data/systems":64,"splat-ecs":30}],"./systems/renderer/render-background":[function(require,module,exports){
+>>>>>>> Added health sobriety
 "use strict";
 
 module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
@@ -93,6 +105,20 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 	ecs.add(function(entities, context) { // eslint-disable-line no-unused-vars
 		context.fillStyle = "#302f2c";
 		context.drawImage(data.images.get("buildings"),0,5*data.canvas.height/9)
+	}, []);
+};
+},{}],"./systems/renderer/render-player-health":[function(require,module,exports){
+"use strict";
+
+module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
+	ecs.add(function(entities, context) { // eslint-disable-line no-unused-vars
+		context.fillStyle = "#f7931e";
+		var height = 50 * data.entities.entities[1].health/data.entities.entities[1].maxHealth;
+		var healthx = data.entities.entities[5].position.x + 15;
+		var healthy = data.entities.entities[5].position.y + 62 - height;
+		var healthWidth = 38;
+		context.fillRect(healthx,healthy, healthWidth, height);
+		
 	}, []);
 };
 },{}],"./systems/renderer/render-player":[function(require,module,exports){
@@ -248,6 +274,469 @@ module.exports = function(ecs, data) {
 },{}],2:[function(require,module,exports){
 "use strict";
 
+function EntityComponentSystem() {
+	this.systems = [];
+	this.now = function() {
+		return 0;
+	};
+}
+EntityComponentSystem.prototype.add = function(code) {
+	this.systems.push(code);
+};
+EntityComponentSystem.prototype.addEach = function(code, requirements) {
+	this.systems.push(function(entities) {
+		var args = arguments;
+		var keys = Object.keys(entities);
+		for (var i = 0; i < keys.length; i++) {
+			var entity = entities[keys[i]];
+			if (requirements && !entityHasComponents(requirements, entity)) {
+				continue;
+			}
+			args[0] = entity;
+			code.apply(undefined, args);
+		}
+	});
+};
+EntityComponentSystem.prototype.run = function() {
+	var args = arguments;
+	var times = [];
+	for (var i = 0; i < this.systems.length; i++) {
+		var start = this.now();
+		this.systems[i].apply(undefined, args);
+		times.push(this.now() - start);
+	}
+	return times;
+};
+
+<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
+	module.exports = {
+		/**
+		 * Show an advertisement.
+		 * @alias Splat.ads.show
+		 * @param {boolean} isAtBottom true if the ad should be shown at the bottom of the screen. false if it should be shown at the top.
+		 */
+		"show": function(isAtBottom) {
+			adBanner.isAtBottom = isAtBottom;
+			adBanner.show();
+		},
+		/**
+		 * Hide the current advertisement.
+		 * @alias Splat.ads.hide
+		 */
+		"hide": function() {
+			adBanner.hide();
+		},
+		/**
+		 * The width of the ad that will show.
+		 * @alias Splat.ads#width
+		 */
+		"width": size.width,
+		/**
+		 * The height of the ad that will show.
+		 * @alias Splat.ads#height
+		 */
+		"height": size.height
+	};
+} else {
+	module.exports = {
+		"show": function() {},
+		"hide": function() {},
+		"width": 0,
+		"height": 0
+	};
+=======
+function entityHasComponents(components, entity) {
+	for (var i = 0; i < components.length; i++) {
+		if (!entity.hasOwnProperty(components[i])) {
+			return false;
+		}
+	}
+	return true;
+>>>>>>> Added health sobriety
+}
+
+module.exports = EntityComponentSystem;
+
+},{}],3:[function(require,module,exports){
+"use strict";
+
+/**
+ * Keyboard input handling.
+ * @constructor
+ * @param {module:KeyMap} keymap A map of keycodes to descriptive key names.
+ */
+function Keyboard(keyMap) {
+	/**
+	 * The current key states.
+	 * @member {object}
+	 * @private
+	 */
+	this.keys = {};
+
+	var self = this;
+	for (var kc in keyMap) {
+		if (keyMap.hasOwnProperty(kc)) {
+			this.keys[keyMap[kc]] = 0;
+		}
+	}
+	window.addEventListener("keydown", function(event) {
+		if (keyMap.hasOwnProperty(event.keyCode)) {
+			if (self.keys[keyMap[event.keyCode]] === 0) {
+				self.keys[keyMap[event.keyCode]] = 2;
+			}
+			return false;
+		}
+	});
+	window.addEventListener("keyup", function(event) {
+		if (keyMap.hasOwnProperty(event.keyCode)) {
+			self.keys[keyMap[event.keyCode]] = 0;
+			return false;
+		}
+	});
+}
+/**
+ * Test if a key is currently pressed.
+ * @param {string} name The name of the key to test
+ * @returns {boolean}
+ */
+Keyboard.prototype.isPressed = function(name) {
+	return this.keys[name] >= 1;
+};
+/**
+ * Test if a key is currently pressed, also making it look like the key was unpressed.
+ * This makes is so multiple successive calls will not return true unless the key was repressed.
+ * @param {string} name The name of the key to test
+ * @returns {boolean}
+ */
+Keyboard.prototype.consumePressed = function(name) {
+	var p = this.keys[name] === 2;
+	if (p) {
+		this.keys[name] = 1;
+	}
+	return p;
+};
+
+module.exports = Keyboard;
+
+},{}],4:[function(require,module,exports){
+/**
+ * Keyboard code mappings that map keycodes to key names. A specific named map should be given to {@link Keyboard}.
+ * @module KeyMap
+ */
+module.exports = {
+	"US": {
+		8: "backspace",
+		9: "tab",
+		13: "enter",
+		16: "shift",
+		17: "ctrl",
+		18: "alt",
+		19: "pause/break",
+		20: "capslock",
+		27: "escape",
+		32: "space",
+		33: "pageup",
+		34: "pagedown",
+		35: "end",
+		36: "home",
+		37: "left",
+		38: "up",
+		39: "right",
+		40: "down",
+		45: "insert",
+		46: "delete",
+		48: "0",
+		49: "1",
+		50: "2",
+		51: "3",
+		52: "4",
+		53: "5",
+		54: "6",
+		55: "7",
+		56: "8",
+		57: "9",
+		65: "a",
+		66: "b",
+		67: "c",
+		68: "d",
+		69: "e",
+		70: "f",
+		71: "g",
+		72: "h",
+		73: "i",
+		74: "j",
+		75: "k",
+		76: "l",
+		77: "m",
+		78: "n",
+		79: "o",
+		80: "p",
+		81: "q",
+		82: "r",
+		83: "s",
+		84: "t",
+		85: "u",
+		86: "v",
+		87: "w",
+		88: "x",
+		89: "y",
+		90: "z",
+		91: "leftwindow",
+		92: "rightwindow",
+		93: "select",
+		96: "numpad-0",
+		97: "numpad-1",
+		98: "numpad-2",
+		99: "numpad-3",
+		100: "numpad-4",
+		101: "numpad-5",
+		102: "numpad-6",
+		103: "numpad-7",
+		104: "numpad-8",
+		105: "numpad-9",
+		106: "multiply",
+		107: "add",
+		109: "subtract",
+		110: "decimalpoint",
+		111: "divide",
+		112: "f1",
+		113: "f2",
+		114: "f3",
+		115: "f4",
+		116: "f5",
+		117: "f6",
+		118: "f7",
+		119: "f8",
+		120: "f9",
+		121: "f10",
+		122: "f11",
+		123: "f12",
+		144: "numlock",
+		145: "scrolllock",
+		186: "semicolon",
+		187: "equals",
+		188: "comma",
+		189: "dash",
+		190: "period",
+		191: "forwardslash",
+		192: "graveaccent",
+		219: "openbracket",
+		220: "backslash",
+		221: "closebraket",
+		222: "singlequote"
+	}
+};
+
+},{}],5:[function(require,module,exports){
+/*
+  https://github.com/banksean wrapped Makoto Matsumoto and Takuji Nishimura's code in a namespace
+  so it's better encapsulated. Now you can have multiple random number generators
+  and they won't stomp all over eachother's state.
+  
+  If you want to use this as a substitute for Math.random(), use the random()
+  method like so:
+  
+  var m = new MersenneTwister();
+  var randomNumber = m.random();
+  
+  You can also call the other genrand_{foo}() methods on the instance.
+ 
+  If you want to use a specific seed in order to get a repeatable random
+  sequence, pass an integer into the constructor:
+ 
+  var m = new MersenneTwister(123);
+ 
+  and that will always produce the same random sequence.
+ 
+  Sean McCullough (banksean@gmail.com)
+*/
+ 
+/* 
+   A C-program for MT19937, with initialization improved 2002/1/26.
+   Coded by Takuji Nishimura and Makoto Matsumoto.
+ 
+   Before using, initialize the state by using init_seed(seed)  
+   or init_by_array(init_key, key_length).
+ 
+   Copyright (C) 1997 - 2002, Makoto Matsumoto and Takuji Nishimura,
+   All rights reserved.                          
+ 
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions
+   are met:
+ 
+     1. Redistributions of source code must retain the above copyright
+        notice, this list of conditions and the following disclaimer.
+ 
+     2. Redistributions in binary form must reproduce the above copyright
+        notice, this list of conditions and the following disclaimer in the
+        documentation and/or other materials provided with the distribution.
+ 
+     3. The names of its contributors may not be used to endorse or promote 
+        products derived from this software without specific prior written 
+        permission.
+ 
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+   A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+   EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+   PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+   PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+   LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ 
+ 
+   Any feedback is very welcome.
+   http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html
+   email: m-mat @ math.sci.hiroshima-u.ac.jp (remove space)
+*/
+ 
+var MersenneTwister = function(seed) {
+	if (seed == undefined) {
+		seed = new Date().getTime();
+	} 
+
+	/* Period parameters */  
+	this.N = 624;
+	this.M = 397;
+	this.MATRIX_A = 0x9908b0df;   /* constant vector a */
+	this.UPPER_MASK = 0x80000000; /* most significant w-r bits */
+	this.LOWER_MASK = 0x7fffffff; /* least significant r bits */
+
+	this.mt = new Array(this.N); /* the array for the state vector */
+	this.mti=this.N+1; /* mti==N+1 means mt[N] is not initialized */
+
+	this.init_seed(seed);
+}  
+
+/* initializes mt[N] with a seed */
+/* origin name init_genrand */
+MersenneTwister.prototype.init_seed = function(s) {
+	this.mt[0] = s >>> 0;
+	for (this.mti=1; this.mti<this.N; this.mti++) {
+		var s = this.mt[this.mti-1] ^ (this.mt[this.mti-1] >>> 30);
+		this.mt[this.mti] = (((((s & 0xffff0000) >>> 16) * 1812433253) << 16) + (s & 0x0000ffff) * 1812433253)
+		+ this.mti;
+		/* See Knuth TAOCP Vol2. 3rd Ed. P.106 for multiplier. */
+		/* In the previous versions, MSBs of the seed affect   */
+		/* only MSBs of the array mt[].                        */
+		/* 2002/01/09 modified by Makoto Matsumoto             */
+		this.mt[this.mti] >>>= 0;
+		/* for >32 bit machines */
+	}
+}
+
+/* initialize by an array with array-length */
+/* init_key is the array for initializing keys */
+/* key_length is its length */
+/* slight change for C++, 2004/2/26 */
+MersenneTwister.prototype.init_by_array = function(init_key, key_length) {
+	var i, j, k;
+	this.init_seed(19650218);
+	i=1; j=0;
+	k = (this.N>key_length ? this.N : key_length);
+	for (; k; k--) {
+		var s = this.mt[i-1] ^ (this.mt[i-1] >>> 30)
+		this.mt[i] = (this.mt[i] ^ (((((s & 0xffff0000) >>> 16) * 1664525) << 16) + ((s & 0x0000ffff) * 1664525)))
+		+ init_key[j] + j; /* non linear */
+		this.mt[i] >>>= 0; /* for WORDSIZE > 32 machines */
+		i++; j++;
+		if (i>=this.N) { this.mt[0] = this.mt[this.N-1]; i=1; }
+		if (j>=key_length) j=0;
+	}
+	for (k=this.N-1; k; k--) {
+		var s = this.mt[i-1] ^ (this.mt[i-1] >>> 30);
+		this.mt[i] = (this.mt[i] ^ (((((s & 0xffff0000) >>> 16) * 1566083941) << 16) + (s & 0x0000ffff) * 1566083941))
+		- i; /* non linear */
+		this.mt[i] >>>= 0; /* for WORDSIZE > 32 machines */
+		i++;
+		if (i>=this.N) { this.mt[0] = this.mt[this.N-1]; i=1; }
+	}
+
+	this.mt[0] = 0x80000000; /* MSB is 1; assuring non-zero initial array */ 
+}
+
+/* generates a random number on [0,0xffffffff]-interval */
+/* origin name genrand_int32 */
+MersenneTwister.prototype.random_int = function() {
+	var y;
+	var mag01 = new Array(0x0, this.MATRIX_A);
+	/* mag01[x] = x * MATRIX_A  for x=0,1 */
+
+	if (this.mti >= this.N) { /* generate N words at one time */
+		var kk;
+
+		if (this.mti == this.N+1)  /* if init_seed() has not been called, */
+			this.init_seed(5489);  /* a default initial seed is used */
+
+		for (kk=0;kk<this.N-this.M;kk++) {
+			y = (this.mt[kk]&this.UPPER_MASK)|(this.mt[kk+1]&this.LOWER_MASK);
+			this.mt[kk] = this.mt[kk+this.M] ^ (y >>> 1) ^ mag01[y & 0x1];
+		}
+		for (;kk<this.N-1;kk++) {
+			y = (this.mt[kk]&this.UPPER_MASK)|(this.mt[kk+1]&this.LOWER_MASK);
+			this.mt[kk] = this.mt[kk+(this.M-this.N)] ^ (y >>> 1) ^ mag01[y & 0x1];
+		}
+		y = (this.mt[this.N-1]&this.UPPER_MASK)|(this.mt[0]&this.LOWER_MASK);
+		this.mt[this.N-1] = this.mt[this.M-1] ^ (y >>> 1) ^ mag01[y & 0x1];
+
+		this.mti = 0;
+	}
+
+	y = this.mt[this.mti++];
+
+	/* Tempering */
+	y ^= (y >>> 11);
+	y ^= (y << 7) & 0x9d2c5680;
+	y ^= (y << 15) & 0xefc60000;
+	y ^= (y >>> 18);
+
+	return y >>> 0;
+}
+
+/* generates a random number on [0,0x7fffffff]-interval */
+/* origin name genrand_int31 */
+MersenneTwister.prototype.random_int31 = function() {
+	return (this.random_int()>>>1);
+}
+
+/* generates a random number on [0,1]-real-interval */
+/* origin name genrand_real1 */
+MersenneTwister.prototype.random_incl = function() {
+	return this.random_int()*(1.0/4294967295.0); 
+	/* divided by 2^32-1 */ 
+}
+
+/* generates a random number on [0,1)-real-interval */
+MersenneTwister.prototype.random = function() {
+	return this.random_int()*(1.0/4294967296.0); 
+	/* divided by 2^32 */
+}
+
+/* generates a random number on (0,1)-real-interval */
+/* origin name genrand_real3 */
+MersenneTwister.prototype.random_excl = function() {
+	return (this.random_int() + 0.5)*(1.0/4294967296.0); 
+	/* divided by 2^32 */
+}
+
+/* generates a random number on [0,1) with 53-bit resolution*/
+/* origin name genrand_res53 */
+MersenneTwister.prototype.random_long = function() { 
+	var a=this.random_int()>>>5, b=this.random_int()>>>6; 
+	return(a*67108864.0+b)*(1.0/9007199254740992.0); 
+} 
+
+/* These real versions are due to Isaku Wada, 2002/01/09 added */
+
+module.exports = MersenneTwister;
+
+},{}],6:[function(require,module,exports){
+"use strict";
+
 // converts a changing absolute value into a value relative to the previous value
 module.exports = function() {
 	var last = -1;
@@ -261,7 +750,7 @@ module.exports = function() {
 	};
 };
 
-},{}],3:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 "use strict";
 /**
  * @namespace Splat.ads
@@ -337,7 +826,7 @@ if (platform.isEjecta()) {
 	};
 }
 
-},{"./platform":32}],4:[function(require,module,exports){
+},{"./platform":36}],8:[function(require,module,exports){
 "use strict";
 
 var BinaryHeap = require("./binary_heap");
@@ -545,7 +1034,7 @@ AStar.prototype.search = function aStar(srcX, srcY, destX, destY) {
 
 module.exports = AStar;
 
-},{"./binary_heap":5}],5:[function(require,module,exports){
+},{"./binary_heap":9}],9:[function(require,module,exports){
 "use strict";
 
 /**
@@ -675,7 +1164,7 @@ BinaryHeap.prototype.indexOf = function(data) {
 
 module.exports = BinaryHeap;
 
-},{}],6:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 "use strict";
 /** @module buffer */
 
@@ -781,7 +1270,7 @@ module.exports = {
 	rotateCounterclockwise: rotateCounterclockwise
 };
 
-},{"./platform":32}],7:[function(require,module,exports){
+},{"./platform":36}],11:[function(require,module,exports){
 "use strict";
 
 module.exports = function animation(name, loop) {
@@ -794,21 +1283,21 @@ module.exports = function animation(name, loop) {
 	};
 };
 
-},{}],8:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 "use strict";
 
 module.exports = function position(x, y) {
 	return { x: x, y: y };
 };
 
-},{}],9:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 "use strict";
 
 module.exports = function friction(x, y) {
 	return { x: x, y: y };
 };
 
-},{}],10:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 "use strict";
 
 module.exports = function image(name, sourceX, sourceY, sourceWidth, sourceHeight, destinationX, destinationY, destinationWidth, destinationHeight) {
@@ -825,7 +1314,7 @@ module.exports = function image(name, sourceX, sourceY, sourceWidth, sourceHeigh
 	};
 };
 
-},{}],11:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 "use strict";
 
 module.exports = function movement2d(accel, max) {
@@ -845,44 +1334,44 @@ module.exports = function movement2d(accel, max) {
 	};
 };
 
-},{}],12:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 "use strict";
 
 module.exports = function playableArea(x, y, width, height) {
 	return { x: x, y: y, width: width, height: height };
 };
 
-},{}],13:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 "use strict";
 
 module.exports = function playerController2d(up, down, left, right) {
 	return { up: up, down: down, left: left, right: right };
 };
 
-},{}],14:[function(require,module,exports){
-module.exports=require(8)
-},{"/home/aquisenberry/Development/games/DrunkenBossFight/node_modules/splat-ecs/lib/components/camera.js":8}],15:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
+module.exports=require(12)
+},{"/Users/veronica/Dropbox/DrunkenBossFight/node_modules/splat-ecs/lib/components/camera.js":12}],19:[function(require,module,exports){
 "use strict";
 
 module.exports = function size(width, height) {
 	return { width: width, height: height };
 };
 
-},{}],16:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 "use strict";
 
 module.exports = function timers() {
 	return {};
 };
 
-},{}],17:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 "use strict";
 
 module.exports = function velocity(x, y) {
 	return { x: x, y: y };
 };
 
-},{}],18:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 "use strict";
 
 function EntityPool() {
@@ -917,7 +1406,7 @@ function objectValues(obj) {
 
 module.exports = EntityPool;
 
-},{}],19:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 "use strict";
 
 var timeAccumulator = require("time-accumulator");
@@ -952,7 +1441,11 @@ module.exports = function(entities, simulation, simulationStepTime, renderer, co
 	};
 };
 
+<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
 },{"./absolute-to-relative":2,"time-accumulator":57}],20:[function(require,module,exports){
+=======
+},{"./absolute-to-relative":6,"time-accumulator":57}],24:[function(require,module,exports){
+>>>>>>> Added health sobriety
 "use strict";
 
 var Input = require("./input");
@@ -1059,7 +1552,7 @@ Game.prototype.switchScene = function(name, sceneArgs) {
 
 module.exports = Game;
 
-},{"./input":23,"./scene":34,"./systems":36}],21:[function(require,module,exports){
+},{"./input":27,"./scene":38,"./systems":40}],25:[function(require,module,exports){
 "use strict";
 
 var platform = require("./platform");
@@ -1151,7 +1644,7 @@ if (platform.isEjecta()) {
 	};
 }
 
-},{"./platform":32}],22:[function(require,module,exports){
+},{"./platform":36}],26:[function(require,module,exports){
 "use strict";
 
 /**
@@ -1244,7 +1737,7 @@ ImageLoader.prototype.get = function(name) {
 
 module.exports = ImageLoader;
 
-},{}],23:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 "use strict";
 
 var Keyboard = require("game-keyboard");
@@ -1289,7 +1782,11 @@ Input.prototype.button = function(name) {
 
 module.exports = Input;
 
+<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
 },{"./mouse":28,"game-keyboard":54,"game-keyboard/key_map":55}],24:[function(require,module,exports){
+=======
+},{"./mouse":32,"game-keyboard":3,"game-keyboard/key_map":4}],28:[function(require,module,exports){
+>>>>>>> Added health sobriety
 "use strict";
 /**
  * @namespace Splat.leaderboards
@@ -1367,7 +1864,7 @@ if (platform.isEjecta()) {
 }
 
 
-},{"./platform":32}],25:[function(require,module,exports){
+},{"./platform":36}],29:[function(require,module,exports){
 "use strict";
 
 var Scene = require("./scene");
@@ -1400,7 +1897,7 @@ module.exports = function(canvas, percentLoaded, nextScene) {
 	return scene;
 };
 
-},{"./scene":34}],26:[function(require,module,exports){
+},{"./scene":38}],30:[function(require,module,exports){
 "use strict";
 
 var buffer = require("./buffer");
@@ -1447,7 +1944,7 @@ module.exports = {
 	systems: require("./systems")
 };
 
-},{"./ads":3,"./astar":4,"./binary_heap":5,"./buffer":6,"./components/animation":7,"./components/camera":8,"./components/friction":9,"./components/image":10,"./components/movement-2d":11,"./components/playable-area":12,"./components/player-controller-2d":13,"./components/position":14,"./components/size":15,"./components/timers":16,"./components/velocity":17,"./entity-pool":18,"./game":20,"./iap":21,"./image_loader":22,"./input":23,"./leaderboards":24,"./loading-scene":25,"./math":27,"./ninepatch":29,"./openUrl":30,"./particles":31,"./save_data":33,"./scene":34,"./sound_loader":35,"./systems":36}],27:[function(require,module,exports){
+},{"./ads":7,"./astar":8,"./binary_heap":9,"./buffer":10,"./components/animation":11,"./components/camera":12,"./components/friction":13,"./components/image":14,"./components/movement-2d":15,"./components/playable-area":16,"./components/player-controller-2d":17,"./components/position":18,"./components/size":19,"./components/timers":20,"./components/velocity":21,"./entity-pool":22,"./game":24,"./iap":25,"./image_loader":26,"./input":27,"./leaderboards":28,"./loading-scene":29,"./math":31,"./ninepatch":33,"./openUrl":34,"./particles":35,"./save_data":37,"./scene":38,"./sound_loader":39,"./systems":40}],31:[function(require,module,exports){
 "use strict";
 
 /**
@@ -1485,7 +1982,11 @@ var val = rand.random();
 	Random: require("mersenne-twister")
 };
 
+<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
 },{"mersenne-twister":56}],28:[function(require,module,exports){
+=======
+},{"mersenne-twister":5}],32:[function(require,module,exports){
+>>>>>>> Added health sobriety
 "use strict";
 
 var platform = require("./platform");
@@ -1736,7 +2237,7 @@ Mouse.prototype.consumePressed = function(button, x, y, width, height) {
 
 module.exports = Mouse;
 
-},{"./platform":32}],29:[function(require,module,exports){
+},{"./platform":36}],33:[function(require,module,exports){
 "use strict";
 
 var buffer = require("./buffer");
@@ -1855,7 +2356,7 @@ NinePatch.prototype.draw = function(context, x, y, width, height) {
 
 module.exports = NinePatch;
 
-},{"./buffer":6}],30:[function(require,module,exports){
+},{"./buffer":10}],34:[function(require,module,exports){
 "use strict";
 
 var platform = require("./platform");
@@ -1875,7 +2376,7 @@ if (platform.isEjecta()) {
 	};
 }
 
-},{"./platform":32}],31:[function(require,module,exports){
+},{"./platform":36}],35:[function(require,module,exports){
 "use strict";
 
 function Particles(max, setupParticle, drawParticle) {
@@ -1965,7 +2466,7 @@ Particles.prototype.reset = function() {
 
 module.exports = Particles;
 
-},{}],32:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 "use strict";
 
 module.exports = {
@@ -1977,7 +2478,7 @@ module.exports = {
 	}
 };
 
-},{}],33:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 "use strict";
 /**
  * @namespace Splat.saveData
@@ -2107,7 +2608,7 @@ if (platform.isChromeApp()) {
 	module.exports = cookieSaveData;
 }
 
-},{"./platform":32}],34:[function(require,module,exports){
+},{"./platform":36}],38:[function(require,module,exports){
 "use strict";
 
 var ECS = require("entity-component-system");
@@ -2143,7 +2644,11 @@ Scene.prototype.stop = function() {
 
 module.exports = Scene;
 
+<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
 },{"./entity-pool":18,"./game-loop":19,"entity-component-system":53}],35:[function(require,module,exports){
+=======
+},{"./entity-pool":22,"./game-loop":23,"entity-component-system":2}],39:[function(require,module,exports){
+>>>>>>> Added health sobriety
 "use strict";
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -2462,7 +2967,7 @@ if (window.AudioContext) {
 	module.exports = FakeSoundLoader;
 }
 
-},{}],36:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 "use strict";
 
 module.exports = {
@@ -2484,7 +2989,11 @@ module.exports = {
 	viewport: require("./systems/viewport")
 };
 
+<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
 },{"./systems/advance-animations":37,"./systems/advance-timers":38,"./systems/apply-friction":39,"./systems/apply-movement-2d":40,"./systems/apply-velocity":41,"./systems/box-collider":42,"./systems/center-position":43,"./systems/clear-screen":44,"./systems/constrain-to-playable-area":45,"./systems/control-player":46,"./systems/draw-frame-rate":47,"./systems/draw-image":48,"./systems/draw-rectangles":49,"./systems/follow-parent":50,"./systems/match-parent":51,"./systems/viewport":52}],37:[function(require,module,exports){
+=======
+},{"./systems/advance-animations":41,"./systems/advance-timers":42,"./systems/apply-friction":43,"./systems/apply-movement-2d":44,"./systems/apply-velocity":45,"./systems/box-collider":46,"./systems/center-position":47,"./systems/clear-screen":48,"./systems/constrain-to-playable-area":49,"./systems/control-player":50,"./systems/draw-frame-rate":51,"./systems/draw-image":52,"./systems/draw-rectangles":53,"./systems/follow-parent":54,"./systems/match-parent":55,"./systems/viewport":56}],41:[function(require,module,exports){
+>>>>>>> Added health sobriety
 "use strict";
 
 function setOwnPropertiesDeep(src, dest) {
@@ -2529,7 +3038,7 @@ module.exports = function advanceAnimations(ecs, data) {
 	}, ["animation"]);
 };
 
-},{}],38:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 "use strict";
 
 module.exports = function(ecs, data) {
@@ -2557,7 +3066,7 @@ module.exports = function(ecs, data) {
 	}, ["timers"]);
 };
 
-},{}],39:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 "use strict";
 
 module.exports = function(ecs) {
@@ -2567,7 +3076,7 @@ module.exports = function(ecs) {
 	}, ["velocity", "friction"]);
 };
 
-},{}],40:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 "use strict";
 
 module.exports = function(ecs) {
@@ -2587,7 +3096,7 @@ module.exports = function(ecs) {
 	}, ["velocity", "movement2d"]);
 };
 
-},{}],41:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 "use strict";
 
 module.exports = function(ecs) {
@@ -2597,7 +3106,7 @@ module.exports = function(ecs) {
 	}, ["position", "velocity"]);
 };
 
-},{}],42:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 "use strict";
 
 var gridSize = 64;
@@ -2659,6 +3168,7 @@ function collides(b, a) {
 function removeEntity(entity, oldKeys, entities, spatialHash){
 	function notCurrentEntityId(id) {
 		return id !== entity.id;
+<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
 	}
 	for (var i = 0; i < oldKeys.length; i++) {
 		remove(spatialHash, entity, oldKeys[i]);
@@ -2699,12 +3209,13 @@ module.exports.onEntityDelete = function(entity, data) {
 function areArraysSame(a, b) {
 	if (a.length !== b.length) {
 		return false;
+=======
+>>>>>>> Added health sobriety
 	}
-	for (var i = 0; i < a.length; i++) {
-		if (a[i] !== b[i]) {
-			return false;
-		}
+	for (var i = 0; i < oldKeys.length; i++) {
+		remove(spatialHash, entity, oldKeys[i]);
 	}
+<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
 	return true;
 }
 
@@ -2951,113 +3462,113 @@ module.exports = {
 
 },{}],53:[function(require,module,exports){
 "use strict";
-
-function EntityComponentSystem() {
-	this.systems = [];
-	this.now = function() {
-		return 0;
-	};
-}
-EntityComponentSystem.prototype.add = function(code) {
-	this.systems.push(code);
-};
-EntityComponentSystem.prototype.addEach = function(code, requirements) {
-	this.systems.push(function(entities) {
-		var args = arguments;
-		var keys = Object.keys(entities);
-		for (var i = 0; i < keys.length; i++) {
-			var entity = entities[keys[i]];
-			if (requirements && !entityHasComponents(requirements, entity)) {
-				continue;
-			}
-			args[0] = entity;
-			code.apply(undefined, args);
+=======
+	for (i = 0; i < entity.collisions.length; i++) {
+		var peer = entities[entity.collisions[i]];
+		if (peer === undefined) {
+			continue;
 		}
-	});
-};
-EntityComponentSystem.prototype.run = function() {
-	var args = arguments;
-	var times = [];
-	for (var i = 0; i < this.systems.length; i++) {
-		var start = this.now();
-		this.systems[i].apply(undefined, args);
-		times.push(this.now() - start);
+		peer.collisions = peer.collisions.filter(notCurrentEntityId);
 	}
-	return times;
+}
+
+var spatialHash = {};
+>>>>>>> Added health sobriety
+
+module.exports = function(ecs, data) {
+	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
+
+		if (entity.collisionKeys === undefined || entity.velocity !== undefined) {
+			var oldKeys = entity.collisionKeys || [];
+			entity.collisionKeys = keys(entity);
+
+			if (entity.velocity !== undefined || !areArraysSame(oldKeys, entity.collisionKeys)) {
+				removeEntity(entity, oldKeys, data.entities.entities, spatialHash);
+				entity.collisions = [];
+				for (var i = 0; i < entity.collisionKeys.length; i++) {
+					add(spatialHash, entity, entity.collisionKeys[i]);
+				}
+			}
+		}
+	}, ["position", "size", "collisions"]);
 };
 
-function entityHasComponents(components, entity) {
-	for (var i = 0; i < components.length; i++) {
-		if (!entity.hasOwnProperty(components[i])) {
+module.exports.onEntityDelete = function(entity, data) {
+	removeEntity(entity, entity.collisionKeys || [], data.entities.entities, spatialHash);
+};
+
+function areArraysSame(a, b) {
+	if (a.length !== b.length) {
+		return false;
+	}
+	for (var i = 0; i < a.length; i++) {
+		if (a[i] !== b[i]) {
 			return false;
 		}
 	}
 	return true;
 }
 
+<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
 module.exports = EntityComponentSystem;
 
 },{}],54:[function(require,module,exports){
+=======
+},{}],47:[function(require,module,exports){
+>>>>>>> Added health sobriety
 "use strict";
 
-/**
- * Keyboard input handling.
- * @constructor
- * @param {module:KeyMap} keymap A map of keycodes to descriptive key names.
- */
-function Keyboard(keyMap) {
-	/**
-	 * The current key states.
-	 * @member {object}
-	 * @private
-	 */
-	this.keys = {};
-
-	var self = this;
-	for (var kc in keyMap) {
-		if (keyMap.hasOwnProperty(kc)) {
-			this.keys[keyMap[kc]] = 0;
-		}
-	}
-	window.addEventListener("keydown", function(event) {
-		if (keyMap.hasOwnProperty(event.keyCode)) {
-			if (self.keys[keyMap[event.keyCode]] === 0) {
-				self.keys[keyMap[event.keyCode]] = 2;
+module.exports = function(ecs, data) {
+	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
+		// FIXME: doesn't work with cameras yet.
+		if (entity.center.x) {
+			entity.position.x = Math.floor(data.canvas.width / 2);
+			if (entity.size) {
+				entity.position.x -= Math.floor(entity.size.width / 2);
 			}
-			return false;
 		}
-	});
-	window.addEventListener("keyup", function(event) {
-		if (keyMap.hasOwnProperty(event.keyCode)) {
-			self.keys[keyMap[event.keyCode]] = 0;
-			return false;
+		if (entity.center.y) {
+			entity.position.y = Math.floor(data.canvas.height / 2);
+			if (entity.size) {
+				entity.position.y -= Math.floor(entity.size.height / 2);
+			}
 		}
-	});
-}
-/**
- * Test if a key is currently pressed.
- * @param {string} name The name of the key to test
- * @returns {boolean}
- */
-Keyboard.prototype.isPressed = function(name) {
-	return this.keys[name] >= 1;
-};
-/**
- * Test if a key is currently pressed, also making it look like the key was unpressed.
- * This makes is so multiple successive calls will not return true unless the key was repressed.
- * @param {string} name The name of the key to test
- * @returns {boolean}
- */
-Keyboard.prototype.consumePressed = function(name) {
-	var p = this.keys[name] === 2;
-	if (p) {
-		this.keys[name] = 1;
-	}
-	return p;
+	}, ["position", "center"]);
 };
 
-module.exports = Keyboard;
+},{}],48:[function(require,module,exports){
+"use strict";
 
+module.exports = function(ecs, data) {
+	ecs.add(function(entities, context) {
+		context.clearRect(0, 0, data.canvas.width, data.canvas.height);
+	});
+};
+
+},{}],49:[function(require,module,exports){
+"use strict";
+
+module.exports = function(ecs) {
+	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
+		if (entity.position.x < entity.playableArea.x) {
+			entity.position.x = entity.playableArea.x;
+		}
+		if (entity.position.x + entity.size.width > entity.playableArea.x + entity.playableArea.width) {
+			entity.position.x = entity.playableArea.x + entity.playableArea.width - entity.size.width;
+		}
+		if (entity.position.y < entity.playableArea.y) {
+			entity.position.y = entity.playableArea.y;
+		}
+		if (entity.position.y + entity.size.height > entity.playableArea.y + entity.playableArea.height) {
+			entity.position.y = entity.playableArea.y + entity.playableArea.height - entity.size.height;
+		}
+	}, ["position", "size", "playableArea"]);
+};
+
+},{}],50:[function(require,module,exports){
+"use strict";
+
+<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
 },{}],55:[function(require,module,exports){
 /**
  * Keyboard code mappings that map keycodes to key names. A specific named map should be given to {@link Keyboard}.
@@ -3238,141 +3749,200 @@ var MersenneTwister = function(seed) {
 	if (seed == undefined) {
 		seed = new Date().getTime();
 	} 
+=======
+module.exports = function(ecs, data) {
+	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
+		entity.movement2d.up = data.input.button(entity.playerController2d.up);
+		entity.movement2d.down = data.input.button(entity.playerController2d.down);
+		entity.movement2d.left = data.input.button(entity.playerController2d.left);
+		entity.movement2d.right = data.input.button(entity.playerController2d.right);
+	}, ["movement2d", "playerController2d"]);
+};
 
-	/* Period parameters */  
-	this.N = 624;
-	this.M = 397;
-	this.MATRIX_A = 0x9908b0df;   /* constant vector a */
-	this.UPPER_MASK = 0x80000000; /* most significant w-r bits */
-	this.LOWER_MASK = 0x7fffffff; /* least significant r bits */
+},{}],51:[function(require,module,exports){
+"use strict";
+>>>>>>> Added health sobriety
 
-	this.mt = new Array(this.N); /* the array for the state vector */
-	this.mti=this.N+1; /* mti==N+1 means mt[N] is not initialized */
+module.exports = function(ecs, data) {
+	ecs.add(function(entities, context, elapsed) {
+		var fps = Math.floor(1000 / elapsed);
 
-	this.init_seed(seed);
-}  
-
-/* initializes mt[N] with a seed */
-/* origin name init_genrand */
-MersenneTwister.prototype.init_seed = function(s) {
-	this.mt[0] = s >>> 0;
-	for (this.mti=1; this.mti<this.N; this.mti++) {
-		var s = this.mt[this.mti-1] ^ (this.mt[this.mti-1] >>> 30);
-		this.mt[this.mti] = (((((s & 0xffff0000) >>> 16) * 1812433253) << 16) + (s & 0x0000ffff) * 1812433253)
-		+ this.mti;
-		/* See Knuth TAOCP Vol2. 3rd Ed. P.106 for multiplier. */
-		/* In the previous versions, MSBs of the seed affect   */
-		/* only MSBs of the array mt[].                        */
-		/* 2002/01/09 modified by Makoto Matsumoto             */
-		this.mt[this.mti] >>>= 0;
-		/* for >32 bit machines */
-	}
-}
-
-/* initialize by an array with array-length */
-/* init_key is the array for initializing keys */
-/* key_length is its length */
-/* slight change for C++, 2004/2/26 */
-MersenneTwister.prototype.init_by_array = function(init_key, key_length) {
-	var i, j, k;
-	this.init_seed(19650218);
-	i=1; j=0;
-	k = (this.N>key_length ? this.N : key_length);
-	for (; k; k--) {
-		var s = this.mt[i-1] ^ (this.mt[i-1] >>> 30)
-		this.mt[i] = (this.mt[i] ^ (((((s & 0xffff0000) >>> 16) * 1664525) << 16) + ((s & 0x0000ffff) * 1664525)))
-		+ init_key[j] + j; /* non linear */
-		this.mt[i] >>>= 0; /* for WORDSIZE > 32 machines */
-		i++; j++;
-		if (i>=this.N) { this.mt[0] = this.mt[this.N-1]; i=1; }
-		if (j>=key_length) j=0;
-	}
-	for (k=this.N-1; k; k--) {
-		var s = this.mt[i-1] ^ (this.mt[i-1] >>> 30);
-		this.mt[i] = (this.mt[i] ^ (((((s & 0xffff0000) >>> 16) * 1566083941) << 16) + (s & 0x0000ffff) * 1566083941))
-		- i; /* non linear */
-		this.mt[i] >>>= 0; /* for WORDSIZE > 32 machines */
-		i++;
-		if (i>=this.N) { this.mt[0] = this.mt[this.N-1]; i=1; }
-	}
-
-	this.mt[0] = 0x80000000; /* MSB is 1; assuring non-zero initial array */ 
-}
-
-/* generates a random number on [0,0xffffffff]-interval */
-/* origin name genrand_int32 */
-MersenneTwister.prototype.random_int = function() {
-	var y;
-	var mag01 = new Array(0x0, this.MATRIX_A);
-	/* mag01[x] = x * MATRIX_A  for x=0,1 */
-
-	if (this.mti >= this.N) { /* generate N words at one time */
-		var kk;
-
-		if (this.mti == this.N+1)  /* if init_seed() has not been called, */
-			this.init_seed(5489);  /* a default initial seed is used */
-
-		for (kk=0;kk<this.N-this.M;kk++) {
-			y = (this.mt[kk]&this.UPPER_MASK)|(this.mt[kk+1]&this.LOWER_MASK);
-			this.mt[kk] = this.mt[kk+this.M] ^ (y >>> 1) ^ mag01[y & 0x1];
+		context.font = "24px mono";
+		if (fps < 30) {
+			context.fillStyle = "red";
+		} else if (fps < 50) {
+			context.fillStyle = "yellow";
+		} else {
+			context.fillStyle = "green";
 		}
-		for (;kk<this.N-1;kk++) {
-			y = (this.mt[kk]&this.UPPER_MASK)|(this.mt[kk+1]&this.LOWER_MASK);
-			this.mt[kk] = this.mt[kk+(this.M-this.N)] ^ (y >>> 1) ^ mag01[y & 0x1];
-		}
-		y = (this.mt[this.N-1]&this.UPPER_MASK)|(this.mt[0]&this.LOWER_MASK);
-		this.mt[this.N-1] = this.mt[this.M-1] ^ (y >>> 1) ^ mag01[y & 0x1];
 
-		this.mti = 0;
+		var msg = fps + " FPS";
+		var w = context.measureText(msg).width;
+		context.fillText(msg, data.canvas.width - w - 50, 50);
+	});
+};
+
+},{}],52:[function(require,module,exports){
+"use strict";
+
+function drawEntity(data, entity, context) {
+	var image = data.images.get(entity.image.name);
+	if (!image) {
+		console.error("No such image", entity.image.name, "for entity", entity.id, entity.name);
+		return;
 	}
+	try {
+		var dx = entity.image.destinationX + entity.position.x;
+		var dy = entity.image.destinationY + entity.position.y;
+		if (entity.rotation !== undefined) {
+			context.save();
 
-	y = this.mt[this.mti++];
+			var x = entity.position.x + entity.rotation.x;
+			var y = entity.position.y + entity.rotation.y;
+			context.translate(x, y);
+			context.rotate(entity.rotation.angle);
 
-	/* Tempering */
-	y ^= (y >>> 11);
-	y ^= (y << 7) & 0x9d2c5680;
-	y ^= (y << 15) & 0xefc60000;
-	y ^= (y >>> 18);
+			dx = entity.image.destinationX - entity.rotation.x;
+			dy = entity.image.destinationY - entity.rotation.y;
+		}
 
-	return y >>> 0;
+		context.drawImage(
+			image,
+			entity.image.sourceX,
+			entity.image.sourceY,
+			entity.image.sourceWidth,
+			entity.image.sourceHeight,
+			dx,
+			dy,
+			entity.image.destinationWidth,
+			entity.image.destinationHeight
+		);
+
+		if (entity.rotation !== undefined) {
+			context.restore();
+		}
+	} catch (e) {
+		console.error("Error drawing image", entity.image.name, e);
+	}
+}
+var j = 0;
+module.exports = function(ecs, data) {
+	ecs.add(function(entities, context) {
+		var keys = Object.keys(entities);
+		keys.sort(function(a, b) {
+			var za = (entities[a].zindex || { zindex: 0 }).zindex;
+			var zb = (entities[b].zindex || { zindex: 0 }).zindex;
+			var ya = (entities[a].position || { y: 0 }).y;
+			var yb = (entities[b].position || { y: 0 }).y;
+			return za - zb || ya - yb;
+		});
+
+		for (var i = 0; i < keys.length; i++) {
+			var entity = entities[keys[i]];
+			if (entity.image === undefined || entity.position === undefined) {
+				continue;
+			}
+			if(j === 0){
+
+			console.log(entity);	
+			}
+			drawEntity(data, entity, context);
+		}
+		j++;
+	});
+};
+
+},{}],53:[function(require,module,exports){
+"use strict";
+
+module.exports = function(ecs) {
+	ecs.addEach(function(entity, context) {
+		if (entity.strokeStyle) {
+			context.strokeStyle = entity.strokeStyle;
+		}
+		context.strokeRect(Math.floor(entity.position.x), Math.floor(entity.position.y), entity.size.width, entity.size.height);
+	}, ["position", "size"]);
+};
+
+},{}],54:[function(require,module,exports){
+"use strict";
+
+function distanceSquared(x1, y1, x2, y2) {
+	return ((x1 - x2) * (x1 - x2)) + ((y1 - y2) * (y1 - y2));
 }
 
-/* generates a random number on [0,0x7fffffff]-interval */
-/* origin name genrand_int31 */
-MersenneTwister.prototype.random_int31 = function() {
-	return (this.random_int()>>>1);
-}
+module.exports = function(ecs, data) {
+	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
+		var x1 = entity.position.x + (entity.size.width / 2);
+		var y1 = entity.position.y + (entity.size.height / 2);
 
-/* generates a random number on [0,1]-real-interval */
-/* origin name genrand_real1 */
-MersenneTwister.prototype.random_incl = function() {
-	return this.random_int()*(1.0/4294967295.0); 
-	/* divided by 2^32-1 */ 
-}
+		var parent = data.entities.entities[entity.follow.id];
+		if (parent === undefined) {
+			return;
+		}
+		var x2 = parent.position.x + (parent.size.width / 2);
+		var y2 = parent.position.y + (parent.size.height / 2);
 
-/* generates a random number on [0,1)-real-interval */
-MersenneTwister.prototype.random = function() {
-	return this.random_int()*(1.0/4294967296.0); 
-	/* divided by 2^32 */
-}
+		var angle = Math.atan2(y2 - y1, x2 - x1);
+		if (entity.rotation !== undefined) {
+			entity.rotation.angle = angle - (Math.PI / 2);
+		}
 
-/* generates a random number on (0,1)-real-interval */
-/* origin name genrand_real3 */
-MersenneTwister.prototype.random_excl = function() {
-	return (this.random_int() + 0.5)*(1.0/4294967296.0); 
-	/* divided by 2^32 */
-}
+		var distSquared = distanceSquared(x1, y1, x2, y2);
+		if (distSquared < entity.follow.distance * entity.follow.distance) {
+			return;
+		}
 
-/* generates a random number on [0,1) with 53-bit resolution*/
-/* origin name genrand_res53 */
-MersenneTwister.prototype.random_long = function() { 
-	var a=this.random_int()>>>5, b=this.random_int()>>>6; 
-	return(a*67108864.0+b)*(1.0/9007199254740992.0); 
-} 
+		var toMove = Math.sqrt(distSquared) - entity.follow.distance;
 
-/* These real versions are due to Isaku Wada, 2002/01/09 added */
+		entity.position.x += toMove * Math.cos(angle);
+		entity.position.y += toMove * Math.sin(angle);
+	}, ["position", "follow"]);
+};
 
-module.exports = MersenneTwister;
+},{}],55:[function(require,module,exports){
+"use strict";
+
+module.exports = function(ecs, data) {
+	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
+		var parent = data.entities.entities[entity.match.id];
+		if (parent === undefined) {
+			return;
+		}
+
+		entity.position.x = parent.position.x + entity.match.offsetX;
+		entity.position.y = parent.position.y + entity.match.offsetY;
+	}, ["position", "match"]);
+};
+
+},{}],56:[function(require,module,exports){
+"use strict";
+
+var x = 0;
+var y = 0;
+
+module.exports = {
+	moveToCamera: function(ecs) {
+		ecs.add(function(entities, context) { // eslint-disable-line no-unused-vars
+			x = 0;
+			y = 0;
+		});
+		ecs.addEach(function(entity, context) {
+			var dx = Math.floor(entity.position.x + entity.camera.x) - x;
+			var dy = Math.floor(entity.position.y + entity.camera.y) - y;
+			x += dx;
+			y += dy;
+			context.translate(-dx, -dy);
+		}, ["camera", "position"]);
+	},
+	reset: function(ecs) {
+		ecs.addEach(function(entity, context) { // eslint-disable-line no-unused-vars
+			context.translate(x, y);
+			x = 0;
+			y = 0;
+		}, ["camera", "position"]);
+	}
+};
 
 },{}],57:[function(require,module,exports){
 module.exports = function(rate) {
@@ -4779,6 +5349,7 @@ module.exports={
 	 			}
 	 		}
 	 ],
+<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
 	 "arm":[
 	 	{
 	 			"time" : 50,
@@ -4821,6 +5392,8 @@ module.exports={
 	 			}
 	 		}
 	 		],	
+=======
+>>>>>>> Added health sobriety
 	 "bear": [
 	 	{
 	 		"time" : 200,
@@ -5156,6 +5729,8 @@ module.exports={
       "x": 0,
       "y": 0
      },
+     "health": 30,
+     "maxHealth": 50,
      "animationIndex" : 2,
      "damaged": false,
      "animation": {
@@ -5194,6 +5769,12 @@ module.exports={
         "time": 0,
         "max": 200,
         "script": "./scripts/player-transition-right"
+      },
+      "sobriety":{
+        "running":true,
+        "time": 0,
+        "max": 1000,
+        "script": "./scripts/player-sobriety-timer" 
       }
     }
     },
@@ -5225,6 +5806,7 @@ module.exports={
       "zindex": -1
     },
     {
+<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
      "id": 2,
      "name": "arm",
      "arm": true,
@@ -5261,6 +5843,8 @@ module.exports={
      }
    },
     {
+=======
+>>>>>>> Added health sobriety
      "id": 3,
      "name": "bear",
      "bear": true,
@@ -5271,7 +5855,11 @@ module.exports={
      "size": {
       "width": 300,
       "height": 500
+<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
        },
+=======
+     },
+>>>>>>> Added health sobriety
      "velocity": {
       "x": 0,
       "y": 0
@@ -5296,6 +5884,81 @@ module.exports={
       "destinationHeight": 500
      },
      "timers":{}
+<<<<<<< 949ff3af160e184ba42b8af50c9269844cd367eb
+=======
+    },
+    {
+     "id": 4,
+     "name": "bearHealth",
+     "bearHealth": true,
+     "position": {
+      "x": 1000,
+      "y": 25
+     },
+     "size": {
+      "width": 90,
+      "height": 90
+     },
+     "velocity": {
+      "x": 0,
+      "y": 0
+     },
+     "animation": {
+      "time": 100,
+      "frame": 0,
+      "loop": true,
+      "speed": 1,
+      "name": "bearHealth-Full"
+     },
+     "image": {
+      "name": "bearHealth",
+      "sourceX": 0,
+      "sourceY": 0,
+      "sourceWidth": 0,
+      "sourceHeight": 0,
+      "destinationX": 0,
+      "destinationY": 0,
+      "destinationWidth": 90,
+      "destinationHeight": 90
+     },
+     "timers":{}
+    },
+    {
+     "id": 5,
+     "name": "playerHealth",
+     "playerHealth": true,
+     "position": {
+      "x": 50,
+      "y": 25
+     },
+     "size": {
+      "width": 60,
+      "height": 70
+     },
+     "velocity": {
+      "x": 0,
+      "y": 0
+     },
+     "animation": {
+      "time": 100,
+      "frame": 0,
+      "loop": true,
+      "speed": 1,
+      "name": "playerHealth"
+     },
+     "image": {
+      "name": "playerHealth",
+      "sourceX": 0,
+      "sourceY": 0,
+      "sourceWidth": 0,
+      "sourceHeight": 0,
+      "destinationX": 0,
+      "destinationY": 0,
+      "destinationWidth": 60,
+      "destinationHeight": 70
+     },
+     "timers":{}
+>>>>>>> Added health sobriety
     }
 
   ]
@@ -5497,6 +6160,11 @@ module.exports={
    "scenes": [
     "main"
    ]
+  },
+  {
+    "name": "./systems/renderer/render-player-health",
+    "scenes": [
+    "main" ]
   }
  ]
 }

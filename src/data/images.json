@@ -3,5 +3,6 @@
 	"bg": "images/background.png",
 	"buildings": "images/buildings.png",
 	"beermug":"images/beermug.png",
-	"player": "images/hero_sprites.png"
+	"player": "images/hero_sprites.png",
+	"titlescreen": "images/title.png"
 }

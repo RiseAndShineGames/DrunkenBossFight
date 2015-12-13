@@ -13,6 +13,21 @@
 	   }
 	  }
 	 ],
+	 "title": [
+	  {
+	   "time": 100,
+	   "properties": {
+	    "image": {
+	     "name": "title",
+	     "sourceX": 0,
+	     "sourceY": 0,
+	     "sourceWidth": 1136,
+	     "sourceHeight": 640
+	    }
+	   }
+	  }
+	 ]
+	 ,
 	 "player-idle":[
 	 	{
 	 		"time" : 50,
@@ -162,5 +177,289 @@
 	 			}
 	 		}
 	 	}
+	 ],
+	 "player-damage-i":[
+	 		{
+	 			"time" : 500,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 0,
+	 				"sourceY":0,
+	 				"sourceWidth":100,
+	 				"sourceHeight":100
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 0,
+	 				"sourceY":125,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 125,
+	 				"sourceY":0,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 125,
+	 				"sourceY":125,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 250,
+	 				"sourceY":0,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 250,
+	 				"sourceY":125,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 375,
+	 				"sourceY":0,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 375,
+	 				"sourceY":125,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 500,
+	 				"sourceY":0,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 500,
+	 				"sourceY":125,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 625,
+	 				"sourceY":0,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 625,
+	 				"sourceY":125,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 750,
+	 				"sourceY":0,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 750,
+	 				"sourceY":125,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 			}
+	 		}
+	 ],
+	 "player-i":[
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 0,
+	 				"sourceY":250,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 0,
+	 				"sourceY":375,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 125,
+	 				"sourceY":250,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 125,
+	 				"sourceY":375,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 250,
+	 				"sourceY":250,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 250,
+	 				"sourceY":375,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 375,
+	 				"sourceY":250,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 375,
+	 				"sourceY":375,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 500,
+	 				"sourceY":250,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 500,
+	 				"sourceY":375,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 625,
+	 				"sourceY":250,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 625,
+	 				"sourceY":375,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 750,
+	 				"sourceY":250,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 750,
+	 				"sourceY":375,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 			}
+	 		}
 	 ]
 }

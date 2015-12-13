@@ -8,28 +8,11 @@ module.exports = function(data) { // eslint-disable-line no-unused-vars
 module.exports=require("./scripts/main-enter")
 },{"./scripts/main-enter":"./scripts/main-enter"}],"./scripts/title-enter":[function(require,module,exports){
 "use strict";
-var utilities = require('./utilities');
-var structures = {
-	"Title": function Title(canvas,titleWords,tagLine, instructions){
-		var entity= {};
-		entity.title = true;
-		entity.titleY = canvas.height/3;
-		entity.titleWords = titleWords;
-		entity.tagLineY=2*canvas.height/3;
-		entity.tagLine = tagLine;
-		entity.instructionsY = 2*canvas.height/3 + 50;
-		entity.instructions = instructions;
-	}
-}
-
-function buildTitle(data,titleWords,tagLine){
-	var titleEntity = utilities.generateEntity(structures.Title(data.canvas,titleWords,tagLine),data.entities);
-	return titleEntity;
-}
 module.exports = function(data) { // eslint-disable-line no-unused-vars
+	console.log(data)
 };
 
-},{"./utilities":64}],"./scripts/title-exit":[function(require,module,exports){
+},{}],"./scripts/title-exit":[function(require,module,exports){
 module.exports=require("./scripts/main-enter")
 },{"./scripts/main-enter":"./scripts/main-enter"}],1:[function(require,module,exports){
 "use strict";
@@ -74,6 +57,15 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 		context.fillRect(0,0, data.canvas.width, data.canvas.height);
 	}, []);
 };
+},{}],"./systems/renderer/render-buildings":[function(require,module,exports){
+"use strict";
+
+module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
+	ecs.add(function(entities, context) { // eslint-disable-line no-unused-vars
+		context.fillStyle = "#302f2c";
+		context.drawImage(data.images.get("buildings"),0,0)
+	}, []);
+};
 },{}],"./systems/renderer/render-player":[function(require,module,exports){
 "use strict";
 
@@ -89,7 +81,7 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 	ecs.add(function(entities, context) { // eslint-disable-line no-unused-vars
 		context.fillStyle = "#302f2c";
-		context.fillRect(0,0, data.canvas.width, data.canvas.height);
+		context.drawImage(data.images.get("titlescreen"),0,0)
 	}, []);
 };
 },{}],"./systems/simulation/control-player":[function(require,module,exports){
@@ -105,7 +97,6 @@ module.exports = function(ecs, data) {
 		if (data.input.button("right")) {
 			entity.velocity.x = 0.5;
 
-			entity.animation.name ="player-forward-right-trans";
 		}
 		if (data.input.button("up")) {
 			entity.velocity.y = -0.5;
@@ -3247,6 +3238,21 @@ module.exports={
 	   }
 	  }
 	 ],
+	 "title": [
+	  {
+	   "time": 100,
+	   "properties": {
+	    "image": {
+	     "name": "title",
+	     "sourceX": 0,
+	     "sourceY": 0,
+	     "sourceWidth": 1136,
+	     "sourceHeight": 640
+	    }
+	   }
+	  }
+	 ]
+	 ,
 	 "player-idle":[
 	 	{
 	 		"time" : 50,
@@ -3396,6 +3402,290 @@ module.exports={
 	 			}
 	 		}
 	 	}
+	 ],
+	 "player-damage-i":[
+	 		{
+	 			"time" : 500,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 0,
+	 				"sourceY":0,
+	 				"sourceWidth":100,
+	 				"sourceHeight":100
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 0,
+	 				"sourceY":125,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 125,
+	 				"sourceY":0,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 125,
+	 				"sourceY":125,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 250,
+	 				"sourceY":0,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 250,
+	 				"sourceY":125,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 375,
+	 				"sourceY":0,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 375,
+	 				"sourceY":125,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 500,
+	 				"sourceY":0,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 500,
+	 				"sourceY":125,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 625,
+	 				"sourceY":0,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 625,
+	 				"sourceY":125,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 750,
+	 				"sourceY":0,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 750,
+	 				"sourceY":125,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 			}
+	 		}
+	 ],
+	 "player-i":[
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 0,
+	 				"sourceY":250,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 0,
+	 				"sourceY":375,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 125,
+	 				"sourceY":250,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 125,
+	 				"sourceY":375,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 250,
+	 				"sourceY":250,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 250,
+	 				"sourceY":375,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 375,
+	 				"sourceY":250,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 375,
+	 				"sourceY":375,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 500,
+	 				"sourceY":250,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 500,
+	 				"sourceY":375,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 625,
+	 				"sourceY":250,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 625,
+	 				"sourceY":375,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 750,
+	 				"sourceY":250,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"name": "player",
+	 				"sourceX": 750,
+	 				"sourceY":375,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 			}
+	 		}
 	 ]
 }
 
@@ -3403,33 +3693,31 @@ module.exports={
 module.exports={
   "title": [
     {
-     "id": 0,
-     "name": "titlescreen",
-     "size": {
-      "width": 1137,
-      "height": 640
-     },
-     "position": {
-      "x": 0,
-      "y": 0
-     // },
-     // "animation": {
-     //  "time": 0,
-     //  "frame": 0,
-     //  "loop": true,
-     //  "speed": 1,
-     //  "name": "title-screen"
-     // },
-     // "image": {
-     //  "sourceX": 0,
-     //  "sourceY": 0,
-     //  "sourceWidth": 0,
-     //  "sourceHeight": 0,
-     //  "destinationX": 0,
-     //  "destinationY": 0,
-     //  "destinationWidth": 1136,
-     //  "destinationHeight": 640
-     }
+      "id": 0,
+      "name": "background",
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "animation": {
+        "time": 0,
+        "frame": 0,
+        "loop": true,
+        "speed": 1,
+        "name": "bg"
+      },
+      "image": {
+        "name":"bg",
+        "sourceX": 0,
+        "sourceY": 0,
+        "sourceWidth": 0,
+        "sourceHeight": 0,
+        "destinationX": 0,
+        "destinationY": 0,
+        "destinationWidth": 1136,
+        "destinationHeight": 640
+      },
+      "zindex": -1
     }
   ],
  "main": [
@@ -3451,21 +3739,22 @@ module.exports={
       "y": 0
      },
      "animation": {
-      "time": 0,
+      "time": 50,
       "frame": 0,
       "loop": true,
       "speed": 1,
-      "name": "player-idle"
+      "name": "player-i"
      },
      "image": {
+      "name": "player",
       "sourceX": 0,
       "sourceY": 0,
       "sourceWidth": 0,
       "sourceHeight": 0,
       "destinationX": 0,
       "destinationY": 0,
-      "destinationWidth": 97,
-      "destinationHeight": 125
+      "destinationWidth": 100,
+      "destinationHeight": 100
      },
      "timers":{
       "easing-animation": {
@@ -3497,6 +3786,7 @@ module.exports={
         "name": "bg"
       },
       "image": {
+        "name":"bg",
         "sourceX": 0,
         "sourceY": 0,
         "sourceWidth": 0,
@@ -3518,7 +3808,8 @@ module.exports={
 	"bg": "images/background.png",
 	"buildings": "images/buildings.png",
 	"beermug":"images/beermug.png",
-	"player": "images/hero_sprites.png"
+	"player": "images/hero_sprites.png",
+	"titlescreen": "images/title.png"
 }
 },{}],60:[function(require,module,exports){
 module.exports={
@@ -3646,6 +3937,12 @@ module.exports={
    ]
   },
   {
+    "name": "./systems/renderer/render-title",
+    "scenes":[
+      "title"
+    ]
+  },
+  {
     "name": "./systems/renderer/render-background",
     "scenes":[
       "main"
@@ -3658,63 +3955,31 @@ module.exports={
    ]
   },
   {
+   "name": "splatjs:drawImage",
+   "scenes": [
+    "main",
+    "title"
+   ]
+  },
+  {
    "name": "./systems/renderer/render-player",
    "scenes": [
     "main"
    ]
   },
   {
-   "name": "splatjs:drawImage",
-   "scenes": [
-    "main"
-   ]
+    "name":"./systems/renderer/render-buildings",
+    "scenes":[
+      "main"
+    ]
   },
   {
    "name": "splatjs:viewport.reset",
    "scenes": [
     "main"
    ]
-  },
-  {
-    "name": "./systems/renderer/render-title",
-    "scenes":[
-      "title"
-    ]
   }
  ]
 }
-
-},{}],64:[function(require,module,exports){
-function generateEntity(obj, entities){
-	var entity = entities.add();
-	for (var prop in obj){
-		if(obj.hasOwnProperty(prop)){
-			entity[prop] = obj[prop];
-		}
-	}
-	return entity;
-}
-function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex ;
-
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
-
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-
-  return array;
-}
-module.exports = {
-	"generateEntity": generateEntity,
-	"shuffle": shuffle
-};
 
 },{}]},{},[1]);

@@ -51,6 +51,12 @@
    ]
   },
   {
+    "name": "./systems/renderer/render-title",
+    "scenes":[
+      "title"
+    ]
+  },
+  {
     "name": "./systems/renderer/render-background",
     "scenes":[
       "main"
@@ -63,28 +69,29 @@
    ]
   },
   {
+   "name": "splatjs:drawImage",
+   "scenes": [
+    "main",
+    "title"
+   ]
+  },
+  {
    "name": "./systems/renderer/render-player",
    "scenes": [
     "main"
    ]
   },
   {
-   "name": "splatjs:drawImage",
-   "scenes": [
-    "main"
-   ]
+    "name":"./systems/renderer/render-buildings",
+    "scenes":[
+      "main"
+    ]
   },
   {
    "name": "splatjs:viewport.reset",
    "scenes": [
     "main"
    ]
-  },
-  {
-    "name": "./systems/renderer/render-title",
-    "scenes":[
-      "title"
-    ]
   }
  ]
 }

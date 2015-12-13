@@ -1389,5 +1389,313 @@
 	 				}
 	 			}
 	 		}
+	 ],
+	 "bear": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bear",
+	 				"sourceX": 612,
+	 				"sourceY": 0,
+	 				"sourceWidth": 306,
+	 				"sourceHeight": 526
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bear-hit": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bear",
+	 				"sourceX": 306,
+	 				"sourceY": 0,
+	 				"sourceWidth": 306,
+	 				"sourceHeight": 526
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bear-attack": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bear",
+	 				"sourceX": 0,
+	 				"sourceY": 0,
+	 				"sourceWidth": 306,
+	 				"sourceHeight": 526
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bear-mid": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bear",
+	 				"sourceX": 918,
+	 				"sourceY": 0,
+	 				"sourceWidth": 306,
+	 				"sourceHeight": 526
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bear-up": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bear",
+	 				"sourceX": 1224,
+	 				"sourceY": 0,
+	 				"sourceWidth": 306,
+	 				"sourceHeight": 526
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bear-left-up": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bear",
+	 				"sourceX": 1530,
+	 				"sourceY": 0,
+	 				"sourceWidth": 306,
+	 				"sourceHeight": 526
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bear-right-up": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bear",
+	 				"sourceX": 1836,
+	 				"sourceY": 0,
+	 				"sourceWidth": 306,
+	 				"sourceHeight": 526
+	 			}
+	 		}
+	 	}
+	 ],
+	 "playerHealth": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "beermug",
+	 				"sourceX": 0,
+	 				"sourceY": 0,
+	 				"sourceWidth": 81,
+	 				"sourceHeight": 100
+	 			}
+	 		}
+	 	}
+	 ],
+	 "beerItem": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "beermug",
+	 				"sourceX": 81,
+	 				"sourceY": 0,
+	 				"sourceWidth": 81,
+	 				"sourceHeight": 100
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bearHealth-Full": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bearHealth",
+	 				"sourceX": 450,
+	 				"sourceY": 0,
+	 				"sourceWidth": 90,
+	 				"sourceHeight": 90
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bearHealth-1-hit": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bearHealth",
+	 				"sourceX": 360,
+	 				"sourceY": 0,
+	 				"sourceWidth": 90,
+	 				"sourceHeight": 90
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bearHealth-2-hit": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bearHealth",
+	 				"sourceX": 270,
+	 				"sourceY": 0,
+	 				"sourceWidth": 90,
+	 				"sourceHeight": 90
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bearHealth-3-hit": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bearHealth",
+	 				"sourceX": 180,
+	 				"sourceY": 0,
+	 				"sourceWidth": 90,
+	 				"sourceHeight": 90
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bearHealth-4-hit": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bearHealth",
+	 				"sourceX": 90,
+	 				"sourceY": 0,
+	 				"sourceWidth": 90,
+	 				"sourceHeight": 90
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bearHealth-Dead": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bearHealth",
+	 				"sourceX": 0,
+	 				"sourceY": 0,
+	 				"sourceWidth": 90,
+	 				"sourceHeight": 90
+	 			}
+	 		}
+	 	}
+	 ],
+	 "aim-excellent": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "aim",
+	 				"sourceX": 132,
+	 				"sourceY": 0,
+	 				"sourceWidth": 33,
+	 				"sourceHeight": 65
+	 			}
+	 		}
+	 	}
+	 ],
+	 "aim-terrible": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "aim",
+	 				"sourceX": 0,
+	 				"sourceY": 0,
+	 				"sourceWidth": 33,
+	 				"sourceHeight": 65
+	 			}
+	 		}
+	 	}
+	 ],
+	 "aim-lousy": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "aim",
+	 				"sourceX": 33,
+	 				"sourceY": 0,
+	 				"sourceWidth": 33,
+	 				"sourceHeight": 65
+	 			}
+	 		}
+	 	}
+	 ],
+	 "aim-medium": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "aim",
+	 				"sourceX": 66,
+	 				"sourceY": 0,
+	 				"sourceWidth": 33,
+	 				"sourceHeight": 65
+	 			}
+	 		}
+	 	}
+	 ],
+	 "aim-ok": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "aim",
+	 				"sourceX": 99,
+	 				"sourceY": 0,
+	 				"sourceWidth": 33,
+	 				"sourceHeight": 65
+	 			}
+	 		}
+	 	}
+	 ],
+	 "fireball": [
+	 	{
+	 		"time" : 50,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "fireball",
+	 				"sourceX": 0,
+	 				"sourceY": 0,
+	 				"sourceWidth": 117,
+	 				"sourceHeight": 80
+	 			}
+	 		}
+	 	}
+	 ],
+	 "laser": [
+	 	{
+	 		"time" : 50,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "laser",
+	 				"sourceX": 0,
+	 				"sourceY": 0,
+	 				"sourceWidth": 32,
+	 				"sourceHeight": 5
+	 			}
+	 		}
+	 	}
 	 ]
 }

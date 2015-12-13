@@ -10,7 +10,7 @@ module.exports=require("./scripts/main-enter")
 "use strict";
 
 module.exports = function(player,data) { // eslint-disable-line no-unused-vars
-	
+	player.animation.frame = 0;
 	player.timers.center.running = false;
 	player.timers.center.time = 0;
 	player.animationIndex = 2;
@@ -20,20 +20,20 @@ module.exports = function(player,data) { // eslint-disable-line no-unused-vars
 "use strict";
 
 module.exports = function(player,data) { // eslint-disable-line no-unused-vars
-	
+	player.animation.frame = 0;
 	player.timers.center.running = false;
 	player.timers.center.time = 0;
-	player.animationIndex = 4;
+	player.animationIndex = 0;
 };
 
 },{}],"./scripts/player-transition-right":[function(require,module,exports){
 "use strict";
 
 module.exports = function(player,data) { // eslint-disable-line no-unused-vars
-	console.log("here");
+	player.animation.frame = 0;
 	player.timers.center.running = false;
 	player.timers.center.time = 0;
-	player.animationIndex = 0;
+	player.animationIndex = 4;
 };
 
 },{}],"./scripts/title-enter":[function(require,module,exports){
@@ -113,43 +113,77 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 		context.drawImage(data.images.get("titlescreen"),0,0)
 	}, []);
 };
+},{}],"./systems/simulation/animation-state":[function(require,module,exports){
+"use strict";
+
+module.exports = function(ecs, data) {
+	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
+		var animationArray = ["player-full-left","player-lean-left","player-idle","player-lean-right","player-full-right", "player-lean-right-idle","player-lean-left-idle"];
+		var aimingModifier =["-left","-back","-right"];
+		var aimingIndex = 2;
+		if(data.input.mouse.x > entity.position.x +entity.size.width){
+			aimingIndex = 2;
+		}
+		if(data.input.mouse.x< entity.position.x ){
+			aimingIndex = 0;
+		}
+		if(data.input.mouse.x <= entity.position.x + entity.size.width && data.input.mouse.x >= entity.position.x){
+			aimingIndex = 1;
+		}
+		var damagedModifier = "";
+		if(entity.damaged === true){
+			damagedModifier = "-d";
+		}
+		var oldname = entity.animation.name;
+		entity.animation.name = animationArray[entity.animationIndex]+aimingModifier[aimingIndex]+damagedModifier;
+		if(entity.animation.name !== oldname){
+			entity.animation.frame = 0;
+		}
+		
+	}, ["player"]);
+};
+
 },{}],"./systems/simulation/control-player":[function(require,module,exports){
 "use strict";
 
 module.exports = function(ecs, data) {
 	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
-		console.log(entity.animationIndex);
 		entity.velocity.x = 0;
 		entity.velocity.y = 0;
 		if (data.input.button("left")) {
 			entity.velocity.x = -0.5;
-			entity.animationIndex = 1;
-			entity.timers.left.running =true;
-			entity.timers.center.running =false;
-			entity.timers.center.time= 0;
-			entity.timers.right.running = false;
-			entity.timers.right.time = 0;
+			if(entity.animationIndex !== 1 && entity.animationIndex !== 0){
+				entity.animationIndex = 1;
+				entity.timers.left.running =true;
+				entity.timers.center.running =false;
+				entity.timers.center.time= 0;
+				entity.timers.right.running = false;
+				entity.timers.right.time = 0;
+			}
+			
 		}
 		if (data.input.button("right")) {
 			entity.velocity.x = 0.5;
-			entity.animationIndex = 3;
-			entity.timers.right.running =true;
-			entity.timers.center.running =false;
-			entity.timers.center.time= 0;
-			entity.timers.left.running = false;
-			entity.timers.left.time = 0;
-
+			if(entity.animationIndex !== 3 && entity.animationIndex !== 4){
+				entity.animationIndex = 3;
+				entity.timers.right.running =true;
+				entity.timers.center.running =false;
+				entity.timers.center.time= 0;
+				entity.timers.left.running = false;
+				entity.timers.left.time = 0;
+			}
 
 		}
 
 		if(!data.input.button("left") && !data.input.button("right")){
-
-			entity.animationIndex = 2;
-			entity.timers.center.running =true;
-			entity.timers.right.running =false;
-			entity.timers.right.time= 0;
-			entity.timers.left.running = false;
-			entity.timers.left.time = 0;
+			if(entity.animationIndex !== 2 && entity.animationIndex !== 5 && entity.animationIndex !== 6){
+				entity.animationIndex = 2;
+				entity.timers.center.running =true;
+				entity.timers.right.running =false;
+				entity.timers.right.time= 0;
+				entity.timers.left.running = false;
+				entity.timers.left.time = 0;
+			}
 		}
 		if (data.input.button("up")) {
 			entity.velocity.y = -0.5;
@@ -4865,6 +4899,12 @@ module.exports={
   },
   {
    "name": "./systems/simulation/control-player",
+   "scenes": [
+    "main"
+   ]
+  },
+  {
+   "name": "./systems/simulation/animation-state",
    "scenes": [
     "main"
    ]

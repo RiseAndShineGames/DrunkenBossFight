@@ -1,5 +1,32 @@
 "use strict";
+function generateEntity(obj, entities){
+	var entity = entities.add();
+	for (var prop in obj){
+		if(obj.hasOwnProperty(prop)){
+			entity[prop] = obj[prop];
+		}
+	}
+	return entity;
+}
+function fire(){
 
+}
+var structures = {
+    "Laser": function Laser(){
+        var entity = {};
+        entity.Laser = true;
+        entity.fired =false;
+        entity.size = {
+        	"width": 20,
+        	"height": 3
+        };
+        entity.position = {
+        	"x": 0,
+        	"y": 0
+        }
+        return entity;
+    }
+}
 module.exports = function(ecs, data) {
 	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
 		entity.velocity.x = 0;
@@ -71,6 +98,10 @@ module.exports = function(ecs, data) {
 		}
 		if (data.input.button("down")) {
 			entity.velocity.y = 0.4;
+		}
+
+		if(data.input.button("action")){
+			fire()
 		}
 		if(entity.position.x+entity.size.width>= data.canvas.width){
 			entity.position.x= data.canvas.width -entity.size.width;

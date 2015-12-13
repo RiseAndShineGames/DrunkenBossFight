@@ -50,5 +50,14 @@
     "key": "right"
    }
   ]
+ },
+ "action": {
+  "type": "button",
+  "inputs": [
+    {
+      "device": "keyboard",
+      "key": "spacebar"
+    }
+  ]
  }
 }

@@ -72,6 +72,17 @@ module.exports = function(ecs, data) {
 		if (data.input.button("down")) {
 			entity.velocity.y = 0.4;
 		}
-		
+		if(entity.position.x+entity.size.width>= data.canvas.width){
+			entity.position.x= data.canvas.width -entity.size.width;
+		}
+		if(entity.position.x<= 0){
+			entity.position.x= 0;
+		}
+		if(entity.position.y+entity.size.height>= data.canvas.height*(4/5)){
+			entity.position.y= data.canvas.height*(4/5) -entity.size.height;
+		}
+		if(entity.position.y<= data.canvas.height/10){
+			entity.position.y= data.canvas.height/10;
+		}
 	}, ["player"]);
 };

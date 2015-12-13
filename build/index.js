@@ -218,7 +218,18 @@ module.exports = function(ecs, data) {
 		if (data.input.button("down")) {
 			entity.velocity.y = 0.4;
 		}
-		
+		if(entity.position.x+entity.size.width>= data.canvas.width){
+			entity.position.x= data.canvas.width -entity.size.width;
+		}
+		if(entity.position.x<= 0){
+			entity.position.x= 0;
+		}
+		if(entity.position.y+entity.size.height>= data.canvas.height*(4/5)){
+			entity.position.y= data.canvas.height*(4/5) -entity.size.height;
+		}
+		if(entity.position.y<= data.canvas.height/10){
+			entity.position.y= data.canvas.height/10;
+		}
 	}, ["player"]);
 };
 
@@ -4808,7 +4819,315 @@ module.exports={
 	 				"sourceHeight":1
 	 				}
 	 			}
-	 		}	
+	 		}
+	 		],	
+	 "bear": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bear",
+	 				"sourceX": 612,
+	 				"sourceY": 0,
+	 				"sourceWidth": 306,
+	 				"sourceHeight": 526
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bear-hit": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bear",
+	 				"sourceX": 306,
+	 				"sourceY": 0,
+	 				"sourceWidth": 306,
+	 				"sourceHeight": 526
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bear-attack": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bear",
+	 				"sourceX": 0,
+	 				"sourceY": 0,
+	 				"sourceWidth": 306,
+	 				"sourceHeight": 526
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bear-mid": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bear",
+	 				"sourceX": 918,
+	 				"sourceY": 0,
+	 				"sourceWidth": 306,
+	 				"sourceHeight": 526
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bear-up": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bear",
+	 				"sourceX": 1224,
+	 				"sourceY": 0,
+	 				"sourceWidth": 306,
+	 				"sourceHeight": 526
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bear-left-up": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bear",
+	 				"sourceX": 1530,
+	 				"sourceY": 0,
+	 				"sourceWidth": 306,
+	 				"sourceHeight": 526
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bear-right-up": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bear",
+	 				"sourceX": 1836,
+	 				"sourceY": 0,
+	 				"sourceWidth": 306,
+	 				"sourceHeight": 526
+	 			}
+	 		}
+	 	}
+	 ],
+	 "playerHealth": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "beermug",
+	 				"sourceX": 0,
+	 				"sourceY": 0,
+	 				"sourceWidth": 81,
+	 				"sourceHeight": 100
+	 			}
+	 		}
+	 	}
+	 ],
+	 "beerItem": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "beermug",
+	 				"sourceX": 81,
+	 				"sourceY": 0,
+	 				"sourceWidth": 81,
+	 				"sourceHeight": 100
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bearHealth-Full": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bearHealth",
+	 				"sourceX": 450,
+	 				"sourceY": 0,
+	 				"sourceWidth": 90,
+	 				"sourceHeight": 90
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bearHealth-1-hit": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bearHealth",
+	 				"sourceX": 360,
+	 				"sourceY": 0,
+	 				"sourceWidth": 90,
+	 				"sourceHeight": 90
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bearHealth-2-hit": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bearHealth",
+	 				"sourceX": 270,
+	 				"sourceY": 0,
+	 				"sourceWidth": 90,
+	 				"sourceHeight": 90
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bearHealth-3-hit": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bearHealth",
+	 				"sourceX": 180,
+	 				"sourceY": 0,
+	 				"sourceWidth": 90,
+	 				"sourceHeight": 90
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bearHealth-4-hit": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bearHealth",
+	 				"sourceX": 90,
+	 				"sourceY": 0,
+	 				"sourceWidth": 90,
+	 				"sourceHeight": 90
+	 			}
+	 		}
+	 	}
+	 ],
+	 "bearHealth-Dead": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "bearHealth",
+	 				"sourceX": 0,
+	 				"sourceY": 0,
+	 				"sourceWidth": 90,
+	 				"sourceHeight": 90
+	 			}
+	 		}
+	 	}
+	 ],
+	 "aim-excellent": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "aim",
+	 				"sourceX": 132,
+	 				"sourceY": 0,
+	 				"sourceWidth": 33,
+	 				"sourceHeight": 65
+	 			}
+	 		}
+	 	}
+	 ],
+	 "aim-terrible": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "aim",
+	 				"sourceX": 0,
+	 				"sourceY": 0,
+	 				"sourceWidth": 33,
+	 				"sourceHeight": 65
+	 			}
+	 		}
+	 	}
+	 ],
+	 "aim-lousy": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "aim",
+	 				"sourceX": 33,
+	 				"sourceY": 0,
+	 				"sourceWidth": 33,
+	 				"sourceHeight": 65
+	 			}
+	 		}
+	 	}
+	 ],
+	 "aim-medium": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "aim",
+	 				"sourceX": 66,
+	 				"sourceY": 0,
+	 				"sourceWidth": 33,
+	 				"sourceHeight": 65
+	 			}
+	 		}
+	 	}
+	 ],
+	 "aim-ok": [
+	 	{
+	 		"time" : 200,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "aim",
+	 				"sourceX": 99,
+	 				"sourceY": 0,
+	 				"sourceWidth": 33,
+	 				"sourceHeight": 65
+	 			}
+	 		}
+	 	}
+	 ],
+	 "fireball": [
+	 	{
+	 		"time" : 50,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "fireball",
+	 				"sourceX": 0,
+	 				"sourceY": 0,
+	 				"sourceWidth": 117,
+	 				"sourceHeight": 80
+	 			}
+	 		}
+	 	}
+	 ],
+	 "laser": [
+	 	{
+	 		"time" : 50,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "laser",
+	 				"sourceX": 0,
+	 				"sourceY": 0,
+	 				"sourceWidth": 32,
+	 				"sourceHeight": 5
+	 			}
+	 		}
+	 	}
 	 ]
 }
 },{}],59:[function(require,module,exports){
@@ -4916,12 +5235,8 @@ module.exports={
      "size": {
       "width": 97,
       "height": 125
-     },
-     "velocity": {
-      "x": 0,
-      "y": 0
-     },
-     "match": {
+      },
+      "match": {
       "id": 1,
       "offsetX": 20,
       "offsetY": 30
@@ -4935,7 +5250,7 @@ module.exports={
       },
      "image": {
       "name": "arm",
-      "sourceX": 0,
+            "sourceX": 0,
       "sourceY": 0,
       "sourceWidth": 0,
       "sourceHeight": 0,
@@ -4944,7 +5259,45 @@ module.exports={
       "destinationWidth": 60,
       "destinationHeight": 40
      }
-   }
+   },
+    {
+     "id": 3,
+     "name": "bear",
+     "bear": true,
+     "position": {
+      "x": 700,
+      "y": 200
+     },
+     "size": {
+      "width": 300,
+      "height": 500
+       },
+     "velocity": {
+      "x": 0,
+      "y": 0
+     },
+     "damaged": false,
+     "animation": {
+      "time": 100,
+      "frame": 0,
+      "loop": true,
+      "speed": 1,
+      "name": "bear"
+     },
+     "image": {
+      "name": "bear",
+      "sourceX": 0,
+      "sourceY": 0,
+      "sourceWidth": 0,
+      "sourceHeight": 0,
+      "destinationX": 0,
+      "destinationY": 0,
+      "destinationWidth": 300,
+      "destinationHeight": 500
+     },
+     "timers":{}
+    }
+
   ]
 
 }

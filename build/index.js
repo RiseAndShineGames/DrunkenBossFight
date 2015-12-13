@@ -3240,153 +3240,182 @@ module.exports={
 	 ],
 	 "player-idle":[
 	 	{
-	 		"time" : 50,
-	 		"properties": {
-	 			"image":{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
-	 				"sourceX" : 275,
-					"sourceY": 0,
-					"sourceWidth": 97,
-					"sourceHeight": 115
+	 				"sourceX": 375,
+	 				"sourceY":875,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 375,
+	 				"sourceY":1000,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
 	 			}
 	 		}
-	 	},
-	 	{
-	 		"time" : 50,
-	 		"properties": {
-	 			"image":{
-	 				"name": "player",
-	 				"sourceX" :275,
-					"sourceY": 115,
-					"sourceWidth": 97,
-					"sourceHeight": 115
-	 			}
-	 		}
-	 	},
-	 	{
-	 		"time" : 50,
-	 		"properties": {
-	 			"image":{
-	 				"name": "player",
-	 				"sourceX" : 275,
-					"sourceY": 0,
-					"sourceWidth": 97,
-					"sourceHeight": 115
-	 			}
-	 		}
-	 	},
-	 	{
-	 		"time" : 50,
-	 		"properties": {
-	 			"image":{
-	 				"name": "player",
-	 				"sourceX" :275,
-					"sourceY": 115,
-					"sourceWidth": 97,
-					"sourceHeight": 115
-	 			}
-	 		}
-	 	}
 	 ],
-	 "player-forward-right-trans":[
-	 {
-	 		"time" : 50,
-	 		"properties": {
-	 			"image":{
+	 "player-lean-right":[
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
-	 				"sourceX" : 372,
-					"sourceY": 0,
-					"sourceWidth": 97,
-					"sourceHeight": 115
+	 				"sourceX": 500,
+	 				"sourceY":875,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 500,
+	 				"sourceY":1000,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 625,
+	 				"sourceY":875,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 625,
+	 				"sourceY":1000,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
 	 			}
 	 		}
-	 	},
-	 	{
-	 		"time" : 50,
-	 		"properties": {
-	 			"image":{
-	 				"name": "player",
-	 				"sourceX" :372,
-					"sourceY": 115,
-					"sourceWidth": 97,
-					"sourceHeight": 115
-	 			}
-	 		}
-	 	},
-	 	{
-	 		"time" : 50,
-	 		"properties": {
-	 			"image":{
-	 				"name": "player",
-	 				"sourceX" : 469,
-					"sourceY": 0,
-					"sourceWidth": 97,
-					"sourceHeight": 115
-	 			}
-	 		}
-	 	},
-	 	{
-	 		"time" : 50,
-	 		"properties": {
-	 			"image":{
-	 				"name": "player",
-	 				"sourceX" :469,
-					"sourceY": 115,
-					"sourceWidth": 97,
-					"sourceHeight": 115
-	 			}
-	 		}
-	 	}
 	 ],
-	 "player-forward-right":[
-	 {
-	 		"time" : 50,
-	 		"properties": {
-	 			"image":{
+	 "player-full-right":[
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
-	 				"sourceX" : 590,
-					"sourceY": 10,
-					"sourceWidth": 100,
-					"sourceHeight": 96
+	 				"sourceX": 750,
+	 				"sourceY":875,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 750,
+	 				"sourceY":1000,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 				}
 	 			}
 	 		}
-	 	},
+	 ],
+	 "player-lean-left":[
 	 	{
-	 		"time" : 50,
-	 		"properties": {
-	 			"image":{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
-	 				"sourceX" :590,
-					"sourceY": 115,
-					"sourceWidth": 100,
-					"sourceHeight": 96
+	 				"sourceX": 125,
+	 				"sourceY":875,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 125,
+	 				"sourceY":1000,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 250,
+	 				"sourceY":875,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 250,
+	 				"sourceY":1000,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
 	 			}
 	 		}
-	 	},
-	 	{
-	 		"time" : 50,
-	 		"properties": {
-	 			"image":{
+	 ],
+	 "player-full-left":[
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
 	 				"name": "player",
-	 				"sourceX" : 590,
-					"sourceY": 10,
-					"sourceWidth": 100,
-					"sourceHeight": 96
+	 				"sourceX": 0,
+	 				"sourceY":875,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 0,
+	 				"sourceY":1000,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 				}
 	 			}
 	 		}
-	 	},
-	 	{
-	 		"time" : 50,
-	 		"properties": {
-	 			"image":{
-	 				"name": "player",
-	 				"sourceX" :590,
-					"sourceY": 115,
-					"sourceWidth": 100,
-					"sourceHeight": 96
-	 			}
-	 		}
-	 	}
+
 	 ],
 	 "player-damage-i":[
 	 		{
@@ -3729,9 +3758,400 @@ module.exports={
 	 				}
 	 			}
 	 		}
+	 ],
+	 "player-back":[
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 0,
+	 				"sourceY":500,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 125,
+	 				"sourceY":500,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},	
+	 ],
+	 "player-back-damaged":[
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 250,
+	 				"sourceY":500,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 375,
+	 				"sourceY":500,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},	
+	 ],
+	 "player-damaged":[
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 0,
+	 				"sourceY":625,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 0,
+	 				"sourceY":750,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 125,
+	 				"sourceY":625,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 125,
+	 				"sourceY":750,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 250,
+	 				"sourceY":625,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 250,
+	 				"sourceY":750,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 375,
+	 				"sourceY":625,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 375,
+	 				"sourceY":750,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 500,
+	 				"sourceY":625,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 500,
+	 				"sourceY":750,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 625,
+	 				"sourceY":625,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 625,
+	 				"sourceY":750,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 750,
+	 				"sourceY":625,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 750,
+	 				"sourceY":750,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 				}
+	 			}
+	 		}
+	 ],
+	 "player":[
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 0,
+	 				"sourceY":875,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 0,
+	 				"sourceY":1000,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 125,
+	 				"sourceY":875,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 125,
+	 				"sourceY":1000,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 250,
+	 				"sourceY":875,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 250,
+	 				"sourceY":1000,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 375,
+	 				"sourceY":875,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 375,
+	 				"sourceY":1000,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 500,
+	 				"sourceY":875,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 500,
+	 				"sourceY":1000,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 625,
+	 				"sourceY":875,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 625,
+	 				"sourceY":1000,
+	 				"sourceWidth":97,
+	 				"sourceHeight":115
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 750,
+	 				"sourceY":875,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 				}
+	 			}
+	 		},
+	 		{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "player",
+	 				"sourceX": 750,
+	 				"sourceY":1000,
+	 				"sourceWidth":100,
+	 				"sourceHeight":96
+	 				}
+	 			}
+	 		}
 	 ]
 }
-
 },{}],58:[function(require,module,exports){
 module.exports={
   "title": [
@@ -3758,12 +4178,14 @@ module.exports={
       "x": 0,
       "y": 0
      },
+     "animationIndex" : 2,
+     "damaged": false,
      "animation": {
       "time": 100,
       "frame": 0,
       "loop": true,
       "speed": 1,
-      "name": "player-damage-i"
+      "name": "player-idle"
      },
      "image": {
       "name": "player",
@@ -3773,20 +4195,26 @@ module.exports={
       "sourceHeight": 0,
       "destinationX": 0,
       "destinationY": 0,
-      "destinationWidth": 97,
-      "destinationHeight": 125
+      "destinationWidth": 60,
+      "destinationHeight": 80
      },
      "timers":{
-      "easing-animation": {
+      "center": {
+        "running":false,
+        "time": 0,
+        "max": 100,
+        "script": "scripts/player-state-machine"
+      },
+      "left":{
         "running":false,
         "time": 0,
         "max": 200,
         "script": "scripts/player-state-machine"
       },
-      "ease-idle":{
+      "right":{
         "running":false,
         "time": 0,
-        "max": 100,
+        "max": 200,
         "script": "scripts/player-state-machine"
       }
     }

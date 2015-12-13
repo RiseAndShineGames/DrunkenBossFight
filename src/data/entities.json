@@ -23,12 +23,14 @@
       "x": 0,
       "y": 0
      },
+     "animationIndex" : 2,
+     "damaged": false,
      "animation": {
       "time": 100,
       "frame": 0,
       "loop": true,
       "speed": 1,
-      "name": "player-damage-i"
+      "name": "player-idle"
      },
      "image": {
       "name": "player",
@@ -38,20 +40,26 @@
       "sourceHeight": 0,
       "destinationX": 0,
       "destinationY": 0,
-      "destinationWidth": 97,
-      "destinationHeight": 125
+      "destinationWidth": 60,
+      "destinationHeight": 80
      },
      "timers":{
-      "easing-animation": {
+      "center": {
+        "running":false,
+        "time": 0,
+        "max": 100,
+        "script": "scripts/player-state-machine"
+      },
+      "left":{
         "running":false,
         "time": 0,
         "max": 200,
         "script": "scripts/player-state-machine"
       },
-      "ease-idle":{
+      "right":{
         "running":false,
         "time": 0,
-        "max": 100,
+        "max": 200,
         "script": "scripts/player-state-machine"
       }
     }

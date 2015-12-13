@@ -90,6 +90,43 @@
         "destinationHeight": 640
       },
       "zindex": -1
+    },
+    {
+     "id": 3,
+     "name": "bear",
+     "bear": true,
+     "position": {
+      "x": 700,
+      "y": 200
+     },
+     "size": {
+      "width": 300,
+      "height": 500
+     },
+     "velocity": {
+      "x": 0,
+      "y": 0
+     },
+     "damaged": false,
+     "animation": {
+      "time": 100,
+      "frame": 0,
+      "loop": true,
+      "speed": 1,
+      "name": "bear"
+     },
+     "image": {
+      "name": "bear",
+      "sourceX": 0,
+      "sourceY": 0,
+      "sourceWidth": 0,
+      "sourceHeight": 0,
+      "destinationX": 0,
+      "destinationY": 0,
+      "destinationWidth": 300,
+      "destinationHeight": 500
+     },
+     "timers":{}
     }
   ]
 

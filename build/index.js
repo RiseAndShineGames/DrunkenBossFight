@@ -77,7 +77,7 @@ function percentLoaded() {
 var loading = Splat.loadingScene(canvas, percentLoaded, game.scene);
 loading.start(context);
 
-},{"./data/animations":57,"./data/entities":58,"./data/images":59,"./data/inputs":60,"./data/scenes":61,"./data/sounds":62,"./data/systems":63,"splat-ecs":26}],"./systems/renderer/render-background":[function(require,module,exports){
+},{"./data/animations":58,"./data/entities":59,"./data/images":60,"./data/inputs":61,"./data/scenes":62,"./data/sounds":63,"./data/systems":64,"splat-ecs":26}],"./systems/renderer/render-background":[function(require,module,exports){
 "use strict";
 
 module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
@@ -150,8 +150,31 @@ module.exports = function(ecs, data) {
 	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
 		entity.velocity.x = 0;
 		entity.velocity.y = 0;
+		if(data.input.mouse.x > entity.position.x +entity.size.width){
+			data.entities.entities[2].animation.name = "arm";
+			if(data.entities.entities[2].match.offsetX<0){
+				data.entities.entities[2].match.offsetX = 20
+			}
+		}
+		if(data.input.mouse.x< entity.position.x ){
+			data.entities.entities[2].animation.name = "arm-r";
+				if(entity.animationIndex === 2){
+					data.entities.entities[2].match.offsetX = 20-data.images.get("armReverse").width;
+				}
+				else if(entity.animationIndex ===0){
+					data.entities.entities[2].match.offsetX = 40-data.images.get("armReverse").width;
+				}
+					else{
+					data.entities.entities[2].match.offsetX = 40-data.images.get("armReverse").width;
+				}
+
+		}
+		if(data.input.mouse.x <= entity.position.x + entity.size.width && data.input.mouse.x >= entity.position.x){
+			
+			data.entities.entities[2].animation.name = "arm-none";
+		}
 		if (data.input.button("left")) {
-			entity.velocity.x = -0.5;
+			entity.velocity.x = -0.4;
 			if(entity.animationIndex !== 1 && entity.animationIndex !== 0){
 				entity.animationIndex = 1;
 				entity.timers.left.running =true;
@@ -159,11 +182,13 @@ module.exports = function(ecs, data) {
 				entity.timers.center.time= 0;
 				entity.timers.right.running = false;
 				entity.timers.right.time = 0;
+				data.entities.entities[2].match.offsetX -= 10;
+
 			}
 			
 		}
 		if (data.input.button("right")) {
-			entity.velocity.x = 0.5;
+			entity.velocity.x = 0.4;
 			if(entity.animationIndex !== 3 && entity.animationIndex !== 4){
 				entity.animationIndex = 3;
 				entity.timers.right.running =true;
@@ -171,6 +196,7 @@ module.exports = function(ecs, data) {
 				entity.timers.center.time= 0;
 				entity.timers.left.running = false;
 				entity.timers.left.time = 0;
+				data.entities.entities[2].match.offsetX += 10;
 			}
 
 		}
@@ -183,23 +209,16 @@ module.exports = function(ecs, data) {
 				entity.timers.right.time= 0;
 				entity.timers.left.running = false;
 				entity.timers.left.time = 0;
+				data.entities.entities[2].match.offsetX = +20;
 			}
 		}
 		if (data.input.button("up")) {
-			entity.velocity.y = -0.5;
+			entity.velocity.y = -0.4;
 		}
 		if (data.input.button("down")) {
-			entity.velocity.y = 0.5;
+			entity.velocity.y = 0.4;
 		}
-		if(data.input.mouse.x > entity.position.x +entity.size.width){
-			entity.color = "purple";
-		}
-		if(data.input.mouse.x< entity.position.x ){
-			entity.color = "yellow";
-		}
-		if(data.input.mouse.x <= entity.position.x + entity.size.width && data.input.mouse.x >= entity.position.x){
-			entity.color = "blue";
-		}
+		
 	}, ["player"]);
 };
 
@@ -303,7 +322,7 @@ if (platform.isEjecta()) {
 		"show": function() {},
 		"hide": function() {},
 		"width": 0,
-		"height": 0,
+		"height": 0
 	};
 }
 
@@ -922,7 +941,7 @@ module.exports = function(entities, simulation, simulationStepTime, renderer, co
 	};
 };
 
-},{"./absolute-to-relative":2,"time-accumulator":56}],20:[function(require,module,exports){
+},{"./absolute-to-relative":2,"time-accumulator":57}],20:[function(require,module,exports){
 "use strict";
 
 var Input = require("./input");
@@ -1080,7 +1099,7 @@ if (platform.isEjecta()) {
 				}
 			});
 		},
-		"buy": function(product, quantity, callback) { // jshint ignore:line
+		"buy": function(product, quantity, callback) {
 			window.google.payments.inapp.buy({
 				"parameters": {
 					"env": "prod"
@@ -1109,10 +1128,10 @@ if (platform.isEjecta()) {
 	};
 } else {
 	module.exports = {
-		"get": function(sku, callback) { // jshint ignore:line
+		"get": function(sku, callback) {
 			callback(undefined, undefined);
 		},
-		"buy": function(product, quantity, callback) { // jshint ignore:line
+		"buy": function(product, quantity, callback) {
 			callback(undefined);
 		},
 		"restore": function(callback) {
@@ -1259,7 +1278,7 @@ Input.prototype.button = function(name) {
 
 module.exports = Input;
 
-},{"./mouse":28,"game-keyboard":53,"game-keyboard/key_map":54}],24:[function(require,module,exports){
+},{"./mouse":28,"game-keyboard":54,"game-keyboard/key_map":55}],24:[function(require,module,exports){
 "use strict";
 /**
  * @namespace Splat.leaderboards
@@ -1344,7 +1363,7 @@ var Scene = require("./scene");
 
 module.exports = function(canvas, percentLoaded, nextScene) {
 	var scene = new Scene();
-	scene.renderer.add(function(entities, context) { // jshint ignore:line
+	scene.renderer.add(function(entities, context) {
 		context.fillStyle = "#000000";
 		context.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -1412,7 +1431,7 @@ module.exports = {
 		position: require("./components/position"),
 		size: require("./components/size"),
 		timers: require("./components/timers"),
-		velocity: require("./components/velocity"),
+		velocity: require("./components/velocity")
 	},
 	systems: require("./systems")
 };
@@ -1455,7 +1474,7 @@ var val = rand.random();
 	Random: require("mersenne-twister")
 };
 
-},{"mersenne-twister":55}],28:[function(require,module,exports){
+},{"mersenne-twister":56}],28:[function(require,module,exports){
 "use strict";
 
 var platform = require("./platform");
@@ -2066,7 +2085,7 @@ function chromeStorageSet(data, callback) {
 
 var chromeStorageSaveData = {
 	"get": chromeStorageGet,
-	"set": chromeStorageSet,
+	"set": chromeStorageSet
 };
 
 if (platform.isChromeApp()) {
@@ -2113,7 +2132,7 @@ Scene.prototype.stop = function() {
 
 module.exports = Scene;
 
-},{"./entity-pool":18,"./game-loop":19,"entity-component-system":52}],35:[function(require,module,exports){
+},{"./entity-pool":18,"./game-loop":19,"entity-component-system":53}],35:[function(require,module,exports){
 "use strict";
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -2248,7 +2267,7 @@ SoundLoader.prototype.allLoaded = function() {
 /**
  * Play a sound.
  * @param {string} name The name given to the sound during {@link SoundLoader#load}
- * @param {boolean} [loop=false] A flag denoting whether the sound should be looped. To stop a looped sound use {@link SoundLoader#stop}.
+ * @param {Object} [loop=undefined] A hash containing loopStart and loopEnd options. To stop a looped sound use {@link SoundLoader#stop}.
  */
 SoundLoader.prototype.play = function(name, loop) {
 	if (loop && this.looping[name]) {
@@ -2269,6 +2288,8 @@ SoundLoader.prototype.play = function(name, loop) {
 	source.connect(this.gainNode);
 	if (loop) {
 		source.loop = true;
+		source.loopStart = loop.loopStart || 0;
+		source.loopEnd = loop.loopEnd || 0;
 		this.looping[name] = source;
 	}
 	source.start(0);
@@ -2448,10 +2469,11 @@ module.exports = {
 	drawImage: require("./systems/draw-image"),
 	drawRectangles: require("./systems/draw-rectangles"),
 	followParent: require("./systems/follow-parent"),
-	viewport: require("./systems/viewport"),
+	matchParent: require("./systems/match-parent"),
+	viewport: require("./systems/viewport")
 };
 
-},{"./systems/advance-animations":37,"./systems/advance-timers":38,"./systems/apply-friction":39,"./systems/apply-movement-2d":40,"./systems/apply-velocity":41,"./systems/box-collider":42,"./systems/center-position":43,"./systems/clear-screen":44,"./systems/constrain-to-playable-area":45,"./systems/control-player":46,"./systems/draw-frame-rate":47,"./systems/draw-image":48,"./systems/draw-rectangles":49,"./systems/follow-parent":50,"./systems/viewport":51}],37:[function(require,module,exports){
+},{"./systems/advance-animations":37,"./systems/advance-timers":38,"./systems/apply-friction":39,"./systems/apply-movement-2d":40,"./systems/apply-velocity":41,"./systems/box-collider":42,"./systems/center-position":43,"./systems/clear-screen":44,"./systems/constrain-to-playable-area":45,"./systems/control-player":46,"./systems/draw-frame-rate":47,"./systems/draw-image":48,"./systems/draw-rectangles":49,"./systems/follow-parent":50,"./systems/match-parent":51,"./systems/viewport":52}],37:[function(require,module,exports){
 "use strict";
 
 function setOwnPropertiesDeep(src, dest) {
@@ -2528,7 +2550,7 @@ module.exports = function(ecs, data) {
 "use strict";
 
 module.exports = function(ecs) {
-	ecs.addEach(function(entity, elapsed) { // jshint ignore:line
+	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
 		entity.velocity.x *= entity.friction.x;
 		entity.velocity.y *= entity.friction.y;
 	}, ["velocity", "friction"]);
@@ -2538,7 +2560,7 @@ module.exports = function(ecs) {
 "use strict";
 
 module.exports = function(ecs) {
-	ecs.addEach(function(entity, elapsed) { // jshint ignore:line
+	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
 		if (entity.movement2d.up && entity.velocity.y > entity.movement2d.upMax) {
 			entity.velocity.y += entity.movement2d.upAccel;
 		}
@@ -2623,32 +2645,44 @@ function collides(b, a) {
 		a.position.y < b.position.y + b.size.height;
 }
 
-module.exports = function(ecs, data) {
-	var spatialHash = {};
-
-	ecs.addEach(function(entity, elapsed) { // jshint ignore:line
-		function notCurrentEntityId(id) {
-			return id !== entity.id;
+function removeEntity(entity, oldKeys, entities, spatialHash){
+	function notCurrentEntityId(id) {
+		return id !== entity.id;
+	}
+	for (var i = 0; i < oldKeys.length; i++) {
+		remove(spatialHash, entity, oldKeys[i]);
+	}
+	for (i = 0; i < entity.collisions.length; i++) {
+		var peer = entities[entity.collisions[i]];
+		if (peer === undefined) {
+			continue;
 		}
+		peer.collisions = peer.collisions.filter(notCurrentEntityId);
+	}
+}
+
+var spatialHash = {};
+
+module.exports = function(ecs, data) {
+	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
+
 		if (entity.collisionKeys === undefined || entity.velocity !== undefined) {
 			var oldKeys = entity.collisionKeys || [];
 			entity.collisionKeys = keys(entity);
 
 			if (entity.velocity !== undefined || !areArraysSame(oldKeys, entity.collisionKeys)) {
-				for (var i = 0; i < oldKeys.length; i++) {
-					remove(spatialHash, entity, oldKeys[i]);
-				}
-				for (i = 0; i < entity.collisions.length; i++) {
-					var peer = data.entities.entities[entity.collisions[i]];
-					peer.collisions = peer.collisions.filter(notCurrentEntityId);
-				}
+				removeEntity(entity, oldKeys, data.entities.entities, spatialHash);
 				entity.collisions = [];
-				for (i = 0; i < entity.collisionKeys.length; i++) {
+				for (var i = 0; i < entity.collisionKeys.length; i++) {
 					add(spatialHash, entity, entity.collisionKeys[i]);
 				}
 			}
 		}
 	}, ["position", "size", "collisions"]);
+};
+
+module.exports.onEntityDelete = function(entity, data) {
+	removeEntity(entity, entity.collisionKeys || [], data.entities.entities, spatialHash);
 };
 
 function areArraysSame(a, b) {
@@ -2667,7 +2701,7 @@ function areArraysSame(a, b) {
 "use strict";
 
 module.exports = function(ecs, data) {
-	ecs.addEach(function(entity, elapsed) { // jshint ignore:line
+	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
 		// FIXME: doesn't work with cameras yet.
 		if (entity.center.x) {
 			entity.position.x = Math.floor(data.canvas.width / 2);
@@ -2688,7 +2722,7 @@ module.exports = function(ecs, data) {
 "use strict";
 
 module.exports = function(ecs, data) {
-	ecs.add(function(entities, context) { // jshint ignore:line
+	ecs.add(function(entities, context) {
 		context.clearRect(0, 0, data.canvas.width, data.canvas.height);
 	});
 };
@@ -2697,7 +2731,7 @@ module.exports = function(ecs, data) {
 "use strict";
 
 module.exports = function(ecs) {
-	ecs.addEach(function(entity, elapsed) { // jshint ignore:line
+	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
 		if (entity.position.x < entity.playableArea.x) {
 			entity.position.x = entity.playableArea.x;
 		}
@@ -2717,7 +2751,7 @@ module.exports = function(ecs) {
 "use strict";
 
 module.exports = function(ecs, data) {
-	ecs.addEach(function(entity, elapsed) { // jshint ignore:line
+	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
 		entity.movement2d.up = data.input.button(entity.playerController2d.up);
 		entity.movement2d.down = data.input.button(entity.playerController2d.down);
 		entity.movement2d.left = data.input.button(entity.playerController2d.left);
@@ -2729,7 +2763,7 @@ module.exports = function(ecs, data) {
 "use strict";
 
 module.exports = function(ecs, data) {
-	ecs.add(function(entities, context, elapsed) { // jshint ignore:line
+	ecs.add(function(entities, context, elapsed) {
 		var fps = Math.floor(1000 / elapsed);
 
 		context.font = "24px mono";
@@ -2753,27 +2787,45 @@ module.exports = function(ecs, data) {
 function drawEntity(data, entity, context) {
 	var image = data.images.get(entity.image.name);
 	if (!image) {
-		console.error("No such image", entity.image.name);
+		console.error("No such image", entity.image.name, "for entity", entity.id, entity.name);
 		return;
 	}
 	try {
+		var dx = entity.image.destinationX + entity.position.x;
+		var dy = entity.image.destinationY + entity.position.y;
+		if (entity.rotation !== undefined) {
+			context.save();
+
+			var x = entity.position.x + entity.rotation.x;
+			var y = entity.position.y + entity.rotation.y;
+			context.translate(x, y);
+			context.rotate(entity.rotation.angle);
+
+			dx = entity.image.destinationX - entity.rotation.x;
+			dy = entity.image.destinationY - entity.rotation.y;
+		}
+
 		context.drawImage(
 			image,
 			entity.image.sourceX,
 			entity.image.sourceY,
 			entity.image.sourceWidth,
 			entity.image.sourceHeight,
-			entity.image.destinationX + entity.position.x,
-			entity.image.destinationY + entity.position.y,
+			dx,
+			dy,
 			entity.image.destinationWidth,
 			entity.image.destinationHeight
 		);
+
+		if (entity.rotation !== undefined) {
+			context.restore();
+		}
 	} catch (e) {
 		console.error("Error drawing image", entity.image.name, e);
 	}
 }
+
 module.exports = function(ecs, data) {
-	
 	ecs.add(function(entities, context) {
 		var keys = Object.keys(entities);
 		keys.sort(function(a, b) {
@@ -2791,8 +2843,8 @@ module.exports = function(ecs, data) {
 			}
 			drawEntity(data, entity, context);
 		}
+
 	});
-	
 };
 
 },{}],49:[function(require,module,exports){
@@ -2815,7 +2867,7 @@ function distanceSquared(x1, y1, x2, y2) {
 }
 
 module.exports = function(ecs, data) {
-	ecs.addEach(function(entity, elapsed) { // jshint ignore:line
+	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
 		var x1 = entity.position.x + (entity.size.width / 2);
 		var y1 = entity.position.y + (entity.size.height / 2);
 
@@ -2846,12 +2898,26 @@ module.exports = function(ecs, data) {
 },{}],51:[function(require,module,exports){
 "use strict";
 
+module.exports = function(ecs, data) {
+	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
+		var parent = data.entities.entities[entity.match.id];
+		if (parent === undefined) {
+			return;
+		}
+		entity.position.x = parent.position.x + entity.match.offsetX;
+		entity.position.y = parent.position.y + entity.match.offsetY;
+	}, ["position", "match"]);
+};
+
+},{}],52:[function(require,module,exports){
+"use strict";
+
 var x = 0;
 var y = 0;
 
 module.exports = {
 	moveToCamera: function(ecs) {
-		ecs.add(function(entities, context) { // jshint ignore:line
+		ecs.add(function(entities, context) { // eslint-disable-line no-unused-vars
 			x = 0;
 			y = 0;
 		});
@@ -2864,7 +2930,7 @@ module.exports = {
 		}, ["camera", "position"]);
 	},
 	reset: function(ecs) {
-		ecs.addEach(function(entity, context) { // jshint ignore:line
+		ecs.addEach(function(entity, context) { // eslint-disable-line no-unused-vars
 			context.translate(x, y);
 			x = 0;
 			y = 0;
@@ -2872,7 +2938,7 @@ module.exports = {
 	}
 };
 
-},{}],52:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 "use strict";
 
 function EntityComponentSystem() {
@@ -2920,7 +2986,7 @@ function entityHasComponents(components, entity) {
 
 module.exports = EntityComponentSystem;
 
-},{}],53:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 "use strict";
 
 /**
@@ -2981,7 +3047,7 @@ Keyboard.prototype.consumePressed = function(name) {
 
 module.exports = Keyboard;
 
-},{}],54:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 /**
  * Keyboard code mappings that map keycodes to key names. A specific named map should be given to {@link Keyboard}.
  * @module KeyMap
@@ -3090,7 +3156,7 @@ module.exports = {
 	}
 };
 
-},{}],55:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 /*
   https://github.com/banksean wrapped Makoto Matsumoto and Takuji Nishimura's code in a namespace
   so it's better encapsulated. Now you can have multiple random number generators
@@ -3297,7 +3363,7 @@ MersenneTwister.prototype.random_long = function() {
 
 module.exports = MersenneTwister;
 
-},{}],56:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 module.exports = function(rate) {
 	var accum = 0;
 	return function(time, callback) {
@@ -3309,7 +3375,7 @@ module.exports = function(rate) {
 	};
 };
 
-},{}],57:[function(require,module,exports){
+},{}],58:[function(require,module,exports){
 module.exports={
 	"bg": [
 	  {
@@ -4701,9 +4767,51 @@ module.exports={
 	 				}
 	 			}
 	 		}
+	 ],
+	 "arm":[
+	 	{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "arm",
+	 				"sourceX": 0,
+	 				"sourceY":0,
+	 				"sourceWidth":70,
+	 				"sourceHeight":70
+	 				}
+	 			}
+	 		}	
+	 ],
+	 "arm-r":[
+	 	{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "armReverse",
+	 				"sourceX": 0,
+	 				"sourceY":0,
+	 				"sourceWidth":70,
+	 				"sourceHeight":70
+	 				}
+	 			}
+	 		}	
+	 ],
+	 "arm-none":[
+	 	{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "buildings",
+	 				"sourceX": 0,
+	 				"sourceY":0,
+	 				"sourceWidth":1,
+	 				"sourceHeight":1
+	 				}
+	 			}
+	 		}	
 	 ]
 }
-},{}],58:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 module.exports={
   "title": [
     {
@@ -4796,21 +4904,69 @@ module.exports={
         "destinationHeight": 640
       },
       "zindex": -1
-    }
+    },
+    {
+     "id": 2,
+     "name": "arm",
+     "arm": true,
+     "position": {
+      "x": 0,
+      "y": 0
+     },
+     "size": {
+      "width": 97,
+      "height": 125
+     },
+     "velocity": {
+      "x": 0,
+      "y": 0
+     },
+     "match": {
+      "id": 1,
+      "offsetX": 20,
+      "offsetY": 30
+      },
+      "animation": {
+        "time": 50,
+        "frame": 0,
+        "loop": true,
+        "speed": 1,
+        "name": "arm"
+      },
+     "image": {
+      "name": "arm",
+      "sourceX": 0,
+      "sourceY": 0,
+      "sourceWidth": 0,
+      "sourceHeight": 0,
+      "destinationX": 0,
+      "destinationY": 0,
+      "destinationWidth": 60,
+      "destinationHeight": 40
+     }
+   }
   ]
 
 }
 
-},{}],59:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 module.exports={
 	"aim": "images/range_33pxapart.png",
 	"bg": "images/background.png",
 	"buildings": "images/buildings.png",
 	"beermug":"images/beermug.png",
 	"player": "images/hero_sprites.png",
-	"titlescreen": "images/title.png"
+	"titlescreen": "images/title.png",
+	"bearHealth": "images/bear_health.png",
+	"bear": "images/bear_sprites.png",
+	"fireball": "images/fireball.png",
+	"laser": "images/laser.png",
+	"play": "images/play_button.png",
+	"splatScreen": "images/splat.png",
+	"arm": "images/armwithgun.png",
+	"armReverse": "images/armwithgun_reverse.png"
 }
-},{}],60:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 module.exports={
  "up": {
   "type": "button",
@@ -4866,7 +5022,7 @@ module.exports={
  }
 }
 
-},{}],61:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 module.exports={
 	"title":{
 		"first":true,
@@ -4880,9 +5036,9 @@ module.exports={
  	}
 }
 
-},{}],62:[function(require,module,exports){
-module.exports={}
 },{}],63:[function(require,module,exports){
+module.exports={}
+},{}],64:[function(require,module,exports){
 module.exports={
  "simulation": [
   {
@@ -4893,6 +5049,12 @@ module.exports={
   },
   {
    "name": "splatjs:advanceAnimations",
+   "scenes": [
+    "main"
+   ]
+  },
+  {
+   "name": "splatjs:matchParent",
    "scenes": [
     "main"
    ]

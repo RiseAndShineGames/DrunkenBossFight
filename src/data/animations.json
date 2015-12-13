@@ -1389,5 +1389,47 @@
 	 				}
 	 			}
 	 		}
+	 ],
+	 "arm":[
+	 	{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "arm",
+	 				"sourceX": 0,
+	 				"sourceY":0,
+	 				"sourceWidth":70,
+	 				"sourceHeight":70
+	 				}
+	 			}
+	 		}	
+	 ],
+	 "arm-r":[
+	 	{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "armReverse",
+	 				"sourceX": 0,
+	 				"sourceY":0,
+	 				"sourceWidth":70,
+	 				"sourceHeight":70
+	 				}
+	 			}
+	 		}	
+	 ],
+	 "arm-none":[
+	 	{
+	 			"time" : 50,
+	 			"properties" : {
+	 				"image":{
+	 				"name": "buildings",
+	 				"sourceX": 0,
+	 				"sourceY":0,
+	 				"sourceWidth":1,
+	 				"sourceHeight":1
+	 				}
+	 			}
+	 		}	
 	 ]
 }

@@ -30,7 +30,7 @@
       "frame": 0,
       "loop": true,
       "speed": 1,
-      "name": "player-idle"
+      "name": "player-idle-right"
      },
      "image": {
       "name": "player",
@@ -48,19 +48,19 @@
         "running":false,
         "time": 0,
         "max": 100,
-        "script": "scripts/player-state-machine"
+        "script": "./scripts/player-transition-center"
       },
       "left":{
         "running":false,
         "time": 0,
         "max": 200,
-        "script": "scripts/player-state-machine"
+        "script": "./scripts/player-transition-left"
       },
       "right":{
         "running":false,
         "time": 0,
         "max": 200,
-        "script": "scripts/player-state-machine"
+        "script": "./scripts/player-transition-right"
       }
     }
     },

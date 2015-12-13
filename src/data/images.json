@@ -4,5 +4,13 @@
 	"buildings": "images/buildings.png",
 	"beermug":"images/beermug.png",
 	"player": "images/hero_sprites.png",
-	"titlescreen": "images/title.png"
+	"titlescreen": "images/title.png",
+	"bearHealth": "images/bear_health.png",
+	"bear": "images/bear_sprites.png",
+	"fireball": "images/fireball.png",
+	"laser": "images/laser.png",
+	"play": "images/play_button.png",
+	"splatScreen": "images/splat.png",
+	"arm": "images/armwithgun.png",
+	"armReverse": "images/armwithgun_reverse.png"
 }

@@ -23,7 +23,7 @@
       "x": 0,
       "y": 0
      },
-     "health": 30,
+     "health": 50,
      "maxHealth": 50,
      "animationIndex" : 2,
      "damaged": false,
@@ -70,7 +70,8 @@
         "max": 1000,
         "script": "./scripts/player-sobriety-timer" 
       }
-    }
+    },
+    "shots":[]
     },
     {
       "id": 0,
@@ -243,8 +244,38 @@
       "destinationHeight": 70
      },
      "timers":{}
+    },
+    {
+      "id": 6,
+      "name": "laserSpawner",
+      "loaded": true,
+      "spawner": true,
+      "position": {
+        "x":0,
+        "y":0
+      },
+      "match":{
+        "id":2,
+        "offsetX":0,
+        "offsetY": 0,
+      },
+      "timers":{
+        "reload":{
+          "running":false,
+            "time": 0,
+            "max": 300,
+            "script": "./scripts/reload"
+        }
+      }
     }
 
+  ],
+  "end":[
+    {
+      "id": 0,
+      "name": "background"
+      
+    }
   ]
 
 }

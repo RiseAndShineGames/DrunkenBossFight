@@ -3,8 +3,12 @@
 	"./scripts/main-exit",
 	"./scripts/title-enter",
 	"./scripts/title-exit",
+	"./scripts/end-enter",
+	"./scripts/end-exit",
 	"./scripts/player-transition-center",
 	"./scripts/player-transition-left",
 	"./scripts/player-transition-right",
-	"./scripts/player-sobriety-timer"
+	"./scripts/player-sobriety-timer",
+	"./scripts/laser-life",
+	"./scripts/reload"
 ]

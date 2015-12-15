@@ -56,7 +56,7 @@
   "inputs": [
     {
       "device": "keyboard",
-      "key": "spacebar"
+      "key": "space"
     }
   ]
  }

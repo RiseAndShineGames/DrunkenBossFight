@@ -8,25 +8,30 @@ function generateEntity(obj, entities){
 	}
 	return entity;
 }
-function fire(){
+function fire(entities,laserArray){
+	var obj = {
+		"Laser": true,
+		"size":{
+			"width":32,
+			"height":3
+		},
+		"position":{
+			"x":entities.entities[6].position.x,
+			"y":entities.entities[6].position.y
+		},
+		"velocity": {
+			"x": 1 *entities.entities[6].direction,
+			"y": 0
+		},
+		"image":{
+			"name": "laser"
+		},
+	};
+	laserArray.push(obj);
+	entities.entities[6].timers.reload.running = true;
+	entities.entities[6].loaded = false;
+}
 
-}
-var structures = {
-    "Laser": function Laser(){
-        var entity = {};
-        entity.Laser = true;
-        entity.fired =false;
-        entity.size = {
-        	"width": 20,
-        	"height": 3
-        };
-        entity.position = {
-        	"x": 0,
-        	"y": 0
-        }
-        return entity;
-    }
-}
 module.exports = function(ecs, data) {
 	ecs.addEach(function(entity, elapsed) { // eslint-disable-line no-unused-vars
 		entity.velocity.x = 0;
@@ -34,8 +39,9 @@ module.exports = function(ecs, data) {
 		if(data.input.mouse.x > entity.position.x +entity.size.width){
 			data.entities.entities[2].animation.name = "arm";
 			if(data.entities.entities[2].match.offsetX<0){
-				data.entities.entities[2].match.offsetX = 20
+				data.entities.entities[2].match.offsetX = 20;
 			}
+			data.entities.entities[6].direction = 1;
 		}
 		if(data.input.mouse.x< entity.position.x ){
 			data.entities.entities[2].animation.name = "arm-r";
@@ -48,6 +54,8 @@ module.exports = function(ecs, data) {
 					else{
 					data.entities.entities[2].match.offsetX = 40-data.images.get("armReverse").width;
 				}
+
+			data.entities.entities[6].direction = -1;
 
 		}
 		if(data.input.mouse.x <= entity.position.x + entity.size.width && data.input.mouse.x >= entity.position.x){
@@ -64,7 +72,6 @@ module.exports = function(ecs, data) {
 				entity.timers.right.running = false;
 				entity.timers.right.time = 0;
 				data.entities.entities[2].match.offsetX -= 10;
-
 			}
 			
 		}
@@ -100,8 +107,10 @@ module.exports = function(ecs, data) {
 			entity.velocity.y = 0.4;
 		}
 
-		if(data.input.button("action")){
-			fire()
+		if(data.input.button("action") || data.input.mouse.consumePressed(0)){
+			if(data.entities.entities[6].loaded){
+				fire(data.entities,entity.shots);
+			}
 		}
 		if(entity.position.x+entity.size.width>= data.canvas.width){
 			entity.position.x= data.canvas.width -entity.size.width;
@@ -115,5 +124,20 @@ module.exports = function(ecs, data) {
 		if(entity.position.y<= data.canvas.height/10){
 			entity.position.y= data.canvas.height/10;
 		}
+		if(entity.health <=0){
+			data.switchScene("end");
+		}
+
+
+
+
+		//Move Lasers
+			for(var j = 0; j< entity.shots.length;j++){
+				var old = entity.shots[j].position.x;
+				entity.shots[j].position.x += entity.shots[j].velocity.x*elapsed;
+			}
+		
+
+
 	}, ["player"]);
 };

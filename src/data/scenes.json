@@ -8,5 +8,10 @@
   	"first": false,
   	"onEnter": "./scripts/main-enter",
   	"onExit": "./scripts/main-exit"
+ 	},
+ 	"end":{
+ 		"first": false,
+ 		"onEnter": "./scripts/end-enter",
+ 		"onExit": "./scripts/end-exit"
  	}
 }

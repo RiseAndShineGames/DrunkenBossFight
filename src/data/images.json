@@ -12,5 +12,6 @@
 	"play": "images/play_button.png",
 	"splatScreen": "images/splat.png",
 	"arm": "images/armwithgun.png",
-	"armReverse": "images/armwithgun_reverse.png"
+	"armReverse": "images/armwithgun_reverse.png",
+	"gameOver": "images/gameover.png"
 }

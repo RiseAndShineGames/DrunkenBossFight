@@ -1714,7 +1714,7 @@
 	 ],
 	 "fireball": [
 	 	{
-	 		"time" : 50,
+	 		"time" : 500,
 	 		"properties" : {
 	 			"image": {
 	 				"name": "fireball",
@@ -1728,7 +1728,7 @@
 	 ],
 	 "laser": [
 	 	{
-	 		"time" : 50,
+	 		"time" : 500,
 	 		"properties" : {
 	 			"image": {
 	 				"name": "laser",
@@ -1736,6 +1736,68 @@
 	 				"sourceY": 0,
 	 				"sourceWidth": 32,
 	 				"sourceHeight": 5
+	 			}
+	 		}
+	 	}
+	 ],
+	 "intro":[
+	 	{
+	 		"time" : 500,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "s1",
+	 				"sourceX": 0,
+	 				"sourceY": 0,
+	 				"sourceWidth": 1136,
+	 				"sourceHeight": 640
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 500,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "s2",
+	 				"sourceX": 0,
+	 				"sourceY": 0,
+	 				"sourceWidth": 1136,
+	 				"sourceHeight": 640
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 500,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "s3",
+	 				"sourceX": 0,
+	 				"sourceY": 0,
+	 				"sourceWidth": 1136,
+	 				"sourceHeight": 640
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 500,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "s4",
+	 				"sourceX": 0,
+	 				"sourceY": 0,
+	 				"sourceWidth": 1136,
+	 				"sourceHeight": 640
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 500,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "s5",
+	 				"sourceX": 0,
+	 				"sourceY": 0,
+	 				"sourceWidth": 1136,
+	 				"sourceHeight": 640
 	 			}
 	 		}
 	 	}

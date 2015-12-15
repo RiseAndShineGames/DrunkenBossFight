@@ -13,5 +13,11 @@
 	"splatScreen": "images/splat.png",
 	"arm": "images/armwithgun.png",
 	"armReverse": "images/armwithgun_reverse.png",
-	"gameOver": "images/gameover.png"
+	"gameOver": "images/gameover.png",
+	"s1": "images/scene1.png",
+	"s2": "images/scene2.png",
+	"s3": "images/scene3.png",
+	"s4": "images/scene4.png",
+	"s5": "images/scene5.png",
+	"s6": "images/scene6.png"
 }

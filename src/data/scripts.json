@@ -10,5 +10,6 @@
 	"./scripts/player-transition-right",
 	"./scripts/player-sobriety-timer",
 	"./scripts/laser-life",
-	"./scripts/reload"
+	"./scripts/reload",
+	"./scripts/swap-background"
 ]

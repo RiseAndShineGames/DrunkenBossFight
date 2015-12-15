@@ -65,6 +65,22 @@ module.exports = function(gun,data) { // eslint-disable-line no-unused-vars
 	gun.timers.reload.time = 0;
 };
 
+},{}],"./scripts/swap-background":[function(require,module,exports){
+"use strict";
+
+module.exports = function(bg,data) { // eslint-disable-line no-unused-vars
+	
+	console.log("here")
+	bg.seen +=1;
+	if(bg.seen<=6){
+		bg.image.name = "s"+bg.seen;
+		bg.timers.changeBG.time = 0;
+		bg.timers.changeBG.running = true;
+	}else{
+		data.switchScene("main");
+	}
+	
+};
 },{}],"./scripts/title-enter":[function(require,module,exports){
 "use strict";
 module.exports = function(data) { // eslint-disable-line no-unused-vars
@@ -112,7 +128,7 @@ loading.start(context);
 module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 	ecs.add(function(entities, context) { // eslint-disable-line no-unused-vars
 		context.fillStyle = "#fff";
-		context.fillRect(0,0, data.canvas.width, data.canvas.height);
+		context.drawImage(data.images.get(data.entities.entities[0].image.name),0,0);
 	}, []);
 };
 },{}],"./systems/renderer/render-buildings":[function(require,module,exports){
@@ -366,6 +382,18 @@ module.exports = function(ecs, data) {
 	ecs.addEach(function(entity, elapsed) { // jshint ignore:line
 		if(data.input.mouse.consumePressed(0)){
 			data.switchScene("main");
+		}
+	}, []);
+};
+
+},{}],"./systems/simulation/start":[function(require,module,exports){
+"use strict";
+
+module.exports = function(ecs, data) {
+	
+	ecs.addEach(function(entity, elapsed) { // jshint ignore:line
+		if(data.input.mouse.consumePressed(0)){
+			data.switchScene("intro");
 		}
 	}, []);
 };
@@ -5228,7 +5256,7 @@ module.exports={
 	 ],
 	 "fireball": [
 	 	{
-	 		"time" : 50,
+	 		"time" : 500,
 	 		"properties" : {
 	 			"image": {
 	 				"name": "fireball",
@@ -5242,7 +5270,7 @@ module.exports={
 	 ],
 	 "laser": [
 	 	{
-	 		"time" : 50,
+	 		"time" : 500,
 	 		"properties" : {
 	 			"image": {
 	 				"name": "laser",
@@ -5250,6 +5278,68 @@ module.exports={
 	 				"sourceY": 0,
 	 				"sourceWidth": 32,
 	 				"sourceHeight": 5
+	 			}
+	 		}
+	 	}
+	 ],
+	 "intro":[
+	 	{
+	 		"time" : 500,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "s1",
+	 				"sourceX": 0,
+	 				"sourceY": 0,
+	 				"sourceWidth": 1136,
+	 				"sourceHeight": 640
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 500,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "s2",
+	 				"sourceX": 0,
+	 				"sourceY": 0,
+	 				"sourceWidth": 1136,
+	 				"sourceHeight": 640
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 500,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "s3",
+	 				"sourceX": 0,
+	 				"sourceY": 0,
+	 				"sourceWidth": 1136,
+	 				"sourceHeight": 640
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 500,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "s4",
+	 				"sourceX": 0,
+	 				"sourceY": 0,
+	 				"sourceWidth": 1136,
+	 				"sourceHeight": 640
+	 			}
+	 		}
+	 	},
+	 	{
+	 		"time" : 500,
+	 		"properties" : {
+	 			"image": {
+	 				"name": "s5",
+	 				"sourceX": 0,
+	 				"sourceY": 0,
+	 				"sourceWidth": 1136,
+	 				"sourceHeight": 640
 	 			}
 	 		}
 	 	}
@@ -5534,6 +5624,49 @@ module.exports={
       "name": "background"
       
     }
+  ],
+  "intro":[
+    {
+      "id": 0,
+      "name":"background",
+      "position": {
+      "x": 0,
+      "y": 0
+     },
+     "seen":1,
+     "size": {
+      "width": 1136,
+      "height": 640
+     },
+     "animation": {
+      "time": 0,
+      "frame": 0,
+      "loop": false,
+      "speed": 1,
+      "name": "intro"
+     },
+     "image": {
+      "name": "s1",
+      "sourceX": 0,
+      "sourceY": 0,
+      "sourceWidth": 0,
+      "sourceHeight": 0,
+      "destinationX": 0,
+      "destinationY": 0,
+      "destinationWidth": 1136,
+      "destinationHeight": 640
+     },
+      "timers":{
+        
+        "changeBG":{
+          "time": 0,
+          "max":1500,
+          "running":true,
+          "script":"./scripts/swap-background"
+
+        }
+      }
+    }
   ]
 
 }
@@ -5554,7 +5687,13 @@ module.exports={
 	"splatScreen": "images/splat.png",
 	"arm": "images/armwithgun.png",
 	"armReverse": "images/armwithgun_reverse.png",
-	"gameOver": "images/gameover.png"
+	"gameOver": "images/gameover.png",
+	"s1": "images/scene1.png",
+	"s2": "images/scene2.png",
+	"s3": "images/scene3.png",
+	"s4": "images/scene4.png",
+	"s5": "images/scene5.png",
+	"s6": "images/scene6.png"
 }
 },{}],61:[function(require,module,exports){
 module.exports={
@@ -5628,6 +5767,11 @@ module.exports={
 		"onEnter": "./scripts/title-enter",
 		"onExit": "./scripts/title-exit"
 	},
+	"intro":{
+		"first":false,
+		"onEnter": "./scripts/main-enter",
+  		"onExit": "./scripts/main-exit"
+	},
  	"main": {
   	"first": false,
   	"onEnter": "./scripts/main-enter",
@@ -5648,7 +5792,7 @@ module.exports={
   {
    "name": "splatjs:advanceTimers",
    "scenes": [
-    "main"
+    "main", "intro"
    ]
   },
   {
@@ -5676,9 +5820,15 @@ module.exports={
    ]
   },
   {
-   "name": "./systems/simulation/start-game",
+   "name": "./systems/simulation/start",
    "scenes": [
     "title"
+   ]
+  },
+  {
+   "name": "./systems/simulation/start-game",
+   "scenes": [
+    "intro"
    ]
   },
   {
@@ -5716,7 +5866,7 @@ module.exports={
   {
     "name": "./systems/renderer/render-background",
     "scenes":[
-      "main"
+      "intro"
     ]
   },
   {

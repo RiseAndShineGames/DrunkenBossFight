@@ -1,8 +1,9 @@
 "use strict";
 
 module.exports = function(player,data) { // eslint-disable-line no-unused-vars
-	player.animation.frame = 0;
-	player.timers.center.running = false;
-	player.timers.center.time = 0;
-	player.animationIndex = 0;
+	data.entities.get(player,"animation").frame = 0;
+	var timers = data.entities.get(player,"timers");
+	timers.center.running = false;
+	timers.center.time = 0;
+	data.entities.set(player,"animationIndex",0);
 };

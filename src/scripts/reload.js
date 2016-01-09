@@ -1,7 +1,8 @@
 "use strict";
 
 module.exports = function(gun,data) { // eslint-disable-line no-unused-vars
-	gun.loaded = true;
-	gun.timers.reload.running = false;
-	gun.timers.reload.time = 0;
+	data.entities.set(gun,"loaded",true);
+	var timers = data.entities.get(gun,"timers");
+	timers.reload.running = false;
+	timers.reload.time = 0;
 };

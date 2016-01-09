@@ -1,8 +1,10 @@
-finish making sprites transition correctly
-add arm sprte 
+-finish making sprites transition correctly
+-add arm sprte 
 add reticle sprite 
-add firing functionality
-add health functionality
+-add firing functionality
+-add health functionality
 program bear ai
 add bear attack tracking player
 use triginometry to rotate arm,gun, and reticle based on mouse location relative to character
+
+makehsots into a prefab

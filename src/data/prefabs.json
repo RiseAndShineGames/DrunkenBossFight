@@ -1,0 +1,20 @@
+{
+	"Laser":{
+		"Laser": true,
+		"size":{
+			"width":32,
+			"height":3
+		},
+		"position":{
+			"x":0,
+			"y":0
+		},
+		"velocity": {
+			"x": 1 ,
+			"y": 0
+		},
+		"image":{
+			"name": "laser"
+		}
+	}
+}

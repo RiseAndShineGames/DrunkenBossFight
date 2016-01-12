@@ -11,5 +11,6 @@
 	"./scripts/player-sobriety-timer",
 	"./scripts/laser-life",
 	"./scripts/reload",
-	"./scripts/swap-background"
+	"./scripts/swap-background",
+	"./scripts/bear-movement"
 ]

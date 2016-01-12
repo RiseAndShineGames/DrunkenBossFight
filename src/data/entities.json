@@ -171,7 +171,20 @@
       "destinationWidth": 300,
       "destinationHeight": 500
      },
-     "timers":{}
+     "timers":{
+      "move":{
+          "running":true,
+            "time": 0,
+            "max": 500,
+            "script": "./scripts/bear-movement"
+        },
+        "wait":{
+          "running": false,
+          "time": 0,
+          "max": 100,
+          "script": "./scripts/movement-run"
+        }
+     }
     },
     {
      "id": 4,

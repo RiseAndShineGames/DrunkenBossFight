@@ -7,4 +7,9 @@ program bear ai
 add bear attack tracking player
 use triginometry to rotate arm,gun, and reticle based on mouse location relative to character
 
-makehsots into a prefab
+-makehsots into a prefab
+
+
+~~ART~~
+
+2-3 more frames for fireball animation

@@ -16,5 +16,23 @@
 		"image":{
 			"name": "laser"
 		}
+	},
+	"Flame":{
+		"Flame":true,
+		"size":{
+			"width":20,
+			"height":20
+		},
+		"position":{
+			"x":0,
+			"y":0
+		},
+		"velocity":{
+			"x":0.5,
+			"y":0
+		},
+		"image":{
+			"name":"fireball"
+		}
 	}
 }

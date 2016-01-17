@@ -11,5 +11,10 @@
 	"./scripts/player-sobriety-timer",
 	"./scripts/laser-life",
 	"./scripts/reload",
-	"./scripts/swap-background"
+	"./scripts/swap-background",
+	"./scripts/chargeAttack",
+	"./scripts/initialBreak",
+	"./scripts/attack1",
+	"./scripts/attack2",
+	"./scripts/attack3"
 ]

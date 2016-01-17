@@ -99,12 +99,6 @@
    ]
   },
   {
-   "name": "./systems/renderer/render-lasers",
-   "scenes": [
-    "main"
-   ]
-  },
-  {
     "name":"./systems/renderer/render-buildings",
     "scenes":[
       "main"

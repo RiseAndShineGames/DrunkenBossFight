@@ -267,6 +267,53 @@
             "script": "./scripts/reload"
         }
       }
+    },
+    {
+      "id":7,
+      "name": "attackSpawner",
+      "loaded": true,
+      "AttackSpawner": true,
+      "position":{
+        "x":0,
+        "y":0
+      },
+      "match":{
+        "id":3,
+        "offsetX": 0,
+        "offsetY": 0
+      },
+      "timers":{
+        "initialBreak":{
+          "running":true,
+          "time":0,
+          "max":500,
+          "script": "./scripts/initialBreak"
+        },
+        "reload":{
+          "running":false,
+          "time":0,
+          "max":500,
+          "script": "./scripts/chargeAttack"
+        },
+        "attack1":{
+          "running":false,
+          "time":0,
+          "max":100,
+          "script": "./scripts/attack1"
+        },
+        "attack2":{
+          "running":false,
+          "time":0,
+          "max":100,
+          "script": "./scripts/attack2"
+        },
+        "attack3":{
+          "running":false,
+          "time":0,
+          "max":700,
+          "script": "./scripts/attack3"
+        }
+      }
     }
 
   ],

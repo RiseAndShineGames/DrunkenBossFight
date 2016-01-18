@@ -16,5 +16,6 @@
 	"./scripts/initialBreak",
 	"./scripts/attack1",
 	"./scripts/attack2",
-	"./scripts/attack3"
+	"./scripts/attack3",
+	"./scripts/bear-movement"
 ]

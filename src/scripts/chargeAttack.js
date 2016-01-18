@@ -8,9 +8,7 @@ function normalize(p1,p2){
 
 }
 module.exports = function(entity,data) { // eslint-disable-line no-unused-vars
-	var playerPosition = data.entities.get(1,"position");
-	var position = data.entities.get(entity,"position");
-	var uv = normalize(playerPosition,position);
+	
 	var timers = data.entities.get(entity,"timers");
 	var match = data.entities.get(entity,"match");
 	var animation = data.entities.get(match.id,"animation");
@@ -22,15 +20,14 @@ module.exports = function(entity,data) { // eslint-disable-line no-unused-vars
 		case 3:
 			timers.attack1.time= 0;
 			timers.attack1.running= true;
-			var flame = data.instantiatePrefab("Flame");
-			data.entities.set(flame,"position",{"x":position.x,"y":position.y});
-			data.entities.set(flame,"velocity",{"x":0.5*uv.x,"y":0.5*uv.y})
+			
 			//change animation/do something
 			break;
 		case 2:
 			console.log("Attack 2");
 			timers.attack2.time= 0;
 			timers.attack2.running= true;
+			
 			//change animation/ do something
 			break;
 		case 1:

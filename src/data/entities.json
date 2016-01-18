@@ -8,6 +8,20 @@
   ],
  "main": [
     {
+   "id": 100,
+   "name": "camera",
+   "camera": true,
+   "position": {
+    "x": 0,
+    "y": 0
+   },
+   "matchCanvasSize": true,
+   "size":{
+    "width":1130,
+    "height": 720
+   }
+  },
+    {
      "id": 1,
      "name": "player",
      "player": true,
@@ -171,7 +185,20 @@
       "destinationWidth": 300,
       "destinationHeight": 500
      },
-     "timers":{}
+     "timers":{
+      "move":{
+          "running":true,
+            "time": 0,
+            "max": 500,
+            "script": "./scripts/bear-movement"
+        },
+        "wait":{
+          "running": false,
+          "time": 0,
+          "max": 100,
+          "script": "./scripts/movement-run"
+        }
+     }
     },
     {
      "id": 4,
@@ -279,8 +306,8 @@
       },
       "match":{
         "id":3,
-        "offsetX": 0,
-        "offsetY": 0
+        "offsetX": 150,
+        "offsetY": 170
       },
       "timers":{
         "initialBreak":{

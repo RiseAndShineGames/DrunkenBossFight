@@ -14,26 +14,24 @@ module.exports = function(entity,data) { // eslint-disable-line no-unused-vars
 	var animation = data.entities.get(match.id,"animation");
 
 	//select attack
-	var x = Math.floor(Math.random() * (3))+1;
+	var x = Math.floor(Math.random() * (2))+1;
 	animation.name = "bear-attack";
 	switch(x){
-		case 3:
-			timers.attack1.time= 0;
-			timers.attack1.running= true;
+		// case 3:
+		// 	timers.attack1.time= 0;
+		// 	timers.attack1.running= true;
 			
-			//change animation/do something
-			break;
+		// 	//change animation/do something
+		// 	break;
 		case 2:
-			console.log("Attack 2");
 			timers.attack2.time= 0;
 			timers.attack2.running= true;
-			
+
 			//change animation/ do something
 			break;
 		case 1:
-			console.log("aslkdladflna;slkdnflkasdlflkasdfl");
-			timers.attack3.time= 0;
-			timers.attack3.running= true;
+			timers.attack1.time= 0;
+			timers.attack1.running= true;
 			//change animation/ do something
 			break;
 		default:

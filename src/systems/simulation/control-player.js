@@ -140,17 +140,17 @@ module.exports = function(ecs, data) {
 				fire(data,shots);
 			}
 		}
-		if(position.x+size.width>= data.canvas.width){
-			position.x= data.canvas.width - size.width;
+		if(position.x+size.width>= data.entities.get(100,"size").width){
+			position.x= data.entities.get(100,"size").width - size.width;
 		}
 		if(position.x<= 0){
 			position.x= 0;
 		}
-		if(position.y + size.height>= data.canvas.height*(4/5)){
-			position.y = data.canvas.height*(4/5) - size.height;
+		if(position.y + size.height>= data.entities.get(100,"size").height*(4/5)){
+			position.y = data.entities.get(100,"size").height*(4/5) - size.height;
 		}
-		if(position.y<= data.canvas.height/10){
-			position.y= data.canvas.height/10;
+		if(position.y<= data.entities.get(100,"size").height/10){
+			position.y= data.entities.get(100,"size").height/10;
 		}
 		if(data.entities.get(entity,"health") <=0){
 			data.switchScene("end");

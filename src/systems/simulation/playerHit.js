@@ -11,7 +11,6 @@ module.exports = function(ecs, data) { // eslint-disable-line no-unused-vars
 			if (data.entities.get(other, "Flame")) {
 				data.entities.destroy(other);
 				data.entities.set(entity, "health", playerHealth - damage);
-				console.log("hit");
 			}
 		}
 	}, "player");

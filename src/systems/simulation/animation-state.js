@@ -8,14 +8,17 @@ module.exports = function(ecs, data) {
 		var position = data.entities.get(entity,"position");
 		var size = data.entities.get(entity,"size");
 		var animation = data.entities.get(entity,"animation");
+		var bear = 3;
+		var bearPosition = data.entities.get(bear, "position");
+		var bearSize = data.entities.get(bear, "size");
 
-		if(data.input.mouse.x > position.x +size.width){
+		if(bearPosition.x + bearSize.width/2 > position.x +size.width){
 			aimingIndex = 2;
 		}
-		if(data.input.mouse.x< position.x ){
+		if(bearPosition.x + bearSize.width/2< position.x ){
 			aimingIndex = 0;
 		}
-		if(data.input.mouse.x <= position.x + size.width && data.input.mouse.x >= position.x){
+		if(bearPosition.x + bearSize.width/2 <= position.x + size.width && bearPosition.x + bearSize.width/2 >= position.x){
 			aimingIndex = 1;
 		}
 		var damagedModifier = "";

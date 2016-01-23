@@ -49,18 +49,22 @@ module.exports = function(ecs, data) {
 		var laserSpawnerDirection = data.entities.get(6,"direction");
 		var animationIndex = data.entities.get(entity,"animationIndex");
 		var timers = data.entities.get(entity,"timers");
-		var shots = data.entities.get(entity,"shots")
+		var shots = data.entities.get(entity,"shots");
+		var bear = 3;
+		var bearPosition = data.entities.get(bear, "position");
+		var bearSize = data.entities.get(bear, "size");
+
 
 		velocity.x = 0;
 		velocity.y = 0;
-		if(data.input.mouse.x > position.x + size.width){
+		if(bearPosition.x + bearSize.width/2 > position.x + size.width){
 			armAnim.name = "arm";
 			if(armMatch.offsetX<0){
 				armMatch.offsetX = 20;
 			}
 			data.entities.set(6,"direction",1);
 		}
-		if(data.input.mouse.x< position.x ){
+		if(bearPosition.x + bearSize.width/2 < position.x ){
 			armAnim.name = "arm-r";
 				if(animationIndex === 2){
 					armMatch.offsetX = 20-data.images.get("armReverse").width;
@@ -75,7 +79,7 @@ module.exports = function(ecs, data) {
 			data.entities.set(6,"direction",-1);
 
 		}
-		if(data.input.mouse.x <= position.x + size.width && data.input.mouse.x >= position.x){
+		if(bearPosition.x + bearSize.width/2 <= position.x + size.width && bearPosition.x + bearSize.width/2 >= position.x){
 			
 			armAnim.name = "arm-none";
 		}
@@ -120,10 +124,10 @@ module.exports = function(ecs, data) {
 				timers.right.time= 0;
 				timers.left.running = false;
 				timers.left.time = 0;
-				if(data.input.mouse.x > position.x+size.width){
+				if(bearPosition.x + bearSize.width/2 > position.x+size.width){
 					armMatch.offsetX = 20;
 				}
-				if (data.input.mouse.x < position.x){
+				if (bearPosition.x + bearSize.width/2 < position.x){
 					armMatch.offsetX = 20-data.images.get("armReverse").width;
 				}
 			}

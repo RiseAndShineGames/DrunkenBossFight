@@ -155,11 +155,11 @@ module.exports = function(ecs, data) {
 		if(data.entities.get(entity,"health") <=0){
 			data.switchScene("end");
 		}
-		//Move Lasers
-			for(var j = 0; j< shots.length;j++){
-				var old = shots[j].position.x;
-				shots[j].position.x += shots[j].velocity.x*elapsed;
-			}
+		// //Move Lasers
+		// 	for(var j = 0; j< shots.length;j++){
+		// 		var old = shots[j].position.x;
+		// 		shots[j].position.x += shots[j].velocity.x*elapsed;
+		// 	}
 		
 
 

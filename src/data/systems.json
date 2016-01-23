@@ -114,6 +114,21 @@
     "name": "./systems/renderer/render-player-health",
     "scenes": [
     "main" ]
+  },
+  {
+    "name": "./systems/simulation/collectBeer",
+    "scenes": [
+    "main" ]
+  },
+  {
+    "name": "./systems/simulation/bearhit",
+    "scenes": [
+    "main" ]
+  },
+  {
+    "name": "./systems/simulation/bearHealth",
+    "scenes": [
+    "main" ]
   }
  ]
 }

@@ -17,12 +17,7 @@ module.exports = function(entity,data) { // eslint-disable-line no-unused-vars
 	var x = Math.floor(Math.random() * (2))+1;
 	animation.name = "bear-attack";
 	switch(x){
-		// case 3:
-		// 	timers.attack1.time= 0;
-		// 	timers.attack1.running= true;
-			
-		// 	//change animation/do something
-		// 	break;
+		
 		case 2:
 			timers.attack2.time= 0;
 			timers.attack2.running= true;
@@ -32,10 +27,10 @@ module.exports = function(entity,data) { // eslint-disable-line no-unused-vars
 		case 1:
 			timers.attack1.time= 0;
 			timers.attack1.running= true;
+
 			//change animation/ do something
 			break;
 		default:
-			console.error("missed random:" + x);
 	}
 	
 };

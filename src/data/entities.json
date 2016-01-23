@@ -222,8 +222,26 @@
         }
      },
      "health": 120,
-     "maxHealth": 120,
-     "collisions": []
+     "maxHealth": 120
+    },
+    {
+      "id": 8,
+      "name": "bearHitbox",
+      "bearHitbox": true,
+      "size": {
+        "width": 10,
+        "height": 160
+      },
+      "match": {
+        "id": 3,
+        "offsetX": 100,
+        "offsetY": 40
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "collisions": []
     },
     {
      "id": 4,

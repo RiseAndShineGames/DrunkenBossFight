@@ -5,7 +5,7 @@ module.exports = function(ecs, data) {
 		var entityCollisions = data.entities.get(entity, "collisions");
 		var playerHealth = data.entities.get(entity, "health");
 		var playerMaxHealth = data.entities.get(entity, "maxHealth");
-		var healthI = 25;
+		var healthI = 10;
 		for (var i = 0; i < entityCollisions.length ; i++) {
 		   var other = entityCollisions[i];
 		   if ( data.entities.get(other, "beerMugRefill") ) {

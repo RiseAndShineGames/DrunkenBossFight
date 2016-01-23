@@ -34,5 +34,25 @@
 		"image":{
 			"name":"fireball"
 		}
+	},
+	"beerMugRefill":{
+		"beerMugRefill":true,
+		"size":{
+			"width":40,
+			"height":50
+		},
+		"position":{
+			"x":0,
+			"y":0
+		},
+		"image":{
+			"name":"beermug",
+			"sourceX": 81,
+	 		"sourceY": 0,
+	 		"sourceWidth": 81,
+	 		"sourceHeight": 100,
+	 		"destinationWidth": 40,
+	 		"destinationHeight": 50
+		}
 	}
 }

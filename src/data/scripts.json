@@ -17,5 +17,6 @@
 	"./scripts/attack1",
 	"./scripts/attack2",
 	"./scripts/attack3",
-	"./scripts/bear-movement"
+	"./scripts/bear-movement",
+	"./scripts/spawnPowerUp"
 ]

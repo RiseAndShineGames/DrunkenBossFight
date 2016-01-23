@@ -19,7 +19,15 @@
    "size":{
     "width":1130,
     "height": 720
+   },
+   "timers": {
+       "powerUpSpawn":{
+      "running": true,
+      "time": 0,
+      "max": 2000,
+      "script": "./scripts/spawnPowerUp"
    }
+ }
   },
     {
      "id": 1,
@@ -342,7 +350,6 @@
         }
       }
     }
-
   ],
   "end":[
     {

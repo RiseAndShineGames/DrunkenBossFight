@@ -37,7 +37,6 @@ module.exports = function(entity,data) { // eslint-disable-line no-unused-vars
 	}
 	
 
-	console.log("arc fireball attack");
 	timers.reload.time = 0;
 	timers.reload.running = true;
 	animation.name="bear";

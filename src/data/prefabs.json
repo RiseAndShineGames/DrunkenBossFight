@@ -34,7 +34,8 @@
 		},
 		"image":{
 			"name":"fireball"
-		}
+		},
+		"collisions": []
 	},
 	"beerMugRefill":{
 		"beerMugRefill":true,

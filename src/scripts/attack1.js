@@ -20,7 +20,6 @@ module.exports = function(entity,data) { // eslint-disable-line no-unused-vars
 	data.entities.set(flame,"position",{"x":position.x,"y":position.y});
 	data.entities.set(flame,"velocity",{"x":0.5*uv.x,"y":0.5*uv.y});
 			
-	console.log("basic fireball attack");
 	timers.reload.time = 0;
 	timers.reload.running = true;
 	animation.name="bear";

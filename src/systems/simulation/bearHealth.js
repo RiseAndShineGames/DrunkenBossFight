@@ -16,6 +16,5 @@ module.exports = function(ecs, data) {
 		} else if ( bearHealth < 0 ) { 
 			healthImage.name = "bearHealth-Dead";
 		}
-		console.log(bearHealth)
 	}, "bear");
 };

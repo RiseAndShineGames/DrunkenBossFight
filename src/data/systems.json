@@ -129,6 +129,11 @@
     "name": "./systems/simulation/bearHealth",
     "scenes": [
     "main" ]
+  },
+  {
+    "name": "./systems/simulation/playerHit",
+    "scenes": [
+    "main" ]
   }
  ]
 }

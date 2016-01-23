@@ -4,7 +4,6 @@ module.exports = function(entity, data) {
 	var veiwportWidth = data.canvas.width;
 	var veiwportHeight = data.canvas.height;
 	var timers = data.entities.get(entity, "timers");
-	console.log(veiwportHeight);
 	var maxX, maxY, minX, minY;
 	minX = 20;
 	minY = 100;

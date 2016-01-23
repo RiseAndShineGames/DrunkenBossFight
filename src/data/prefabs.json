@@ -15,7 +15,8 @@
 		},
 		"image":{
 			"name": "laser"
-		}
+		},
+		"collisions": []
 	},
 	"Flame":{
 		"Flame":true,
@@ -53,6 +54,7 @@
 	 		"sourceHeight": 100,
 	 		"destinationWidth": 40,
 	 		"destinationHeight": 50
-		}
+		},
+		"collisions": []
 	}
 }

@@ -14,27 +14,6 @@ function fire(data,laserArray){
 	var laser = data.instantiatePrefab("Laser");
 	data.entities.set(laser,"position",{"x": position.x, "y": position.y});
 	data.entities.set(laser,"velocity",{"x": 1*data.entities.get(6,"direction"), "y": 0});
-				console.log();
-
-	// var obj = {
-	// 	"Laser": true,
-	// 	"size":{
-	// 		"width":32,
-	// 		"height":3
-	// 	},
-	// 	"position":{
-	// 		"x":position.x,
-	// 		"y":position.y
-	// 	},
-	// 	"velocity": {
-	// 		"x": 1 *data.entities.get(6,"direction"),
-	// 		"y": 0
-	// 	},
-	// 	"image":{
-	// 		"name": "laser"
-	// 	},
-	// };
-	// laserArray.push(obj);
 	data.entities.get(6,"timers").reload.running = true;
 	data.entities.set(6,"loaded",false);
 }
@@ -156,14 +135,6 @@ module.exports = function(ecs, data) {
 		if(position.y<= data.entities.get(100,"size").height/10){
 			position.y= data.entities.get(100,"size").height/10;
 		}
-		if(data.entities.get(entity,"health") <=0){
-			data.switchScene("end");
-		}
-		// //Move Lasers
-		// 	for(var j = 0; j< shots.length;j++){
-		// 		var old = shots[j].position.x;
-		// 		shots[j].position.x += shots[j].velocity.x*elapsed;
-		// 	}
 		
 
 

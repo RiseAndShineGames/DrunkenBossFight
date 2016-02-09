@@ -19,6 +19,14 @@
    ]
   },
   {
+   "name": "./systems/simulation/placeCursor",
+   "scenes": [
+    "main",
+    "title",
+    "end"
+   ]
+  },
+  {
    "name": "./systems/simulation/control-player",
    "scenes": [
     "main"
@@ -57,7 +65,9 @@
   {
    "name": "splat-ecs/lib/systems/box-collider",
    "scenes": [
-    "main"
+    "main",
+    "title",
+    "end"
    ]
   }
  ],
@@ -95,7 +105,8 @@
   {
    "name": "splat-ecs/lib/systems/draw-image",
    "scenes": [
-    "main"
+    "main",
+    "title"
    ]
   },
   {
@@ -132,6 +143,11 @@
   },
   {
     "name": "./systems/simulation/playerHit",
+    "scenes": [
+    "main" ]
+  },
+  {
+    "name": "./systems/simulation/checkEndState",
     "scenes": [
     "main" ]
   }

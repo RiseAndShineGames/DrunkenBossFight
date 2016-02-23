@@ -45,6 +45,12 @@
    ]
   },
   {
+    "name": "./systems/simulation/retry",
+    "scenes": [
+    "end"
+    ]
+  },
+  {
    "name": "./systems/simulation/start-game",
    "scenes": [
     "intro"
@@ -106,7 +112,8 @@
    "name": "splat-ecs/lib/systems/draw-image",
    "scenes": [
     "main",
-    "title"
+    "title",
+    "end"
    ]
   },
   {

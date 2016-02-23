@@ -477,6 +477,28 @@
       "name": "cursor"
     },
     "collisions":[]
+  },
+  {
+    "id": 200,
+    "name": "retry_btn",
+    "button": true,
+    "retry_btn": true,
+    "size": {
+      "width": 210,
+      "height": 80
+    },
+    "position": {
+      "x": 300,
+      "y": 375
+    },
+    "image": {
+      "name": "retry",
+      "sourceX": 0,
+      "sourceY": 0,
+      "sourceWidth": 250,
+      "sourceHeight": 80
+    },
+  "collisions":[]
   }
   ],
   "intro":[

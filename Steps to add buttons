@@ -1,14 +1,16 @@
 Steps to add buttons
-1. Copy the play_btn entitiy
-2. Create a new entitiy
-	change name
-	change class name example "play_btn": true
-	change image name
-3. Write Scripts
-	create the new script in simulation
-	copy from start.js
-	rename it to the name of the button we are creating
-4. change the data.switchScene to whatever the scene we are adding it to
-5. Add it to systems.json
-	copy start
-	in the scene add the name of the scene it will be in
+	1. Copy the play_btn entitiy
+	2. Create a new entitiy
+		change name
+		change class name example "play_btn": true
+		change image name
+	3. Write Scripts
+		create the new script in simulation
+		copy from start.js
+		rename it to the name of the button we are creating
+		change the data.switchScene to whatever the scene we are adding it to
+	4. Add it to systems.json
+		copy start
+		in the scene add the name of the scene it will be in
+How to Create a Scene
+	1.

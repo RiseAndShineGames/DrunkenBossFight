@@ -51,6 +51,19 @@
     ]
   },
   {
+    "name": "./systems/simulation/home",
+    "scenes": [
+    "end"
+    ]
+  },
+  {
+    "name": "./systems/simulation/credits",
+    "scenes": [
+    "end",
+    "title"
+    ]
+  },
+  {
    "name": "./systems/simulation/start-game",
    "scenes": [
     "intro"

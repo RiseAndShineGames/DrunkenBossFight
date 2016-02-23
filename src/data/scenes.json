@@ -18,5 +18,10 @@
  		"first": false,
  		"onEnter": "./scripts/end-enter",
  		"onExit": "./scripts/end-exit"
+ 	},
+ 	"credits": {
+ 		"first": false,
+ 		"onEnter": "./scripts/credits-enter",
+ 		"onExit": "./scripts/credits-enter"
  	}
 }

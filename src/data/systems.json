@@ -23,7 +23,8 @@
    "scenes": [
     "main",
     "title",
-    "end"
+    "end", 
+    "credits"
    ]
   },
   {
@@ -60,7 +61,8 @@
     "name": "./systems/simulation/credits",
     "scenes": [
     "end",
-    "title"
+    "title", 
+    "credits"
     ]
   },
   {
@@ -86,7 +88,8 @@
    "scenes": [
     "main",
     "title",
-    "end"
+    "end", 
+    "credits"
    ]
   }
  ],
@@ -100,7 +103,11 @@
   {
    "name": "splat-ecs/lib/systems/viewport-move-to-camera",
    "scenes": [
-    "main"
+    "intro",
+    "main",
+    "title",
+    "end", 
+    "credits"
    ]
   },
   {
@@ -112,7 +119,8 @@
   {
     "name": "./systems/renderer/render-background",
     "scenes":[
-      "intro"
+      "intro", 
+    "credits"
     ]
   },
   {
@@ -126,7 +134,8 @@
    "scenes": [
     "main",
     "title",
-    "end"
+    "end", 
+    "credits"
    ]
   },
   {
@@ -143,7 +152,11 @@
   {
    "name": "splat-ecs/lib/systems/viewport-reset",
    "scenes": [
-    "main"
+    "intro",
+    "main",
+    "title",
+    "end", 
+    "credits"
    ]
   },
   {

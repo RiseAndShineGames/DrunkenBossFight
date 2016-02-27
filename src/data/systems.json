@@ -54,7 +54,8 @@
   {
     "name": "./systems/simulation/home",
     "scenes": [
-    "end"
+    "end",
+    "credits"
     ]
   },
   {
@@ -97,7 +98,11 @@
   {
    "name": "splat-ecs/lib/systems/clear-screen",
    "scenes": [
-    "main"
+    "intro",
+    "main",
+    "title",
+    "end", 
+    "credits"
    ]
   },
   {
@@ -111,27 +116,9 @@
    ]
   },
   {
-    "name": "./systems/renderer/render-title",
-    "scenes":[
-      "title"
-    ]
-  },
-  {
-    "name": "./systems/renderer/render-background",
-    "scenes":[
-      "intro", 
-    "credits"
-    ]
-  },
-  {
-    "name": "./systems/renderer/render-end",
-    "scenes":[
-      "end"
-    ]
-  },
-  {
    "name": "splat-ecs/lib/systems/draw-image",
    "scenes": [
+   "intro",
     "main",
     "title",
     "end", 
@@ -141,7 +128,7 @@
   {
     "name":"./systems/renderer/render-buildings",
     "scenes":[
-      "main"
+      "steve"
     ]
   },
   {

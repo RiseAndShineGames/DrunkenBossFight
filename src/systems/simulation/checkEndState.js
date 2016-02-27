@@ -7,7 +7,7 @@ module.exports = function(ecs, data) {
 			//change game state to lost
 			//play ending
 			console.log('lose')
-			data.switchScene('end');
+			data.switchScene('end',{"win": false});
 		}	
 		
 	}, "player");
@@ -16,8 +16,7 @@ module.exports = function(ecs, data) {
 		if (health <= 0) {
 			//change game state to win
 			//play ending
-			console.log('win')
-			data.switchScene('end');
+			data.switchScene('end',{"win": true});
 		}
 		
 	}, "bear");

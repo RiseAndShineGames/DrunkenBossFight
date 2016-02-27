@@ -23,5 +23,8 @@
 	"s4": "images/scene4.png",
 	"s5": "images/scene5.png",
 	"s6": "images/scene6.png",
-	"cursor": "images/cursor.png"
+	"cursor": "images/cursor.png",
+	"creditsScreen": "images/credits.png" ,
+	"winScreen": "images/winscreen.png"
+	
 }

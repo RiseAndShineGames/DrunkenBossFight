@@ -5,6 +5,7 @@ module.exports = function(bg,data) { // eslint-disable-line no-unused-vars
 	var seen = data.entities.get(bg,"seen") + 1;
 
 	data.entities.set(bg,"seen",seen);
+	console.log(data.entities.get(bg,"size").height,data.canvas.height);
 
 	if(seen<=6){
 		data.entities.get(bg,"image").name = "s"+seen;

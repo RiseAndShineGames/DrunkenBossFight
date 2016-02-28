@@ -8,7 +8,7 @@ module.exports = function(ecs, data) {
 	for ( var i = 0; i < collisions.length; i++ ) {
 		if (collisions[i] == cursor) {
 			if(data.input.mouse.consumePressed(0)){
-				data.switchScene("intro");
+				data.switchScene("main");
 			}
 			var image = data.entities.get(entity, "image");
 			image.sourceX = 320;
